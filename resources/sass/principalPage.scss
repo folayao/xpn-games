@@ -1,0 +1,8 @@
+@import './vars.scss';
+
+.header{
+    background-color: $fondoClaro;
+    &__title{
+        color: $verdeClaro;
+    }
+}
