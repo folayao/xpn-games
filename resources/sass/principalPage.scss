@@ -1,8 +1,57 @@
-@import './vars.scss';
+@import "./vars.scss";
 
-.header{
-    background-color: $fondoClaro;
-    &__title{
-        color: $verdeClaro;
+.header {
+    font-family: $font-family-titles;
+    background-color: $fondoMasOscuro;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    &__links {
+        margin: 20px;
+        grid-column: 1/4;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        font-size: 35px;
+        .container {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(5, 1fr);
+            .header__links--home {
+            }
+            .header__links--home:hover {
+            }
+            .header__links--products {
+                grid-column: 2;
+                color: $verdeClaro;
+                text-decoration: none;
+            }
+            .header__links--products:hover {
+                grid-column: 2;
+                color: $verdeOscuro;
+            }
+            .header__links--wishList {
+                grid-column: 3;
+                text-decoration: none;
+                color: $rosadoClaro;
+            }
+            .header__links--wishList:hover {
+                grid-column: 3;
+                text-decoration: none;
+                color: $rosadoOscuro;
+            }
+        }
+    }
+    .logo {
+        grid-column: 5;
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        &__container {
+            img {
+                width: 70%;
+                height: 70%;
+            }
+        }
     }
 }

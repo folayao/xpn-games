@@ -3,10 +3,16 @@ $fondoMasOscuro:#16002C;
 $fondoOscuro: #210042;
 $fondoClaro:#27004D;
 $verdeClaro: #A5E819; 
+$verdeOscuro: #8eca0dd7;
+$azulClaro: rgb(20, 132, 238);
+$azulOscuro:rgba(13, 112, 204, 0.932);
 $salmon: #C2966B;
-$rosado: #CB8081;
+$rosadoClaro: #CB8081;
+$rosadoOscuro:#bb6667;
 /* Estilos de letras */
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Arvo&family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 $font-family-sans-serif: 'ABeeZee', sans-serif;
 $font-family-serif: 'Arvo', serif;
-$font-family-display: 'Bungee Shade', cursive;
+$font-family-titles: 'Russo One', sans-serif;

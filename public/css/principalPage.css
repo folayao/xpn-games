@@ -1,10 +1,60 @@
-@import url(https://fonts.googleapis.com/css2?family=ABeeZee&family=Arvo&family=Bungee+Shade&display=swap);/* Estilos de letras */
+@import url(https://fonts.googleapis.com/css2?family=ABeeZee&family=Arvo&family=Bungee+Shade&display=swap);@import url(https://fonts.googleapis.com/css2?family=Russo+One&display=swap);/* Estilos de letras */
 
 .header {
-  background-color: #27004D;
+  font-family: "Russo One", sans-serif;
+  background-color: #16002C;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
 }
 
-.header__title {
+.header__links {
+  margin: 20px;
+  grid-column: 1/4;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 35px;
+}
+
+.header__links .container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.header__links .container .header__links--products {
+  grid-column: 2;
   color: #A5E819;
+  text-decoration: none;
+}
+
+.header__links .container .header__links--products:hover {
+  grid-column: 2;
+  color: #8eca0dd7;
+}
+
+.header__links .container .header__links--wishList {
+  grid-column: 3;
+  text-decoration: none;
+  color: #CB8081;
+}
+
+.header__links .container .header__links--wishList:hover {
+  grid-column: 3;
+  text-decoration: none;
+  color: #bb6667;
+}
+
+.header .logo {
+  grid-column: 5;
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+
+.header .logo__container img {
+  width: 70%;
+  height: 70%;
 }
 
