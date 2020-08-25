@@ -9,7 +9,5 @@
 </head>
 <body>
     @yield('header')
-        
-
 </body>
 </html>
