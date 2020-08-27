@@ -1,4 +1,6 @@
-@extends('layouts.header')
+{{-- @extends('layouts.header') --}}
+@include('layouts.header')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,5 +11,6 @@
 </head>
 <body>
     @yield('header')
+    <h1>Holi</h1>
 </body>
 </html>
