@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index' );
-
 /* VideoGame Routes  */
-
-Route::get('/videogames', 'VideoGameController@show')->name('videogame.show');
-Route::post('/videogames/create', 'VideoGameController@create')->name('videogame.store');
-Route::delete('/videogames/destroy', 'VideoGameController@delete')->name('videogame.destroy');
+Route::get('/videogames/show/{id}', 'VideoGameController@show')->name('videogame.show');
+Route::get('/videogames/create', 'VideoGameController@create')->name('videogame.create');
+Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.save');
 

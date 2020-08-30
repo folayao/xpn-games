@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/principalPage.css": "/css/principalPage.css"
+    "/css/principalPage.css": "/css/principalPage.css",
+    "/css/showVideogame.css": "/css/showVideogame.css",
+    "/css/createVideogame.css": "/css/createVideogame.css"
 }

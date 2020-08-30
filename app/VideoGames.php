@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class VideoGames extends Model
 {
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['title', 'category', 'detail','price',
+    public $table = "videogames";
+    protected $fillable = ['title', 'category', 'details','price',
     'designer','pg', 'keyword'
         // This is the category of game, for example pg +18 'stock',
         /* The others fillable labels are not enable 'cause these are not primitive data fields 
@@ -44,11 +45,11 @@ class Product extends Model
     /* Details */
     public function getDetails()
     {
-        return $this->attributes['detail'];
+        return $this->attributes['details'];
     }
     public function setDetails($detail)
     {
-        $this->attributes['detail'] = $detail;
+        $this->attributes['details'] = $detail;
     }
 
     public function getPrice()

@@ -1,0 +1,12 @@
+@import './vars.scss';
+
+.card-body{
+    background-color: $azulClaro;
+    color: #fff;
+    .card-title{
+        color:$verdeClaro;
+    }
+    .card-label{
+        color: $rosadoClaro;
+    }
+}
