@@ -1,170 +1,165 @@
-# Basic Coding Standard
+# Estándar de codificación básico
 
-This section of the standard comprises what should be considered the standard
-coding elements that are required to ensure a high level of technical
-interoperability between shared PHP code.
+Esta sección de la norma comprende lo que debe considerarse la norma
+elementos de codificación necesarios para garantizar un alto nivel de
+interoperabilidad entre código PHP compartido.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+Las palabras clave "DEBE", "NO DEBE", "REQUERIDO", "DEBERÁ", "NO DEBE", "DEBE",
+"NO DEBE", "RECOMENDADO", "PUEDE" y "OPCIONAL" en este documento
+interpretado como se describe en [RFC 2119].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
-## 1. Overview
+## 1. Información general
 
-- Files MUST use only `<?php` and `<?=` tags.
+- Los archivos DEBEN usar solo etiquetas `<? Php` y` <? = `.
 
-- Files MUST use only UTF-8 without BOM for PHP code.
+- Los archivos DEBEN usar solo UTF-8 sin BOM para código PHP.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
-  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
-  but SHOULD NOT do both.
+- Los archivos DEBEN * o * declarar símbolos (clases, funciones, constantes, etc.)
+  * o * causar efectos secundarios (por ejemplo, generar resultados, cambiar la configuración de .ini, etc.)
+  pero NO DEBE hacer ambas cosas.
 
-- Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
+- Los espacios de nombres y las clases DEBEN seguir un PSR de "carga automática": [[PSR-0], [PSR-4]].
 
-- Class names MUST be declared in `StudlyCaps`.
+- Los nombres de las clases DEBEN declararse en "StudlyCaps".
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- Las constantes de clase DEBEN declararse en mayúsculas con separadores de subrayado.
 
-- Method names MUST be declared in `camelCase`.
+- Los nombres de los métodos DEBEN declararse en "camelCase".
 
-## 2. Files
+## 2. Archivos
 
-### 2.1. PHP Tags
+### 2.1. Etiquetas PHP
 
-PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
-MUST NOT use the other tag variations.
+El código PHP DEBE usar las etiquetas largas `<? Php?>` O las etiquetas de eco corto `<? =?>`; eso
+NO DEBE usar las otras variaciones de etiqueta.
 
-### 2.2. Character Encoding
+### 2.2. Codificación de caracteres
 
-PHP code MUST use only UTF-8 without BOM.
+El código PHP DEBE usar solo UTF-8 sin BOM.
 
-### 2.3. Side Effects
+### 2.3. Efectos secundarios
 
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
+Un archivo DEBE declarar nuevos símbolos (clases, funciones, constantes,
+etc.) y no causa otros efectos secundarios, o DEBE ejecutar la lógica con el lado
+efectos, pero NO DEBE hacer ambos.
 
-The phrase "side effects" means execution of logic not directly related to
-declaring classes, functions, constants, etc., *merely from including the
-file*.
+La frase "efectos secundarios" significa ejecución de lógica no relacionada directamente con
+declarando clases, funciones, constantes, etc., * simplemente por incluir el
+expediente*.
 
-"Side effects" include but are not limited to: generating output, explicit
-use of `require` or `include`, connecting to external services, modifying ini
-settings, emitting errors or exceptions, modifying global or static variables,
-reading from or writing to a file, and so on.
+Los "efectos secundarios" incluyen pero no se limitan a: generar resultados, explícitos
+uso de `require` o` include`, conectando a servicios externos, modificando ini
+configuraciones, emitiendo errores o excepciones, modificando variables globales o estáticas,
+leer o escribir en un archivo, etc.
 
-The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
+El siguiente es un ejemplo de un archivo con declaraciones y efectos secundarios;
+es decir, un ejemplo de qué evitar:
 
-~~~php
-<?php
-// side effect: change ini settings
-ini_set('error_reporting', E_ALL);
+~~~ php
+<? php
+// efecto secundario: cambiar la configuración de ini
+ini_set ('error_reporting', E_ALL);
 
-// side effect: loads a file
-include "file.php";
+// efecto secundario: carga un archivo
+incluir "file.php";
 
-// side effect: generates output
-echo "<html>\n";
+// efecto secundario: genera salida
+echo "<html> \ n";
 
-// declaration
-function foo()
+// declaración
+función foo ()
 {
-    // function body
+    // cuerpo de la función
 }
 ~~~
 
-The following example is of a file that contains declarations without side
-effects; i.e., an example of what to emulate:
+El siguiente ejemplo es de un archivo que contiene declaraciones sin lado
+efectos; es decir, un ejemplo de qué emular:
 
-~~~php
-<?php
-// declaration
-function foo()
+~~~ php
+<? php
+// declaración
+función foo ()
 {
-    // function body
+    // cuerpo de la función
 }
 
-// conditional declaration is *not* a side effect
-if (! function_exists('bar')) {
-    function bar()
+// la declaración condicional * no * es un efecto secundario
+if (! function_exists ('bar')) {
+    barra de función ()
     {
-        // function body
+        // cuerpo de la función
     }
 }
 ~~~
 
-## 3. Namespace and Class Names
+## 3. Nombres de clases y espacios de nombres
 
-Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
+Los espacios de nombres y las clases DEBEN seguir un PSR de "carga automática": [[PSR-0], [PSR-4]].
 
-This means each class is in a file by itself, and is in a namespace of at
-least one level: a top-level vendor name.
+Esto significa que cada clase está en un archivo por sí misma y está en un espacio de nombres de en
+al menos un nivel: un nombre de proveedor de nivel superior.
 
-Class names MUST be declared in `StudlyCaps`.
+Los nombres de las clases DEBEN declararse en "StudlyCaps".
 
-Code written for PHP 5.3 and after MUST use formal namespaces.
+El código escrito para PHP 5.3 y posteriores DEBE usar espacios de nombres formales.
 
-For example:
+Por ejemplo:
 
-~~~php
-<?php
-// PHP 5.3 and later:
-namespace Vendor\Model;
+~~~ php
+<? php
+// PHP 5.3 y posteriores:
+Proveedor de espacio de nombres \ Modelo;
 
-class Foo
+clase Foo
 {
 }
 ~~~
 
-Code written for 5.2.x and before SHOULD use the pseudo-namespacing convention
-of `Vendor_` prefixes on class names.
+El código escrito para 5.2.xy antes DEBE usar la convención de pseudo-espacio de nombres
+de prefijos `Vendor_` en nombres de clases.
 
-~~~php
-<?php
-// PHP 5.2.x and earlier:
-class Vendor_Model_Foo
+~~~ php
+<? php
+// PHP 5.2.xy versiones anteriores:
+clase Vendor_Model_Foo
 {
 }
 ~~~
 
-## 4. Class Constants, Properties, and Methods
+## 4. Constantes, propiedades y métodos de clase
 
-The term "class" refers to all classes, interfaces, and traits.
+El término "clase" se refiere a todas las clases, interfaces y rasgos.
 
-### 4.1. Constants
+### 4.1. Constantes
 
-Class constants MUST be declared in all upper case with underscore separators.
-For example:
+Las constantes de clase DEBEN declararse en mayúsculas con separadores de subrayado.
+Por ejemplo:
 
-~~~php
-<?php
-namespace Vendor\Model;
+~~~ php
+<? php
+Proveedor de espacio de nombres \ Modelo;
 
-class Foo
+clase Foo
 {
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
 }
 ~~~
 
-### 4.2. Properties
+### 4.2. Propiedades
 
-This guide intentionally avoids any recommendation regarding the use of
-`$StudlyCaps`, `$camelCase`, or `$under_score` property names.
+Esta guía evita intencionalmente cualquier recomendación sobre el uso de
+Nombres de propiedad `$ StudlyCaps`,` $ camelCase` o `$ under_score`.
 
-Whatever naming convention is used SHOULD be applied consistently within a
-reasonable scope. That scope may be vendor-level, package-level, class-level,
-or method-level.
+Cualquiera que sea la convención de nomenclatura que se use DEBE aplicarse de manera consistente dentro de un
+alcance razonable. Ese alcance puede ser a nivel de proveedor, a nivel de paquete, a nivel de clase,
+o nivel de método.
 
-### 4.3. Methods
+### 4.3. Métodos
 
-Method names MUST be declared in `camelCase()`.
-
-
-
-
-
+Los nombres de los métodos DEBEN declararse en `camelCase ()`.
