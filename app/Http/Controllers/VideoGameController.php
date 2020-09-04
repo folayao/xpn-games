@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class VideoGameController extends Controller
 {
+    /* List the products */
+    function list() {
+        $data = [];
+        $data["title"] = "List of products";
+        $data["videogames"] = VideoGames::all();
+        return view("videogame.list")->with("data", $data);
+    }
+    /* Sho */
     public function show($id)
     {
-        /* This function show the characteristics of the videogame */
         $data = [];
         $videogame = VideoGames::findOrFail($id);
         $data["title"] = $videogame->getTitle();
@@ -27,7 +34,7 @@ class VideoGameController extends Controller
     }
 
     public function save(Request $request)
-    {/* This validate the fields that were pass*/
+    { /* This validate the fields that were pass*/
         $request->validate([
             "title" => "required",
             "category" => "required",
@@ -49,29 +56,20 @@ class VideoGameController extends Controller
         return back()->with('success', 'Item Created Succesfully');
     }
 
-    public function delete($id){
-        try{
+    public function delete($id)
+    {
+        try {
             $videogame = VideoGames::findOrFail($id);
-        }catch(ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
             return redirect()->route('home.index');
         }
         $videogame = VideoGames::find($id);
         $videogame->delete();
         $data = [];
         $data["title"] = "List of products";
-        $data["videogames"] = VideoGames::all()->skip(0)->take(2);  
+        $data["videogames"] = VideoGames::all()->skip(0)->take(2);
         //return view('product.list')->with('data',$data)->with('success','Item deleted successfully!');
         return redirect('videogames/list')->with('data', $data);
-    }
-    
-    public function list(){
-        
-        $data = [];
-        $data["title"] = "List of products";
-        $data["videogames"] = VideoGames::all();
-        //return view("product.list")->with("data",$data)->with('success','Item created successfully!');
-        return view("videogame.list")->with("data",$data);
-
     }
 
 }
