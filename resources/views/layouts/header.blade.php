@@ -1,39 +1,32 @@
 <!doctype html>
-<html lang="en">
 
-<head>
-    <title>XPN GAMES</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
+<link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 
-    <link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+@section('header')
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href=""class="navbar-brand"><img src={{ asset('logo.png') }} alt="" width="75" height= "75"></a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbar" aria-controls ="navbar" aria-expanded="false" aria-label="Navigation Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">WishList</a>
+                    </li>
+                </ul>
+            </div>
+    
+        </nav>
+    </section>
+@endsection
 
-<body>
-    <div>
-        @section('header')
-        <section>
-            <header class="header">
-                <div class="header__links">
-                    <div class="container">
-                        <a href="" class="header__links--home">Home</a>
-                        <a href="" class="header__links--products">Products</>
-                            <a href="" class="header__links--wishList">WishList</a>
-                    </div>
-                </div>
-                <div class="logo">
-                    <div class="logo__container">
-                        <img src="logo.png" alt="lgo" srcset="">
-                    </div>
-                </div>
-            </header>
-        </section>
-    @endsection
-</div>
-</body>
-
-</html>
