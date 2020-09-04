@@ -17,5 +17,6 @@ Route::get('/', 'HomeController@index' );
 /* VideoGame Routes  */
 Route::get('/videogames/show/{id}', 'VideoGameController@show')->name('videogame.show');
 Route::get('/videogames/create', 'VideoGameController@create')->name('videogame.create');
+Route::get('/videogames/delete/{id}','VideoGameController@delete')->name("videogame.delete");
+Route::get('/videogames/list', 'VideoGameController@list')->name('videogame.list');
 Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.save');
-

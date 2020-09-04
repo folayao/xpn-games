@@ -1,3 +1,5 @@
+@include('layouts.header')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +12,7 @@
 </head>
 
 <body>
+    @yield('header')
     <section class="card-product">
         <div class="container">
             <div class="card">

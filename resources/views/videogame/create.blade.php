@@ -1,3 +1,6 @@
+@include('layouts.header')
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +14,7 @@
 </head>
 
 <body>
+    @yield('header')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -43,16 +47,7 @@
                             <input class="mt-2 btn btn-success" type="submit" value="Send" />
                         </form>
                     </div>
-                    <h4 class="card-header">Videojuegos Disponibles</h4>
-                    <div class="col-md-12 card-body products">
-                        <ul id="errors">
-                            @foreach ($data['videogames'] as $videogame)
-                                <li>({{ $videogame->getId() }}) {{ $videogame->getTitle() }} <br>
-                                    Price : {{ $videogame->getPrice() }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </div>

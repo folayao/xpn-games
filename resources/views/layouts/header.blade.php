@@ -1,23 +1,32 @@
 <!doctype html>
 
 <link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
+<link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 
 @section('header')
     <section>
-        <header class="header">
-            <div class="header__links">
-                <div class="container">
-                    <a href="" class="header__links--home">Home</a>
-                    <a href="" class="header__links--products">Products<a/>
-                    <a href="" class="header__links--wishList">WishList</a>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href=""class="navbar-brand"><img src={{ asset('logo.png') }} alt="" width="75" height= "75"></a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbar" aria-controls ="navbar" aria-expanded="false" aria-label="Navigation Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">WishList</a>
+                    </li>
+                </ul>
             </div>
-            <div class="logo">
-                <div class="logo__container">
-                    <img src="logo.png" alt="lgo" srcset="">
-                </div>
-            </div>
-        </header>
+    
+        </nav>
     </section>
 @endsection
 
