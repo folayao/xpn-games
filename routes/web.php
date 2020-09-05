@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home.index');
 /* VideoGame Routes  */
 Route::get('/videogames/show/{id}', 'VideoGameController@show')->name('videogame.show');
 Route::get('/videogames/create', 'VideoGameController@create')->name('videogame.create');
 Route::get('/videogames/delete/{id}','VideoGameController@delete')->name("videogame.delete");
-Route::get('/videogames/list', 'VideoGameController@list')->name('videogame.list');
+Route::get('/', 'VideoGameController@list')->name('videogame.list');
 Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.save');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Auth::routes();

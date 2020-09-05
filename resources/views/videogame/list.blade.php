@@ -1,15 +1,5 @@
-@include('layouts.header')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
-    <title>List Videogames | XPN </title>
-</head>
-<body>
-    @yield('header')
+@extends('layouts.header')
+@section('content')
     <h4 class="card-header">Videojuegos Disponibles</h4>
                     <div class="col-md-12 card-body products">
                         <ul id="errors">
@@ -42,6 +32,4 @@
                                 @endforeach
                             </tbody>
                     </div>
-    
-</body>
-</html>
+@endsection

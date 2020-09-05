@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-class HeaderControllerLayout extends Controller{
+class HeaderControllerLayout extends Controller
+{
 
     public function index()
     {

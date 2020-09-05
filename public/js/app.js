@@ -37364,17 +37364,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\Bymet\Desktop\Protecto TESW\proyecto-XPN\xpn\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\Users\Bymet\Desktop\Protecto TESW\proyecto-XPN\xpn\resources\sass\app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! C:\Users\Bymet\Desktop\Protecto TESW\proyecto-XPN\xpn\resources\sass\principalPage.scss */"./resources/sass/principalPage.scss");
 __webpack_require__(/*! C:\Users\Bymet\Desktop\Protecto TESW\proyecto-XPN\xpn\resources\sass\showVideogame.scss */"./resources/sass/showVideogame.scss");
 module.exports = __webpack_require__(/*! C:\Users\Bymet\Desktop\Protecto TESW\proyecto-XPN\xpn\resources\sass\createVideogame.scss */"./resources/sass/createVideogame.scss");
-=======
-__webpack_require__(/*! C:\Users\DELL\Desktop\XPNGames\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\DELL\Desktop\XPNGames\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\DELL\Desktop\XPNGames\resources\sass\principalPage.scss */"./resources/sass/principalPage.scss");
->>>>>>> loginRegister
 
 
 /***/ })
