@@ -13,3 +13,11 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+    
+//#red
+mix.sass('./resources/sass/principalPage.scss', 'public/css')
+    .sass('./resources/sass/showVideogame.scss', 'public/css')
+    .sass('./resources/sass/createVideogame.scss', 'public/css')
+    .sass('resources/sass/app.scss', 'public/css');
+    //#
+

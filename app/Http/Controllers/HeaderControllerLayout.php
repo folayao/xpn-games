@@ -7,6 +7,6 @@ class HeaderControllerLayout extends Controller
 
     public function index()
     {
-        return \view('header');
+        return \view('layouts.header');
     }
 }
