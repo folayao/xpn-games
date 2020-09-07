@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css2?family=ABeeZee&family=Arvo&family=Bungee+Shade&display=swap);@import url(https://fonts.googleapis.com/css2?family=Russo+One&display=swap);/* Estilos de letras */
+
+.card-body {
+  background-color: #1484ee;
+}
+
+.card-header {
+  background-color: rgba(13, 112, 204, 0.932);
+  color: #fff;
+}
+
+.products {
+  background-color: #27004D;
+  color: #fff;
+}
+

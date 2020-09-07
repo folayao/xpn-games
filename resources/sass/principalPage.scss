@@ -13,7 +13,7 @@
         flex-direction: column;
         align-self: center;
         font-size: 35px;
-        .container {
+        .container{
             display: grid;
             gap: 15px;
             grid-template-columns: repeat(5, 1fr);
