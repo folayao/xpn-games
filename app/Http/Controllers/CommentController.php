@@ -6,13 +6,6 @@ use App\Comment;
 
 class CommentController extends Controller {
 
-    // public function create() {
-    //     $data = []; //to be sent to the view
-    //     $data["title"] = "Create Comment";
-
-    //     return view('comment.create')->with("data",$data);
-    // }
-
     public function show($id) {
         $data = []; //to be sent to the view
         $comment = Comment::findOrFail($id);
@@ -22,6 +15,7 @@ class CommentController extends Controller {
     }
 
     public function save(Request $request) {
+        //Falta mover validación a Modelo
         $request->validate([
             "description" => "required|max:255"
         ]);
@@ -31,18 +25,11 @@ class CommentController extends Controller {
         Comment::create($data);
         // Comment::create($request->all());
 
-        // return back()->with('created','Comentario creado satisfactoriamente');
         return back();
     }
 
-    // public function index(Request $request) {
 
-    //     $data = []; //to be sent to the view
-    //     $data["comments"] = Comment::all();
-
-    //     return view('comment.index')->with("data",$data);
-    // }
-
+    // Falta implementar el destroy
     public function destroy($id) {
         $comment = Comment::find($id);
         $comment->delete();

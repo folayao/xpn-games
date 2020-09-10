@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Models\User;
 
 class Comment extends Model
@@ -13,6 +14,12 @@ class Comment extends Model
     protected $fillable = ['description', 'user_id', 'videogame_id', 'parent_id'];
 
     protected $table = 'comments';
+
+    public static function validateComment(Request $request){
+        $request->validate([
+            "description" => "required|max:255"
+        ]);
+    }
 
     public function getId()
     {
@@ -39,10 +46,10 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function videoGame()
-    {
-        return $this->belongsTo(VideoGame::class);
-    }
+    // public function videoGame()
+    // {
+    //     return $this->belongsTo(VideoGame::class);
+    // }
 
     public function replies()
     {

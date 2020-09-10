@@ -23,7 +23,7 @@ class VideoGameController extends Controller
         $videogame = VideoGame::findOrFail($id);
         // $data["title"] = $videogame->getTitle();
         $data["videogame"] = $videogame;
-        $data['comments'] = Comment::all();
+        $data['comments'] = Comment::all();  //No sé si debería pasar todo ???
         return view('videogame.show')->with("data", $data);
     }
 

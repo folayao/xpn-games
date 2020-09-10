@@ -13,9 +13,6 @@
                     <b class="card-label">Details: </b>{{ $data['videogame']->getDetails() }} <br />
                 </div>
             </div>
-            {{-- <div class="comments-area">
-                <hr />
-                <h4>Display Comments</h4> --}}
                 <hr />
                 <ul class="list-unstyled list-inline">
                     <li>
@@ -28,12 +25,7 @@
                 </ul>
                 <div id="view-comments">
                     <div class="card card-body">
-
-                        {{-- @include('comment.show', ['comments' => $data['videogame']->comments()]) --}}
                         @include('comment.show', ['comments' => $data['comments'], 'videogame_id' => $data['videogame']->getId()])
-
-                        {{-- @include('comment.show', ['comments' => $data->comments, 'videogame_id' => $data->id]) --}}
-
                         <hr />
 
                         @guest
@@ -45,7 +37,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <textarea class="form-control" name="description"></textarea>
-                                    {{-- <input type="hidden" name="videogame_id" value="{{ 'videogame_id' => $videogame->id }}" /> --}}
+                                    <input type="hidden" name="videogame_id" id="videogame_id" value="{{ $data['videogame']->getId() }}" />
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success" value="Add Comment" />
