@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\VideoGames;
+use App\Comment;
+use App\VideoGame;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class VideoGameController extends Controller
 {
@@ -11,65 +13,46 @@ class VideoGameController extends Controller
     function list() {
         $data = [];
         $data["title"] = "List of products";
-        $data["videogames"] = VideoGames::all();
-        return view("videogame.list")->with("data", $data);
+        $data["videogames"] = VideoGame::all();
+        return view('videogame.list')->with("data", $data);
     }
     /* Sho */
     public function show($id)
     {
         $data = [];
-        $videogame = VideoGames::findOrFail($id);
-        $data["title"] = $videogame->getTitle();
-        $data["videogames"] = $videogame;
-        return \view('videogame.show')->with("data", $data);
+        $videogame = VideoGame::findOrFail($id);
+        // $data["title"] = $videogame->getTitle();
+        $data["videogame"] = $videogame;
+        $data['comments'] = Comment::all();
+        return view('videogame.show')->with("data", $data);
     }
 
     public function create()
     {
         $data = [];
         $data['title'] = "Create VideoGame";
-        $data['videogames'] = VideoGames::all();
+        $data['videogames'] = VideoGame::all();
         /* Return the view with the data of the video games */
-        return \view('videogame.create')->with("data", $data);
+        return view('videogame.create')->with("data", $data);
     }
 
     public function save(Request $request)
     { /* This validate the fields that were pass*/
-        $request->validate([
-            "title" => "required",
-            "category" => "required",
-            "details" => "required",
-            "price" => "required|numeric|gt:0",
-            "designer" => "required",
-            "pg" => "required|numeric",
-            "keyword" => "required",
-        ]);
-        VideoGames::create($request->only([
-            'title',
-            'category',
-            'details',
-            'price',
-            'designer',
-            'pg',
-            'keyword',
-        ]));
+        VideoGame::validateVideoGame($request);
+        VideoGame::create($request->all());
         return back()->with('success', 'Item Created Succesfully');
     }
 
     public function delete($id)
     {
         try {
-            $videogame = VideoGames::findOrFail($id);
+            $videogame = VideoGame::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('home.index');
         }
-        $videogame = VideoGames::find($id);
+        $videogame = VideoGame::find($id);
         $videogame->delete();
-        $data = [];
-        $data["title"] = "List of products";
-        $data["videogames"] = VideoGames::all()->skip(0)->take(2);
-        //return view('product.list')->with('data',$data)->with('success','Item deleted successfully!');
-        return redirect('videogames/list')->with('data', $data);
+        return redirect()->route('videogame.list');
     }
 
 }

@@ -9,7 +9,9 @@ class Comment extends Model
 
     //attributes id, description, created_at, updated_at
 
-    protected $fillable = ['description'];
+    protected $fillable = ['description', 'user_id', 'videogame_id', 'parent_id'];
+
+    protected $table = 'comments';
 
     public function getId()
     {
@@ -31,8 +33,13 @@ class Comment extends Model
         $this->attributes['description'] = $description;
     }
 
-    public function product()
+    public function user()
     {
-        return $this->hasOne(Product::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }

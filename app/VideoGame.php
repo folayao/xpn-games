@@ -3,18 +3,31 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-class VideoGames extends Model
+class VideoGame extends Model
 {
     //attributes id, name, price, created_at, updated_at
     public $table = "videogames";
     protected $fillable = ['title', 'category', 'details','price',
-    'designer','pg', 'keyword'
+    'designer','pg', 'keyword', 'comments'
         // This is the category of game, for example pg +18 'stock',
-        /* The others fillable labels are not enable 'cause these are not primitive data fields 
+        /* The others fillable labels are not enable 'cause these are not primitive data fields
         'comments', 'items', 'videos', 'wishList'*/
     ];
-    
+
+    public static function validateVideoGame(Request $request) {
+        $request->validate([
+            "title" => "required",
+            "category" => "required",
+            "details" => "required",
+            "price" => "required|numeric|gt:0",
+            "designer" => "required",
+            "pg" => "required|numeric",
+            "keyword" => "required",
+        ]);
+    }
+
     /* id */
     public function getId()
     {
@@ -87,5 +100,11 @@ class VideoGames extends Model
     {
         $this->attributes['keyword'] = $keyword;
     }
-    
+
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
 }

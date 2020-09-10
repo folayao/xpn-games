@@ -26,9 +26,14 @@ class CommentController extends Controller {
         $request->validate([
             "description" => "required|max:255"
         ]);
-        Comment::create($request->only(["description"]));
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
 
-        return back()->with('created','Comentario creado satisfactoriamente');
+        Comment::create($data);
+        // Comment::create($request->all());
+
+        // return back()->with('created','Comentario creado satisfactoriamente');
+        return back();
     }
 
     public function index(Request $request) {
@@ -43,6 +48,6 @@ class CommentController extends Controller {
         $comment = Comment::find($id);
         $comment->delete();
 
-        return redirect('comment/index');
+        return back();
     }
 }

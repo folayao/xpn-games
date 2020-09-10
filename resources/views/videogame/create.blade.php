@@ -1,23 +1,10 @@
-@include('layouts.header')
+{{-- @extends('layouts.header')
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/createVideogame.css') }}">
-    <title>XPN | Create VideoGame</title>
-</head>
-
-<body>
-    @yield('header')
+@section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @include('util.message')
                 <div class="card">
                     <div class="card-header">Create VideoGame</div>
                     <div class="card-body">
@@ -47,13 +34,52 @@
                             <input class="mt-2 btn btn-success" type="submit" value="Send" />
                         </form>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
 
+@endsection --}}
 
-</body>
 
-</html>
+@extends('layouts.header')
+
+@section('content')
+    <section class="card-product">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    {{-- ¡OJO! -> CAMBIAR TODO ESTO CON LOS GETTERS DEL MODELO --}}
+                    <h4 class="card-title">{{ $data['videogame']->getTitle() }}</h4>
+                    <b class="card-label">Category: </b>{{ $data['videogame']->getCategory() }} <br />
+                    <b class="card-label">Price: $</b> {{ $data['videogame']->getPrice() }}<br />
+                    <b class="card-label">Designer: </b>{{ $data['videogame']->getDesigner() }} <br />
+                    <b class="card-label">Pegy: </b>{{ $data['videogame']->getPg() }} <br />
+                    <b class="card-label">Details: </b>{{ $data['videogame']->getDetails() }} <br />
+                </div>
+            </div>
+            <div class="comments-area">
+                {{-- @include('comment.show') --}}
+                {{-- @include('comment.show', ['comments' => $data->comments, 'videogame_id' => $data->id]) --}}
+                <hr />
+                <h4>Display Comments</h4>
+
+                @include('comment.show', ['comments' => $videogame->comments, 'videogame_id' => $videogame->id])
+
+                <hr />
+                <h4>Add comment</h4>
+                <form method="POST" action="{{ route('comment.save') }}">
+                    @csrf
+                    <div class="form-group">
+                        <textarea class="form-control" name="body"></textarea>
+                        <input type="hidden" name="videogame_id" value="{{ $videogame->id }}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Add Comment" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+@endsection
