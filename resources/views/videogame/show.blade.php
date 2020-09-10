@@ -5,7 +5,6 @@
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    {{-- ¡OJO! -> CAMBIAR TODO ESTO CON LOS GETTERS DEL MODELO --}}
                     <h4 class="card-title">{{ $data['videogame']->getTitle() }}</h4>
                     <b class="card-label">Category: </b>{{ $data['videogame']->getCategory() }} <br />
                     <b class="card-label">Price: $</b> {{ $data['videogame']->getPrice() }}<br />
@@ -27,26 +26,32 @@
                         </button>
                     </li>
                 </ul>
-                <div class="collapse" id="view-comments">
+                <div id="view-comments">
                     <div class="card card-body">
 
-                        @include('comment.show', ['comments' => $data['videogame']->comments()])
+                        {{-- @include('comment.show', ['comments' => $data['videogame']->comments()]) --}}
+                        @include('comment.show', ['comments' => $data['comments'], 'videogame_id' => $data['videogame']->getId()])
 
-                {{-- @include('comment.show', ['comments' => $data->comments, 'videogame_id' => $data->id]) --}}
+                        {{-- @include('comment.show', ['comments' => $data->comments, 'videogame_id' => $data->id]) --}}
 
                         <hr />
-                        <h4>Add comment</h4>
-                        <form method="POST" action="{{ route('comment.save') }}">
-                            @csrf
-                            <div class="form-group">
-                                <textarea class="form-control" name="description"></textarea>
-                                {{-- <input type="hidden" name="videogame_id" value="{{ $data['videogame']->getId() }}" /> --}}
-                                {{-- <input type="hidden" name="user_id" value="{{ $data['comments']->user() }}" /> --}}
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-success" value="Add Comment" />
-                            </div>
-                        </form>
+
+                        @guest
+                            <small>Debes iniciar sesión para comentar</small>
+                        @else
+
+                            <h4>Add comment</h4>
+                            <form method="POST" action="{{ route('comment.save') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="description"></textarea>
+                                    {{-- <input type="hidden" name="videogame_id" value="{{ $videogame->id }}" /> --}}
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="Add Comment" />
+                                </div>
+                            </form>
+                        @endguest
                     </div>
                 </div>
             </div>

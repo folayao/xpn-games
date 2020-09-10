@@ -2,6 +2,9 @@
     <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
         <strong>{{ $comment->user->name }}</strong>
         <p>{{ $comment->description }}</p>
+        @guest
+            <small>Debes iniciar sesión para comentar</small>
+        @else
         <a href="" id="reply"></a>
         <form method="post" action="{{ route('comment.save') }}">
             @csrf
@@ -14,6 +17,9 @@
                 <input type="submit" class="btn btn-warning" value="Reply" />
             </div>
         </form>
+
+        @endguest
         @include('comment.show', ['comments' => $comment->replies])
     </div>
 @endforeach
+

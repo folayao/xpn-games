@@ -1,6 +1,7 @@
 <!doctype html>
 <link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
 <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
+<link rel="stylesheet" href={{ asset('css/showVideogame.css') }}>
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

@@ -13,3 +13,12 @@
   color: #CB8081;
 }
 
+.display-comment {
+    /* margin-left: 40px; */
+    color: black;
+}
+
+.display-comment-child {
+    margin-left: 40px;
+    color: black;
+}

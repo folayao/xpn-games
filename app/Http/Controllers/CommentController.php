@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment;
-use DB;
 
 class CommentController extends Controller {
 
-    public function create() {
-        $data = []; //to be sent to the view
-        $data["title"] = "Create Comment";
+    // public function create() {
+    //     $data = []; //to be sent to the view
+    //     $data["title"] = "Create Comment";
 
-        return view('comment.create')->with("data",$data);
-    }
+    //     return view('comment.create')->with("data",$data);
+    // }
 
     public function show($id) {
         $data = []; //to be sent to the view
@@ -36,13 +35,13 @@ class CommentController extends Controller {
         return back();
     }
 
-    public function index(Request $request) {
+    // public function index(Request $request) {
 
-        $data = []; //to be sent to the view
-        $data["comments"] = Comment::all();
+    //     $data = []; //to be sent to the view
+    //     $data["comments"] = Comment::all();
 
-        return view('comment.index')->with("data",$data);
-    }
+    //     return view('comment.index')->with("data",$data);
+    // }
 
     public function destroy($id) {
         $comment = Comment::find($id);

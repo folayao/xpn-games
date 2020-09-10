@@ -101,7 +101,6 @@ class VideoGame extends Model
         $this->attributes['keyword'] = $keyword;
     }
 
-
     public function comments()
     {
         return $this->hasMany(Comment::class)->whereNull('parent_id');
