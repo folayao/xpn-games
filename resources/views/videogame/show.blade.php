@@ -45,7 +45,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <textarea class="form-control" name="description"></textarea>
-                                    {{-- <input type="hidden" name="videogame_id" value="{{ $videogame->id }}" /> --}}
+                                    {{-- <input type="hidden" name="videogame_id" value="{{ 'videogame_id' => $videogame->id }}" /> --}}
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success" value="Add Comment" />
