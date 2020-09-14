@@ -1,3 +1,4 @@
+
 @foreach($comments as $comment)
     @if ($comment->videogame_id == $data['videogame']->getId())
     {{-- PENDIENTE: Corregir la implementación del style --}}

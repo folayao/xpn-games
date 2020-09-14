@@ -11,6 +11,16 @@
                     <b class="card-label">Designer: </b>{{ $data['videogame']->getDesigner() }} <br />
                     <b class="card-label">Pegy: </b>{{ $data['videogame']->getPg() }} <br />
                     <b class="card-label">Details: </b>{{ $data['videogame']->getDetails() }} <br />
+                    <form method="POST" action="{{ route('wishList.store') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="hidden" name="videogame_id" id="videogame_id" value="{{ $data['videogame']->getId() }}" />
+                                    <input type="hidden" name="user_id" id="user_id" value="{{ $data['user_id']}}" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="Add To wishlist" />
+                                </div>
+                            </form>
                 </div>
             </div>
                 <hr />

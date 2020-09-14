@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -26,7 +26,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #240644;">
-            <div class="container">
+            <!-- <div class="container"> -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('logo.png') }}" alt="" width="75" height= "75">
                 </a>
@@ -38,10 +38,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a href="{{ url('/') }}" class="nav-link">Games</a>
+                                <a href="{{ url('/') }}" class="nav-link"><img src="{{ asset('icons/games.png') }}" class="show-icon">
+                                    Games
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/roles') }}" class="nav-link"><img src="{{ asset('icons/role.png') }}" class="show-icon">
+                                    Roles
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/users') }}" class="nav-link"><img src="{{ asset('icons/users.png') }}" class="show-icon">
+                                    Roles
+                                </a>
                             </li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -57,7 +68,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <img src="{{ asset('icons/user.png') }}" class="show-icon">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -67,9 +78,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('user.wishList') }}"
+                                       >
                                         {{ __('User Settings') }}
                                     </a>
 
@@ -81,7 +91,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            <!-- </div> -->
         </nav>
 
         <main class="py-4">

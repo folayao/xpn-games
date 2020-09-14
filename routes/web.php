@@ -20,7 +20,12 @@ Route::get('/videogames/delete/{id}','VideoGameController@delete')->name("videog
 Route::get('/', 'VideoGameController@list')->name('videogame.list');
 Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.save');
 Route::post('/comment/save', 'CommentController@save')->name("comment.save");
+Route::post('/wishList/save', 'WishListController@store')->name("wishList.store");
+Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
 
+Route::resource('posts', 'PostsController');
+Route::resource('users', 'UsersController');
+Route::resource('roles', 'RolesController');
 
 
 Auth::routes();

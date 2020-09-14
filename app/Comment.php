@@ -8,7 +8,7 @@ use App\Models\User;
 
 class Comment extends Model
 {
-
+    
     //attributes id, description, created_at, updated_at
 
     protected $fillable = ['description', 'user_id', 'videogame_id', 'parent_id'];

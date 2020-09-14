@@ -24,9 +24,11 @@ class VideoGameController extends Controller
         // $data["title"] = $videogame->getTitle();
         $data["videogame"] = $videogame;
         $data['comments'] = Comment::all();  //No sé si debería pasar todo ???
+        $data['user_id'] = auth()->user()->id;
         return view('videogame.show')->with("data", $data);
     }
 
+    
     public function create()
     {
         $data = [];
