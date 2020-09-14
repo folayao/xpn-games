@@ -10,7 +10,6 @@ class CommentController extends Controller {
         $data = []; //to be sent to the view
         $comment = Comment::findOrFail($id);
         $data["comment"] = $comment;
-
         return view('comment.show')->with("data",$data);
     }
 

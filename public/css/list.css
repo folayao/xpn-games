@@ -1,0 +1,28 @@
+.btn  {
+    background-color: transparent;
+} 
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #DD8582;
+ }
+
+ .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+    background-color: #BB79F2;
+ }
+
+ .table-striped > thead {
+    background-color: #240644;
+ }
+ .table-striped > thead > tr > th{
+    color: white!important;
+ }
+
+ .products  {
+    background-color: #240644;
+ }
+ .card-header  {
+    background-color: #240644;
+    color: white;
+ }
+ body{
+     background-color: #BB79F2;
+ }
