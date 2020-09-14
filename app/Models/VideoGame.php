@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -104,6 +104,10 @@ class VideoGame extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
+    public function items(){
+        return $this->hasMany(Item::class);
     }
 
 }

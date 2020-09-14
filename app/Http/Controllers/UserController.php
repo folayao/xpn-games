@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\VideoGame;
-use App\Comment;
+use App\Models\VideoGame;
+use App\Models\Comment;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 class UserController extends Controller
@@ -15,7 +15,7 @@ class UserController extends Controller
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
         $data['user'] = auth()->user();
-        $data['comments'] = Comment::all(); 
+        $data['comments'] = Comment::all();
         $user = User::find(auth()->user()->id);
         $user->addWishlist($id);
         dd($user->wishlist);
