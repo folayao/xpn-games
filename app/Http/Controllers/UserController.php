@@ -21,4 +21,12 @@ class UserController extends Controller
         dd($user->wishlist);
         return back()->with("data", $data);
     }
+
+    public function index()
+    {
+        $users = User::orderBy('id','desc')->get();
+
+        return view('admin.users.index',['users' => $users]);
+    }
+
 }

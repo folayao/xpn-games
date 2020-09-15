@@ -7,4 +7,10 @@ class WishList extends Model
 {
     public $table = "wish_lists";
     protected $fillable = ['user_id','videogame_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'foreign_key');
+    }
+
 }

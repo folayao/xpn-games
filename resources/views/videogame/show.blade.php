@@ -25,6 +25,7 @@
                 </form>
                 <div>
                     <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
+
                         @csrf
                         <div class="form-row">
                             <div class="col-md-8">Qtt:
@@ -35,6 +36,19 @@
                             </div>
                         </div>
                     </form>
+                    <div>
+                        <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
+                            @csrf
+                            <div class="form-row">
+                                <div class="col-md-12">Qtt:
+                                    <input type="number" class="form-control" name="quantity" min="0" style="width: 80px;">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn btn-outline-success">Add</button>
+                                </div>
+                            </form>
+                    @endguest
+
                 </div>
             </div>
         </div>
