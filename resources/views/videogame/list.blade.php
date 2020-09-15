@@ -9,11 +9,13 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Price</th>
-                    @guest
-                    @else
+                    
+                   
                     <th>Show Details</th>
+                    @can('isAdmin')
                     <th>Delete</th>
-                    @endguest
+                    @endcan
+                    
                 </tr>
             </thead>
             <tbody>
@@ -22,20 +24,17 @@
                         <td class="table-bold">{{ $videogame->getId() }}</td>
                         <td>{{ $videogame->getTitle() }}</td>
                         <td>${{ $videogame->getPrice() }}</td>
-                        @guest
-
-                        @else
                         <td>
                         <!-- <button class ="btn info-btn"type="image" href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}"> <img
                                     src="{{ asset('icons/icon.png') }}" class="show-icon"></button> -->
                         <a class="navbar-brand"
                                 href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}"><img
                                     src="{{ asset('icons/icon.png') }}" class="show-icon"></a></td>
-                        {{-- EL DELETE DEBE SER SOLO PARA EL ADMIN --}}
+                                    @can('isAdmin')
                         <td><a class="navbar-brand"
                                 href="{{ route('videogame.delete', ['id' => $videogame->getId()]) }}"> <img
-                                    src="{{ asset('icons/delete.png') }}" class="show-icon"> </a></td>
-                        @endguest
+                                   src="{{ asset('icons/delete.png') }}" class="show-icon"> </a></td>
+                                    @endcan
                     </tr>
                 @endforeach
             </tbody>

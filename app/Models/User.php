@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-
+use App\Traits\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
+
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRolesAndPermissions;
 
     protected $table = "users";
 
@@ -21,4 +22,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
 }

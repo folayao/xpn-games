@@ -29,9 +29,10 @@ Route::post('/comment/save', 'CommentController@save')->name("comment.save");
 Route::post('/wishList/save', 'WishListController@store')->name("wishList.store");
 Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
 Route::get('/role/destroy/{id}', 'RolesController@destroy')->name("role.destroy");
+Route::get('/user/destroy/{id}', 'UserController@destroy')->name("user.destroy");
 Route::resource('posts', 'PostsController');
 Route::resource('users', 'UserController');
-Route::resource('roles', 'RolesController');
+Route::resource('roles', 'RolesController')->middleware('can:isAdmin');
 
 
 Auth::routes();
