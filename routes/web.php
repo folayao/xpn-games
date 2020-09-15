@@ -33,6 +33,6 @@ Route::get('/user/destroy/{id}', 'UserController@destroy')->name("user.destroy")
 Route::resource('posts', 'PostsController');
 Route::resource('users', 'UserController');
 Route::resource('roles', 'RolesController')->middleware('can:isAdmin');
-
+Route::get('dataTableUser' ,'UserController@dataTable')->name('dataTable');
 
 Auth::routes();

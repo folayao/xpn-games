@@ -1,9 +1,13 @@
 @extends('layouts.header')
 @section('content')
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
-    <h4 class="card-header">Videojuegos Disponibles</h4>
+
+
     <div class="col-md-12 card-body products">
-        <table class="table table-striped">
+    <div class="card-header">
+Videojuegos Disponibles
+<div class="col-md-2 float-right"><a href="/videogames/create"><img src="{{ asset('icons/addgame.png') }}" class="show-icon">  Add Game</a></div></div>
+        <table class="table table-striped" id ="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -40,4 +44,11 @@
             </tbody>
         </table>
     </div>
+@endsection
+@section('scripts')
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable();
+} );
+</script>
 @endsection
