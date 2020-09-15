@@ -12,6 +12,8 @@
                 <b class="card-label">Designer: </b>{{ $data['videogame']->getDesigner() }} <br />
                 <b class="card-label">Pegy: </b>{{ $data['videogame']->getPg() }} <br />
                 <b class="card-label">Details: </b>{{ $data['videogame']->getDetails() }} <br />
+                @guest 
+                        @else
                 <form method="POST" action="{{ route('wishList.store') }}">
                     @csrf
                     <div class="form-group">
@@ -26,6 +28,7 @@
                 <div>
                     <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
 
+
                         @csrf
                         <div class="form-row">
                             <div class="col-md-8">Qtt:
@@ -37,7 +40,8 @@
                         </div>
                     </form>
                     <div>
-                        <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
+                    
+                        <!-- <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-12">Qtt:
@@ -46,10 +50,10 @@
                                 <div class="form-group col-md-12">
                                     <button type="submit" class="btn btn-outline-success">Add</button>
                                 </div>
-                            </form>
-                    @endguest
+                            </form> -->
 
                 </div>
+                @endguest
             </div>
         </div>
         <hr />
