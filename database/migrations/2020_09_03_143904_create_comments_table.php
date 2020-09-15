@@ -20,7 +20,6 @@ class CreateCommentsTable extends Migration
             $table->integer('videogame_id')->unsigned();
             $table->integer('parent_id')->unsigned()->nullable();
             $table->timestamps();
-
          });
     }
 
