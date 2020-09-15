@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use App\Models\User;
 
 class Comment extends Model
 {
-    
+
     //attributes id, description, created_at, updated_at
 
     protected $fillable = ['description', 'user_id', 'videogame_id', 'parent_id'];

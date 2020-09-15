@@ -14,17 +14,27 @@
                     @guest                 
                     @else 
                     <form method="POST" action="{{ route('wishList.store') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="hidden" name="videogame_id" id="videogame_id" value="{{ $data['videogame']->getId() }}" />
-                                    <input type="hidden" name="user_id" id="user_id" value="{{ $data['user_id']}}" />
+                        @csrf
+                        <div class="form-group">
+                            <input type="hidden" name="videogame_id" id="videogame_id" value="{{ $data['videogame']->getId() }}" />
+                            <input type="hidden" name="user_id" id="user_id" value="{{ $data['user_id']}}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="Add To wishlist" />
+                        </div>
+                    </form>
+                    <div>
+                        <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
+                            @csrf
+                            <div class="form-row">
+                                <div class="col-md-12">Qtt:
+                                    <input type="number" class="form-control" name="quantity" min="0" style="width: 80px;">
                                 </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-success" value="Add To wishlist" />
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn btn-outline-success">Add</button>
                                 </div>
                             </form>
                     @endguest
-
                 </div>
             </div>
                 <hr />

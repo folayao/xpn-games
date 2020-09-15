@@ -16,7 +16,7 @@ class UserController extends Controller
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
         $data['user'] = auth()->user();
-        $data['comments'] = Comment::all(); 
+        $data['comments'] = Comment::all();
         $user = User::find(auth()->user()->id);
         $user->addWishlist($id);
         return back()->with("data", $data);
