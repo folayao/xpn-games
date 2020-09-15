@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -15,9 +15,9 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::orderBy('id','desc')->get();
+        $roles = Role::orderBy('id', 'desc')->get();
 
-        return view('admin.roles.index',['roles' => $roles]);
+        return view('admin.roles.index', ['roles' => $roles]);
     }
 
     /**
@@ -38,21 +38,15 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-
-        //validate the role fields
-        $request->validate([
-            'role_name' => 'required|max:255',
-            'role_slug' => 'required|max:255'
-        ]);
+        Role::validateRole($request);
 
         $role = new Role();
-
         $role->name = $request->role_name;
         $role->slug = $request->role_slug;
-        $role-> save();
+        $role->save();
 
-        $listOfPermissions = explode(',', $request->roles_permissions);//create array from separated/coma permissions
-        
+        $listOfPermissions = explode(',', $request->roles_permissions); //create array from separated/coma permissions
+
         foreach ($listOfPermissions as $permission) {
             $permissions = new Permission();
             $permissions->name = $permission;
@@ -60,7 +54,7 @@ class RolesController extends Controller
             $permissions->save();
             $role->permissions()->attach($permissions->id);
             $role->save();
-        }    
+        }
 
         return redirect('/roles');
     }
@@ -73,7 +67,7 @@ class RolesController extends Controller
      */
     public function show(Role $role)
     {
-        return view('admin.roles.show' , ['role' => $role]);
+        return view('admin.roles.show', ['role' => $role]);
     }
 
     /**
@@ -84,7 +78,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin.roles.edit',['role' => $role]);
+        return view('admin.roles.edit', ['role' => $role]);
     }
 
     /**
@@ -96,31 +90,26 @@ class RolesController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-            //validate the role fields
-            $request->validate([
-                'role_name' => 'required|max:255',
-                'role_slug' => 'required|max:255'
-            ]);
-    
-            $role->name = $request->role_name;
-            $role->slug = $request->role_slug;
+        Role::validateRole($request);
+        $role->name = $request->role_name;
+        $role->slug = $request->role_slug;
+        $role->save();
+
+        $role->permissions()->delete();
+        $role->permissions()->detach();
+
+        $listOfPermissions = explode(',', $request->roles_permissions); //create array from separated/coma permissions
+
+        foreach ($listOfPermissions as $permission) {
+            $permissions = new Permission();
+            $permissions->name = $permission;
+            $permissions->slug = strtolower(str_replace(" ", "-", $permission));
+            $permissions->save();
+            $role->permissions()->attach($permissions->id);
             $role->save();
-    
-            $role->permissions()->delete();
-            $role->permissions()->detach();
-    
-            $listOfPermissions = explode(',', $request->roles_permissions);//create array from separated/coma permissions
-            
-            foreach ($listOfPermissions as $permission) {
-                $permissions = new Permission();
-                $permissions->name = $permission;
-                $permissions->slug = strtolower(str_replace(" ", "-", $permission));
-                $permissions->save();
-                $role->permissions()->attach($permissions->id);
-                $role->save();
-            }    
-    
-            return redirect('/roles');
+        }
+
+        return redirect('/roles');
     }
 
     /**
@@ -131,10 +120,10 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        $role =Role::findorfail($id);
-        $role-> delete();
+        $role = Role::findorfail($id);
+        $role->delete();
         $role->permissions()->detach();
-        $roles = Role::orderBy('id','desc')->get();
-        return view('admin.roles.index')->with("roles",$roles);;
+        $roles = Role::orderBy('id', 'desc')->get();
+        return view('admin.roles.index')->with("roles", $roles);
     }
 }

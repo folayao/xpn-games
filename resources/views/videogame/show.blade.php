@@ -34,10 +34,28 @@
                             <div class="col-md-8">Qtt:
                                 <input type="number" class="form-control" name="quantity" min="0" style="width: 80px;">
                             </div>
-                            <div class="form-group col-md-8">
-                                <button type="submit" class="btn btn-outline-success">Add</button>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Add To wishlist" />
                             </div>
+                        </form>
+                        <div>
+                            <div>
+                                <form action="{{ route('item.addToCart', ['id' => $data['videogame']->getId()]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="form-row">
+                                        <div class="col-md-12">Qtt:
+                                            <input type="number" class="form-control" name="quantity" min="0"
+                                                style="width: 80px;">
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button type="submit" class="btn btn-outline-success">Add</button>
+                                        </div>
+                                    </div> 
+                                </form>
+                            @endguest
                         </div>
+
                     </form>
                     <div>
                     
@@ -61,31 +79,37 @@
             <div class="card card-body">
                 @include('comment.show', ['comments' => $data['comments'], 'videogame_id' =>
                 $data['videogame']->getId()])
+
                 <hr />
+                <div id="view-comments">
+                    <div class="card card-body">
+                        @include('comment.show', ['comments' => $data['comments'], 'videogame_id' =>
+                        $data['videogame']->getId()])
+                        <hr />
 
-                @guest
-                <small>Debes iniciar sesión para comentar</small>
-                @else
+                        @guest
+                            <small>Debes iniciar sesión para comentar</small>
+                        @else
 
 
-                </html>
-                <h4 class="add-comments">Add comment</h4>
-                <form method="POST" action="{{ route('comment.save') }}">
-                    @csrf
-                    <div class="form-group">
-                        <textarea class="form-control" name="description"></textarea>
-                        <input type="hidden" name="videogame_id" id="videogame_id"
-                            value="{{ $data['videogame']->getId() }}" />
+                            </html>
+                            <h4 class="add-comments">Add comment</h4>
+                            <form method="POST" action="{{ route('comment.save') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="description"></textarea>
+                                    <input type="hidden" name="videogame_id" id="videogame_id"
+                                        value="{{ $data['videogame']->getId() }}" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="Add Comment" />
+                                </div>
+                            </form>
+                        @endguest
                     </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="Add Comment" />
-                    </div>
-                </form>
-                @endguest
+                </div>
             </div>
         </div>
+    </section>
     </div>
-    </div>
-</section>
-</div>
 @endsection
