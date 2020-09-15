@@ -15,6 +15,9 @@
  .table-striped > thead > tr > th{
     color: white!important;
  }
+ .table-striped > tfoot > tr > th{
+   color: white!important;
+}
 
  .products  {
     background-color: #240644;
@@ -23,6 +26,18 @@
     background-color: #240644;
     color: white;
  }
+ .card-body  {
+   background-color: #240644;
+   color: white;
+}
  body{
      background-color: #BB79F2;
+
+ }
+ h2{
+    color: white;
+ }
+ .modal{
+   color:#BB79F2;
+
  }

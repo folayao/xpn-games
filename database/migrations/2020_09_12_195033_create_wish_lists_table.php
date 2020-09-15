@@ -18,7 +18,6 @@ class CreateWishListsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->integer('videogame_id')->unsignedInteger();
-        
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

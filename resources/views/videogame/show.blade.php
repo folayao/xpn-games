@@ -11,6 +11,8 @@
                     <b class="card-label">Designer: </b>{{ $data['videogame']->getDesigner() }} <br />
                     <b class="card-label">Pegy: </b>{{ $data['videogame']->getPg() }} <br />
                     <b class="card-label">Details: </b>{{ $data['videogame']->getDetails() }} <br />
+                    @guest                 
+                    @else 
                     <form method="POST" action="{{ route('wishList.store') }}">
                         @csrf
                         <div class="form-group">
@@ -31,9 +33,8 @@
                                 <div class="form-group col-md-12">
                                     <button type="submit" class="btn btn-outline-success">Add</button>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                    @endguest
                 </div>
             </div>
                 <hr />

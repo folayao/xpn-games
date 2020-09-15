@@ -48,7 +48,7 @@ class RolesController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        return view('admin.roles.show' , ['role' => $role]);
     }
 
     /**
@@ -59,7 +59,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit',['role' => $role]);
     }
 
     /**
@@ -71,7 +71,12 @@ class RolesController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        
+        $role->name = $request ->role_name;
+        $role->slug = $request ->role_slug;
+        $role-> save();
+
+        return redirect('/roles');
     }
 
     /**
@@ -80,8 +85,11 @@ class RolesController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        $role =Role::findorfail($id);
+        $role-> delete();
+        $roles = Role::orderBy('id','desc')->get();
+        return view('admin.roles.index')->with("roles",$roles);;
     }
 }
