@@ -14,16 +14,15 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/dataTable.js') }}" defer type="text/javascript"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
-   
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css_role_page')
 </head>
 <body>
     <div id="app">
@@ -44,6 +43,7 @@
                                     Games
                                 </a>
                             </li>
+                            @can('isAdmin')
                             <li class="nav-item">
                                 <a href="{{ url('/roles') }}" class="nav-link"><img src="{{ asset('icons/role.png') }}" class="show-icon">
                                     Roles
@@ -54,6 +54,7 @@
                                     Users
                                 </a>
                             </li>
+                            @endcan
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -70,9 +71,11 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @auth
+                                {{ Auth::user()->name }} {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
+                                @endauth
                                 <img src="{{ asset('icons/user.png') }}" class="show-icon">
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -100,6 +103,11 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
+    <script src="{{ asset('js/bootstrap.js') }}" ></script>
+    @yield('js_role_page') 
+    @yield('js_user_page')
 </body>
 </html>
 

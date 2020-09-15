@@ -2,16 +2,20 @@
 
 @section('content')
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
-    <div class="row">
-        <div class="col">
-            <h2>this is a role list</h2>
+<div class="container">
+    <div class="row md-3">
+        <div class="col md-3">
+           
         </div>
-        <!-- <a href=""><img src="{{ asset('icons/addRole.png') }}" class="show-icon"></a> -->
     </div>
+</div>
+
+
 
         <div class="card-header">
             <i class="fas fa-table"></i>
-            Data Table Example
+            Role Table
+            <div class="col-md-2 float-right"><a href="/roles/create"><img src="{{ asset('icons/addRole.png') }}" class="show-icon"></a> Add role</div>
         </div>
         <div class="card-body">
             <div class="col col-md-12 card-body products">
@@ -42,7 +46,11 @@
                             <td> {{$role['name']}}</td>
                             <td> {{$role['slug']}}</td>
                             <td>
-                                Permissions
+                            @foreach ($role->permissions as $permission)
+                                <span class="badge badge-secondary">
+                                    {{ $permission->name }}                                    
+                                </span>
+                                @endforeach
                             </td>
                             <td>
                                <a href="/roles/{{ $role['id'] }}"><img src="{{ asset('icons/eye.png') }}" class="show-icon"></i></a>
