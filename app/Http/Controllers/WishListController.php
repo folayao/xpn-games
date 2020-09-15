@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WishList;
 use App\Models\VideoGame;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class WishListController extends Controller
 {
@@ -21,16 +22,6 @@ class WishListController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,7 +31,7 @@ class WishListController extends Controller
     {
         // WishList::validateWishList($request);
         WishList::create($request->all());
-        return back()->with('success', 'Item Created Succesfully');
+        return back()->with('success', 'Item Added Succesfully');
     }
 
     /**
@@ -61,36 +52,20 @@ class WishListController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\wishList  $wishList
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(wishList $wishList)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\wishList  $wishList
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, wishList $wishList)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\wishList  $wishList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(wishList $wishList)
+    public function destroy($id)
     {
-        //
+        try {
+            $videogame = VideoGame::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('home.index');
+        }
+        $wishlist = WishList::find($id);
+        $wishlist->delete();
+        return redirect()->route('videogame.list');
     }
 }

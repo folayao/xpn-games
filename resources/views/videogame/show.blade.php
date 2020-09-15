@@ -3,6 +3,7 @@
 @section('content')
     <section class="card-product">
         <div class="container">
+            @include('util.message')
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{ $data['videogame']->getTitle() }}</h4>
@@ -25,10 +26,10 @@
                         <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
                             @csrf
                             <div class="form-row">
-                                <div class="col-md-12">Qtt:
+                                <div class="col-md-8">Qtt:
                                     <input type="number" class="form-control" name="quantity" min="0" style="width: 80px;">
                                 </div>
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-8">
                                     <button type="submit" class="btn btn-outline-success">Add</button>
                                 </div>
                             </div>
@@ -37,29 +38,18 @@
                 </div>
             </div>
                 <hr />
-                <ul class="list-unstyled list-inline">
-                    <li>
-                        <button type="button" class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#view-comments"
-                            aria-expanded="false" aria-controls="view-comments">
-                            <i class="fa fa-comments-o" aria-hidden="true"></i>
-                            View Comments
-                        </button>
-                    </li>
-                </ul>
                 <div id="view-comments">
                     <div class="card card-body">
                         @include('comment.show', ['comments' => $data['comments'], 'videogame_id' => $data['videogame']->getId()])
                         <hr />
-
                         @guest
                             <small>Debes iniciar sesión para comentar</small>
                         @else
-
-                            <h4>Add comment</h4>
+                            <h4 class="add-comments" >Add comment</h4>
                             <form method="POST" action="{{ route('comment.save') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <textarea class="form-control" name="description"></textarea>
+                                    <textarea class="form-control" name="body"></textarea>
                                     <input type="hidden" name="videogame_id" id="videogame_id" value="{{ $data['videogame']->getId() }}" />
                                 </div>
                                 <div class="form-group">
