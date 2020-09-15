@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use App\Models\VideoGame;
 
 class CommentController extends Controller {
 
+    // public function show($id) {
+    //     $data = []; //to be sent to the view
+    //     $comment = Comment::findOrFail($id);
+    //     $data["comment"] = $comment;
+
+    //     return view('comment.show')->with("data",$data);
+    // }
+
     public function save(Request $request) {
         //Falta mover validación a Modelo
-        // $request->validate([
-        //     "description" => "required|max:255"
-        // ]);
-        Comment::validateComment($request);
+        $request->validate([
+            "description" => "required|max:255"
+        ]);
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
 
@@ -21,23 +27,6 @@ class CommentController extends Controller {
 
         return back();
     }
-
-    // public function replyStore(Request $request)
-    // {
-    //     $data = [];
-    //     $reply = new Comment();
-    //     $reply->body = $request->get('body');
-    //     $reply->user()->associate($request->user());
-    //     $reply->parent_id = $request->get('comment_id');
-    //     $data["reply"] = $reply;
-    //     $videogame = VideoGame::find($request->get('videogame_id'));
-    //     $data["videogame"] = $videogame;
-
-    //     $videogame->comments()->save($reply);
-
-    //     return back()->with("data", $data);
-
-    // }
 
 
     // Falta implementar el destroy
