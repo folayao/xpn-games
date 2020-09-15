@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WishList;
-use App\VideoGame;
+use App\Models\VideoGame;
 use Illuminate\Http\Request;
 
 class WishListController extends Controller
@@ -50,14 +50,14 @@ class WishListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show()
-    {   
+    {
         $data = [] ;
         $wishlist = WishList::all();
         $wishlist = $wishlist->intersect(WishList::whereIn('user_id', [auth()->user()->id])->get());
         $wishlistid= $wishlist->pluck('videogame_id');
         $videogames = VideoGame::all();
         $data['videogames'] = $videogames->intersect(VideoGame::whereIn('id', $wishlistid)->get());
-        return view('user.wishList')->with("data",$data);   
+        return view('user.wishList')->with("data",$data);
     }
 
     /**

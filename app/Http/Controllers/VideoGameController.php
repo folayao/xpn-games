@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\VideoGame;
+use App\Models\Comment;
+use App\Models\VideoGame;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -28,7 +28,7 @@ class VideoGameController extends Controller
         return view('videogame.show')->with("data", $data);
     }
 
-    
+
     public function create()
     {
         $data = [];
