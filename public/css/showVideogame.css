@@ -14,11 +14,14 @@
 }
 
 .display-comment {
-    /* margin-left: 40px; */
     color: black;
 }
 
-.display-comment-child {
+.display-comment-reply {
     margin-left: 40px;
+    color: black;
+}
+
+.add-comments {
     color: black;
 }
