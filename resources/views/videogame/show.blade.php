@@ -38,6 +38,7 @@
                                         <div class="form-group col-md-12">
                                             <button type="submit" class="btn btn-outline-success">Add</button>
                                         </div>
+                                    </div> 
                                 </form>
                             @endguest
                         </div>
