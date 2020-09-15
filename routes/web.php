@@ -22,9 +22,9 @@ Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.sav
 Route::post('/comment/save', 'CommentController@save')->name("comment.save");
 Route::post('/wishList/save', 'WishListController@store')->name("wishList.store");
 Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
-
+Route::get('/role/destroy/{id}', 'RolesController@destroy')->name("role.destroy");
 Route::resource('posts', 'PostsController');
-Route::resource('users', 'UsersController');
+Route::resource('users', 'UserController');
 Route::resource('roles', 'RolesController');
 
 

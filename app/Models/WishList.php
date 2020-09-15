@@ -16,4 +16,9 @@ class wishList extends Model
             "videogame_id" => "required",
         ]);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'foreign_key');
+    }
 }
