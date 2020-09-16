@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '  XPN-Games') }}</title>
 
     <!-- Scripts -->
 
@@ -19,8 +19,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css">
+
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"> -->
     <!-- Styles -->
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -89,7 +91,7 @@
 
                                     <a class="dropdown-item" href="{{ route('user.wishList') }}"
                                        >
-                                        {{ __('User Settings') }}
+                                        {{ __('User Wishlist') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -110,7 +112,7 @@
     <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/bootstrap.js') }}" ></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" ></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" ></script> -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     @yield('js_role_page') 
     @yield('js_user_page')

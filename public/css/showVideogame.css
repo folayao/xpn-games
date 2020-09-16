@@ -8,7 +8,9 @@
 .card-body .card-title {
   color: #A5E819;
 }
-
+.initSession{
+  color: black;
+}
 .card-body .card-label {
   color: #CB8081;
 }

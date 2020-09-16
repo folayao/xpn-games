@@ -1,0 +1,23 @@
+body{
+    background-color: #BB79F2;
+}
+.card{
+    background-color: #240644;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ffffff ;
+}
+.card > .card-body{
+    background-color: #240644;
+    border-radius: 5px;
+}
+
+.card > .card-header {
+    background-color: #240644;
+    border-radius: 5px;
+    color: white;
+}
+.card > .card-header > .card-body{
+    background-color: #BB79F2;
+    border-radius: 5px;
+    color: white;
+}
