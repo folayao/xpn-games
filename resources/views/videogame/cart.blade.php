@@ -1,7 +1,7 @@
 @extends('layouts.header')
 
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('css/wishList.css') }}" type="text/css">
 
 <div class="row" style="margin-top:20px; margin-bottom:20px">
     <div class="col-lg-8 mx-auto">
@@ -9,15 +9,22 @@
             <div class="col-md-12">
                 <ul id="errors">
                     @foreach($data["videogames"] as $videogame)
-                    <li>Nombre: {{ $videogame->getTitle() }} - Precio: {{ $videogame->getPrice() }}
-                        - Cantidad: {{ Session::get('videogames')[$videogame->getId()] }}</li>
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <b>Nombre: {{ $videogame->getTitle() }}</b> <br>
+                            <b>Precio: {{ $videogame->getPrice() }}</b><br>
+                            <b>Cantidad: {{ Session::get('videogames')[$videogame->getId()] }}</b><br>
+                            
+                        </div>
+
+                    </div>
                     @endforeach
                     <br /><br />
-                    Total: (precio_total)
+
                     <form action="{{ route('order.buy') }}" method="POST">
                         @csrf
                         <input type="hidden" name="user_id" id="user_id" value="{{ $data['user_id']}}" />
-                        <button type="submit">Buy</button>
+                        <button class="btn btn-primary" type="submit">Buy</button>
                     </form>
                 </ul>
             </div>

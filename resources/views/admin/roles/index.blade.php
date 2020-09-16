@@ -2,16 +2,6 @@
 
 @section('content')
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
-<div class="container">
-    <div class="row md-3">
-        <div class="col md-3">
-           
-        </div>
-    </div>
-</div>
-
-
-
         <div class="card-header">
             <i class="fas fa-table"></i>
             Role Table
@@ -53,7 +43,6 @@
                                 @endforeach
                             </td>
                             <td>
-                               <a href="/roles/{{ $role['id'] }}"><img src="{{ asset('icons/eye.png') }}" class="show-icon"></i></a>
                                <a href="/roles/{{ $role['id'] }}/edit"><img src="{{ asset('icons/edit.png') }}" class="show-icon"></i></a>
                                <a href="#" data-toggle="modal" data-target="#deleteModal" data-roleid = "{{$role['id']}}"><img src="{{ asset('icons/trash.png') }}" class="show-icon"></i></a>
                             </td>

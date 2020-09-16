@@ -2,11 +2,6 @@
 
 @section('content')
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
-    <div class="row">
-        <div class="col">
-            <h2>this is a user list</h2>
-        </div>
-    </div>
     <div class="card mb-3">
         <div class="card-header">
             <i class="fas fa-table"></i>
@@ -66,7 +61,6 @@
                                     @endif
                             </td>
                             <td>
-                            <a href="/users/{{ $user['id'] }}"><img src="{{ asset('icons/eye.png') }}" class="show-icon"></i></a>
                                <a href="/users/{{ $user['id'] }}/edit"><img src="{{ asset('icons/edit.png') }}" class="show-icon"></i></a>
                                <a href="#" data-toggle="modal" data-target="#deleteModal" data-roleid = "{{$user['id']}}"><img src="{{ asset('icons/trash.png') }}" class="show-icon"></i></a>
                             </td>
