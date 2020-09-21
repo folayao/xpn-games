@@ -18,6 +18,7 @@ class WishListController extends Controller
     {
         $data = [];
         $data["wishList"] = WishList::all();
+        
         return view('videogame.list')->with("data", $data);
     }
 
@@ -29,11 +30,21 @@ class WishListController extends Controller
      */
     public function store(Request $request)
     {
-        // WishList::validateWishList($request);
-        WishList::create($request->all());
-        return back()->with('success', 'Item Added Succesfully');
+        $wishlist = new Wishlist();
+        $wishlist -> name = $request -> wish_list_name;
+        $wishlist -> save();
+        auth()->user()->wishlists()->attach($wishlist);
+        
+        // WishList::create($request->all());
+        return back()->with('success', 'Item Created Succesfully');
     }
 
+    public function addToWishlist(Request $request,$id)
+    {
+        $wishlist = WishList::find($id);
+        $wishlist -> videogames() -> attach($request -> videogame);
+        return back()->with('success', 'Item Added to wishlist');
+    }
     /**
      * Display the specified resource.
      *
@@ -42,13 +53,17 @@ class WishListController extends Controller
      */
     public function show()
     {
-        $data = [] ;
-        $wishlist = WishList::all();
-        $wishlist = $wishlist->intersect(WishList::whereIn('user_id', [auth()->user()->id])->get());
-        $wishlistid= $wishlist->pluck('videogame_id');
-        $videogames = VideoGame::all();
-        $data['videogames'] = $videogames->intersect(VideoGame::whereIn('id', $wishlistid)->get());
-        return view('user.wishList')->with("data",$data);
+        // $data = [] ;
+        // $wishlist = WishList::all();
+        // $wishlist = $wishlist->intersect(WishList::whereIn('user_id', [auth()->user()->id])->get());
+        // $wishlistid= $wishlist->pluck('video_game_id');
+        // $videogames = VideoGame::all();
+        // $data['videogames'] = $videogames->intersect(VideoGame::whereIn('id', $wishlistid)->get());
+        // return view('user.wishList')->with("data",$data);
+
+        $data = [];
+        $wishlist = auth()->user()->wishlists;
+        dd($wishlists);
     }
 
     /**

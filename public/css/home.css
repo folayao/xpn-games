@@ -1,0 +1,31 @@
+body{
+    background: url('../images/homePage.jpg') ;
+    background-color: black;
+}
+
+
+.home-img img{
+    max-width: 290px;
+    width: 100%;
+    position: absolute;
+    left: 50px;
+    top: 30px;
+    animation: productani01 5s linear infinite;
+
+}
+h1{
+    color: orange;
+}
+.publish_text{
+    color:white;
+
+}
+@keyframes productani01{
+    0%,100%{
+        transform: translateY(30px);
+    }
+    50%{
+        transform: translateY(0px);
+    }
+}
+

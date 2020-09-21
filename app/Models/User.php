@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\HasRolesAndPermissions;
+use App\Traits\UserRelations;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRolesAndPermissions;
+    use Notifiable, UserRelations;
 
     protected $table = "users";
 

@@ -13,12 +13,11 @@ class CreateWishListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wish_lists', function (Blueprint $table) {
+        Schema::create('wishLists', function (Blueprint $table) {
             $table->id();
+            $table->string('name') ;
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->integer('videogame_id')->unsignedInteger();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -29,6 +28,6 @@ class CreateWishListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wish_lists');
+        Schema::dropIfExists('wishLists');
     }
 }

@@ -1,7 +1,7 @@
 <!doctype html>
 <link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
 <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
-<link rel="stylesheet" href={{ asset('css/showVideogame.css') }}>
+<!-- <link rel="stylesheet" href={{ asset('css/showVideogame.css') }}> -->
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -15,22 +15,20 @@
 
     <!-- Scripts -->
 
-    <!-- Fonts -->
+    <!-- css -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css">
-
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"> -->
-    <!-- Styles -->
-
+    <!-- <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css"> -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+    @yield('home_css')
     @yield('css_role_page')
+    @yield('video_game_show_css')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #240644;">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top mb-1" >
             <!-- <div class="container"> -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('logo.png') }}" alt="" width="75" height= "75">
@@ -43,46 +41,52 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a href="{{ url('/') }}" class="nav-link"><img src="{{ asset('icons/games.png') }}" class="show-icon">
+                                <a href="{{ url('/videogames') }}" class="nav-link">
                                     Games
                                 </a>
                             </li>
                             @can('isAdmin')
                             <li class="nav-item">
-                                <a href="{{ url('/roles') }}" class="nav-link"><img src="{{ asset('icons/role.png') }}" class="show-icon">
+                                <a href="{{ url('/roles') }}" class="nav-link">
                                     Roles
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/users') }}" class="nav-link"><img src="{{ asset('icons/users.png') }}" class="show-icon">
+                                <a href="{{ url('/users') }}" class="nav-link">
                                     Users
                                 </a>
                             </li>
                             @endcan
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('item.cart') }}">Cart</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('item.removeCart') }}">Remove Cart</a></li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                    <ul class="navbar-nav ml-auto"><li class="nav-item dropdown">
+                    <li>
+                        <form class="form-inline my-2 my-lg-0 " id="navbar-search">
+                            <input class="form-control mr-2"  type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success " type="submit">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                 @auth
                                 {{ Auth::user()->name }} {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
                                 @endauth
-                                <img src="{{ asset('icons/user.png') }}" class="show-icon">
+                                @guest
+                                <img src="{{ asset('icons/guest2.png') }}" class="show-icon" height = "40" width ="40">
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right mega-menu">
+                               
+                                    <a href="{{ route('login') }}" class="dropdown-item">
+                                        {{ __('Login') }}
+                                    </a>
+                                    <a href="{{ route('register') }}" class="dropdown-item">
+                                    {{ __('Register') }}
+                                    </a>
+                                @else
+                                <img src="{{ asset('icons/user.png') }}" class="show-icon"  height = "40" width ="40">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -94,12 +98,19 @@
                                         {{ __('User Wishlist') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('user.wishList') }}"
+                                       >
+                                        {{ __('User Shopping Cart') }}
+                                    </a>                        
+
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                @endguest
                                 </div>
-                            </li>
-                        @endguest
+                    </li>
+
                     </ul>
                 </div>
             <!-- </div> -->
@@ -107,8 +118,12 @@
 
         <main class="py-4">
             @yield('content')
+            
         </main>
     </div>
+<!-- Footer -->
+
+<!-- Footer -->
     <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/bootstrap.js') }}" ></script>
@@ -118,4 +133,6 @@
     @yield('js_user_page')
     @yield('scripts')
 </body>
+<!-- Footer -->
+
 </html>

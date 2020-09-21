@@ -14,7 +14,9 @@ class VideoGameController extends Controller
         $data = [];
         $data["title"] = "List of products";
         $data["videogames"] = VideoGame::all();
-        return view('videogame.list')->with("data", $data);
+        $videogame = VideoGame::paginate(9);
+        // return view('videogame.list')->with("data", $data);
+        return view('videogame.list', ["videogames" => $videogame]);
     }
     /* Sho */
     public function show($id)

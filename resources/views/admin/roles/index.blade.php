@@ -1,6 +1,7 @@
 @extends('layouts.header')
 
 @section('content')
+@can('isAdmin')
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
         <div class="card-header">
             <i class="fas fa-table"></i>
@@ -73,7 +74,7 @@
             
         </div>
 
-
+@endcan
     <!-- delete Modal-->
 
 @endsection

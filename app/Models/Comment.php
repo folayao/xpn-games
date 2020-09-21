@@ -11,7 +11,7 @@ class Comment extends Model
 
     //attributes id, description, created_at, updated_at
 
-    protected $fillable = ['description', 'user_id', 'videogame_id', 'parent_id'];
+    protected $fillable = ['description', 'user_id', 'video_game_id', 'parent_id'];
 
     protected $table = 'comments';
 

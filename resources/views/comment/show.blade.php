@@ -1,7 +1,7 @@
 <h2 class="add-comments"><b> Comments <br></h2> </b>
 <br>
 @foreach($comments as $comment)
-    @if ($comment->videogame_id == $data['videogame']->getId())
+    @if ($comment->video_game_id == $data['videogame']->getId())
     {{-- PENDIENTE: Corregir la implementación del style --}}
         <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
             <div class="card">

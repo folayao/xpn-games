@@ -1,82 +1,65 @@
 @extends('layouts.header')
 @section('content')
+
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
-
-
-    <div class="col-md-12 card-body products">
-    <div class="card-header">
-Videojuegos Disponibles
-@can('isAdmin')
+<div class="container">
+    <div class="row addgame">
+    @can('isAdmin')
 <div class="col-md-2 float-right"><a href="/videogames/create"><img src="{{ asset('icons/addgame.png') }}" class="show-icon">  Add Game</a>
 </div>
 @endcan
-</div>
-        <table class="table table-striped table-bordered" id ="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>               
-                    <th>Show Details</th>
-                    @can('isAdmin')
-                    <th>Delete</th>
-                    @endcan
-                </tr>
-            </thead>
-            <tfoot>
-                    <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>               
-                    <th>Show Details</th>
-                    @can('isAdmin')
-                    <th>Delete</th>
-                    @endcan
-                    </tr>
-                </tfoot>
-            <tbody>
-                @foreach ($data['videogames'] as $videogame)
-                    <tr>
-                        <td class="table-bold">{{ $videogame->getId() }}</td>
-                        <td>{{ $videogame->getTitle() }}</td>
-                        <td>${{ $videogame->getPrice() }}</td>
-                        <td>
-                        <!-- <button class ="btn info-btn"type="image" href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}"> <img
-                                    src="{{ asset('icons/icon.png') }}" class="show-icon"></button> -->
-                        <a class="navbar-brand"
-                                href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}"><img
-                                    src="{{ asset('icons/icon.png') }}" class="show-icon"></a></td>
-                                    @can('isAdmin')
-                        <td> <a href="#" data-toggle="modal" data-target="#deleteModal" data-roleid = "{{$videogame['id']}}"><img src="{{ asset('icons/trash.png') }}" class="show-icon"></i></a>
-                                    @endcan
-                    </tr>
-                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Are you shure you want to delete this?</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">Select "delete" If you realy want to delete this role.</div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-
-                                            <a class="btn btn-primary" href="{{ route('videogame.delete', ['id' => $videogame->getId()]) }}">Delete</a>
-                                        </div>
-                                    </div>
-                        </div>
-                    </div>
-                @endforeach
-            </tbody>
-        </table>
     </div>
+</div>
+
+<div class="container">
+    <div class="row mr-5 ml-5">
+    @foreach ($videogames as $videogame)
+        <div class="col-md-4 col-sm-6 ">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="">
+                        <img src="{{ asset('images/fifa.jpg') }}" alt="Card image cap" width="200" height='200'>
+                    </a>
+                    <span class="product-trend-label">NEW</span>
+                    <ul class="social">
+                        <li><a href="" data-toggle="tooltip" data-placement="right"title="Add to cart"><img class="game_options" src="{{ asset('icons/cartt.png') }}" width="40" height='40'></a></li>
+                        <li><a href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}" data-tip="Show me more" data-toggle="tooltip" data-placement="right"title="Show more info"><img class="game_options" src="{{ asset('icons/info.png') }}" width="40" height='40'></a></li>
+                        <li><a href="" data-tip="Wishlist" data-toggle="tooltip" data-placement="right"title="Add to wishlist"><img class="game_options" src="{{ asset('icons/add.png') }}" width="40" height='40'></a></li>
+                        @can('isAdmin')
+                        <li><a href=""data-toggle="tooltip" data-placement="right" title="delete"><img class="game_options" src="{{ asset('icons/deletee.png') }}"></a></li>
+                        @endcan
+                    </ul>
+                </div>
+                <div class="product-content">
+                    <h3 class="title">
+                        <a href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}">
+                            {{$videogame->getTitle()}}
+                        </a>
+                    </h3>
+                    <div class="price"> $ {{$videogame->getPrice()}}</div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    
+    </div>
+</div>
+{{$videogames->links()}}
+
+
+
+
+
 @endsection
 @section('scripts')
 <script>
 $(document).ready( function () {
     $('#dataTable').DataTable();
 } );
+</script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
 @endsection

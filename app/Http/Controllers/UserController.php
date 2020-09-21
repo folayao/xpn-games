@@ -4,23 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\VideoGame;
-use App\Comment;
+
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function wishList($id)
-    {
-        $data = [];
-        $videogame = VideoGame::findOrFail($id);
-        $data["videogame"] = $videogame;
-        $data['user'] = auth()->user();
-        $data['comments'] = Comment::all();
-        $user = User::find(auth()->user()->id);
-        $user->addWishlist($id);
-        return back()->with("data", $data);
-    }
 
     public function index()
     {

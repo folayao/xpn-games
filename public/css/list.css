@@ -2,20 +2,36 @@
     background-color: transparent;
 } 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-    background-color: #DD8582;
+    background-color: #0059BF;
  }
+
+ .addGame{
+   background-color: #0059BF;
+
+ }
+.card{
+   width: 15rem;
+background-color: black;
+   text-align: center;
+   color: white;
+}
 
  .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
-    background-color: #BB79F2;
+    background-color:#912CEA;
+    opacity: 0.5;
+   
  }
-
+ .table-striped {
+   color: white!important;
+}
  .table-striped > thead {
     background-color: #240644;
+    color: white!important;
  }
  .table-striped > thead > tr > th{
     color: white!important;
  }
- .table-striped > tfoot > tr > th{
+ .table-striped > tfoot > tr > td{
    color: white!important;
 }
 
@@ -23,17 +39,22 @@
     background-color: #240644;
  }
  .card-header  {
-    background-color: #240644;
+    background-color: blue;
     color: white;
  }
  .card-body  {
    background-color: #240644;
    color: white;
 }
- body{
-     background-color: #BB79F2;
+ /* .row{ 
+     background: url('../images/op.jpg')  no-repeat fixed;
 
- }
+ } */
+
+body{ 
+   /* background: url('../images/h.jpg')  no-repeat center center; */
+   background-color: black;
+}
  h2{
     color: white;
  }
@@ -41,3 +62,100 @@
    color:#BB79F2;
 
  }
+
+ .product-grid{
+   font-family: tahoma;
+   position: relative;
+ }
+
+ .product-grid .product-image{
+   overflow: hidden;
+   position: relative;
+
+ }
+.product-grid .product-image:before{
+   content: "";
+   background: rgba(0,0,0,0.3);
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 1;
+   transition: all 0.4s ease-out 0s;
+}
+
+.product-grid:hover .product-image:before{
+   opacity: 1;
+}
+
+.product-grid .product-image a{
+   display: block;
+}
+.product-grid .product-image img{
+   width: 100%;
+   height: auto;
+}
+
+.product-grid .product-image .game_options{
+   width: 40px;
+}
+.product-image .product-trend-label{
+   content: "";
+   color: white;
+   background-color: orange;
+   font-size: 12px;
+   line-height: 28px;
+   font-weight: 700;
+   text-align: center;
+   text-transform: uppercase;
+   padding: 0 7px;
+   position:  absolute ;
+   top: 12px;
+   left: 12px;
+}
+
+.product-image .social{
+   padding: 0;
+   margin: 0;
+   list-style: none;
+   transform: translateY(-50%);
+   position: absolute;
+   top: 50%;
+   left: 10px;
+   z-index: 4;
+}
+
+.product-grid .social li{
+   margin: 0 0 12px;
+   opacity: 0;
+   transform: translateX(-60px);
+   transition: transform  0.3s ease-out 0s;
+}
+
+.product-grid:hover .social li{
+   opacity: 1;
+   transform: translateX(0);
+
+
+}
+.product-grid:hover .social li:nth-child(2){
+   transition-delay: 0.1 ;
+}
+
+.product-grid:hover .social li:nth-child(3){
+   transition-delay: 0.2 ;
+}
+
+.product-grid .social li a{
+   color: white;
+   font-size: 22px;
+   transition: all 0.3s;
+}
+
+.product-grid .social li a{
+   color: white;
+   font-size: 22px;
+   transition: all 0.3s;
+}

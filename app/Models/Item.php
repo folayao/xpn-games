@@ -8,7 +8,7 @@ use App\Models\Order;
 
 class Item extends Model
 {
-    //attributes id, videogame_id, order_id, quantity, created_at, updated_at
+    //attributes id, video_game_id, order_id, quantity, created_at, updated_at
 
     public function getId()
     {
@@ -32,12 +32,12 @@ class Item extends Model
 
     public function getVideoGameId()
     {
-        return $this->attributes['videogame_id'];
+        return $this->attributes['video_game_id'];
     }
 
     public function setVideoGameId($id)
     {
-        $this->attributes['videogame_id'] = $id;
+        $this->attributes['video_game_id'] = $id;
     }
 
     public function getOrderId()
