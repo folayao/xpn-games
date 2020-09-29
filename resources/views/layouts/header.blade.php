@@ -10,26 +10,19 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', '  XPN-Games') }}</title>
-
-    <!-- Scripts -->
-
+    <title>@yield('title','XPN-Games')</title>
     <!-- css -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css"> -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     @yield('home_css')
     @yield('css_role_page')
     @yield('video_game_show_css')
+    @yield('user_settings_css')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top mb-1" >
-            <!-- <div class="container"> -->
+
+    <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top mb-1" >
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('logo.png') }}" alt="" width="75" height= "75">
                 </a>
@@ -41,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a href="{{ url('/videogames') }}" class="nav-link">
+                                <a href="{{ route('videogame.list') }}" class="nav-link">
                                     Games
                                 </a>
                             </li>
@@ -67,13 +60,13 @@
                             <button class="btn btn-outline-success " type="submit">Search</button>
                         </form>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class=" dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                 @auth
                                 {{ Auth::user()->name }} {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
                                 @endauth
                                 @guest
-                                <img src="{{ asset('icons/guest2.png') }}" class="show-icon" height = "40" width ="40">
+                                <img src="{{ asset('icons/user_icons/guest2.png') }}" class="show-icon" height = "40" width ="40">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right mega-menu">
                                
@@ -84,7 +77,7 @@
                                     {{ __('Register') }}
                                     </a>
                                 @else
-                                <img src="{{ asset('icons/user.png') }}" class="show-icon"  height = "40" width ="40">
+                                <img src="{{ asset('icons/user_icons/user.png') }}" class="show-icon"  height = "40" width ="40">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -93,7 +86,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('user.wishList') }}"
+                                    <a class="dropdown-item" href="{{ route('user.settings', [ 'username' => auth()->user()->username]) }}"
                                        >
                                         {{ __('User Wishlist') }}
                                     </a>
@@ -116,10 +109,18 @@
             <!-- </div> -->
         </nav>
 
-        <main class="py-4">
+
+    <div class="container" id="app">
+
+
+        <div class="row" id="main">
             @yield('content')
             
-        </main>
+            
+        </div>
+        <footer class="row">
+            @include('layouts.footer')
+        </footer>
     </div>
 <!-- Footer -->
 
@@ -131,7 +132,9 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     @yield('js_role_page') 
     @yield('js_user_page')
+    @yield('home_music_js')
     @yield('scripts')
+    @yield('user_settings_scripts')
 </body>
 <!-- Footer -->
 

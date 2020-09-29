@@ -33,7 +33,6 @@ class ItemController extends Controller
             $data["user_id"] = auth()->user()->id;
             return view('videogame.cart')->with("data",$data);
         }
-
         return redirect()->route('videogame.list');
     }
 }

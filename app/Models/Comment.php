@@ -46,10 +46,10 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function videoGame()
-    // {
-    //     return $this->belongsTo(VideoGame::class);
-    // }
+    public function videoGame()
+    {
+        return $this->belongsTo(VideoGame::class);
+    }
 
     public function replies()
     {

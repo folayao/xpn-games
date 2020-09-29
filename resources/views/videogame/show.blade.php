@@ -133,7 +133,8 @@
                 
 
                         @foreach(auth()->user()->wishlists as $wishlist)
-                        <form method="POST" action="{{ route('wishList.addToWishlist', ['id' => $wishlist->getId()]) }}">
+                        <form method="POST" action="{{ route('wishlist.wishlistAdd', ['id' => $wishlist->getId()]) }}">
+                        @csrf
                         <div class="container">
                             <div class="row">
                                 <div class="col">
