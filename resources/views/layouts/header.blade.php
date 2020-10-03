@@ -83,10 +83,10 @@
                         <div class="dropdown-menu dropdown-menu-right mega-menu">
 
                             <a href="{{ route('login') }}" class="dropdown-item">
-                                {{ __('Login') }}
+                                {{ __('messages.login') }}
                             </a>
                             <a href="{{ route('register') }}" class="dropdown-item">
-                                {{ __('Register') }}
+                                {{ __('messages.register') }}
                             </a>
                             @else
                             <img src="{{ asset('icons/user.png') }}" class="show-icon" height="40" width="40">
@@ -94,15 +94,15 @@
                             <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('messages.logout') }}
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('user.wishList') }}">
-                                    {{ __('User Wishlist') }}
+                                    {{ __('messages.wishlist.show') }}
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('item.cart') }}">
-                                    {{ __('User Shopping Cart') }}
+                                    {{ __('messages.shoppingCart') }}
                                 </a>
 
 
