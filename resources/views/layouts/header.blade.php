@@ -4,6 +4,7 @@
 <!-- <link rel="stylesheet" href={{ asset('css/showVideogame.css') }}> -->
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '  XPN-Games') }}</title>
+    <title>{{ config('app.name', 'XPN-Games') }}</title>
 
     <!-- Scripts -->
 
@@ -26,110 +27,112 @@
     @yield('css_role_page')
     @yield('video_game_show_css')
 </head>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top mb-1" >
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top mb-1">
             <!-- <div class="container"> -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('logo.png') }}" alt="" width="75" height= "75">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ asset('logo.png') }}" alt="" width="75" height="75">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a href="{{ url('/videogames') }}" class="nav-link">
-                                    Games
-                                </a>
-                            </li>
-                            @can('isAdmin')
-                            <li class="nav-item">
-                                <a href="{{ url('/roles') }}" class="nav-link">
-                                    Roles
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/users') }}" class="nav-link">
-                                    Users
-                                </a>
-                            </li>
-                            @endcan
-                    </ul>
-                    <!-- Right Side Of Navbar -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="{{ url('/videogames') }}" class="nav-link">
+                            {{__('messages.videogames')}}
+                        </a>
+                    </li>
+                    @can('isAdmin')
+                    <li class="nav-item">
+                        <a href="{{ url('/roles') }}" class="nav-link">
+                            {{__('messages.roles')}}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/users') }}" class="nav-link">
+                            {{__('messages.users')}}
+                        </a>
+                    </li>
+                    @endcan
+                </ul>
+                <!-- Right Side Of Navbar -->
 
-                    <ul class="navbar-nav ml-auto"><li class="nav-item dropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
                     <li>
                         <form class="form-inline my-2 my-lg-0 " id="navbar-search">
-                            <input class="form-control mr-2"  type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success " type="submit">Search</button>
+                            <input class="form-control mr-2" type="search" placeholder="{{__('messages.searchVideogame')}}..." aria-label="Search">
+                            <button class="btn btn-outline-success " type="submit">{{__('messages.search')}}</button>
                         </form>
                     </li>
                     <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                @auth
-                                {{ Auth::user()->name }} {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
-                                @endauth
-                                @guest
-                                <img src="{{ asset('icons/guest2.png') }}" class="show-icon" height = "40" width ="40">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right mega-menu">
-                               
-                                    <a href="{{ route('login') }}" class="dropdown-item">
-                                        {{ __('Login') }}
-                                    </a>
-                                    <a href="{{ route('register') }}" class="dropdown-item">
-                                    {{ __('Register') }}
-                                    </a>
-                                @else
-                                <img src="{{ asset('icons/user.png') }}" class="show-icon"  height = "40" width ="40">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            @auth
+                            {{ Auth::user()->name }}
+                            {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
+                            @endauth
+                            @guest
+                            <img src="{{ asset('icons/guest2.png') }}" class="show-icon" height="40" width="40">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mega-menu">
+
+                            <a href="{{ route('login') }}" class="dropdown-item">
+                                {{ __('Login') }}
+                            </a>
+                            <a href="{{ route('register') }}" class="dropdown-item">
+                                {{ __('Register') }}
+                            </a>
+                            @else
+                            <img src="{{ asset('icons/user.png') }}" class="show-icon" height="40" width="40">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                    {{ __('Logout') }}
+                                </a>
 
-                                    <a class="dropdown-item" href="{{ route('user.wishList') }}"
-                                       >
-                                        {{ __('User Wishlist') }}
-                                    </a>
+                                <a class="dropdown-item" href="{{ route('user.wishList') }}">
+                                    {{ __('User Wishlist') }}
+                                </a>
 
-                                    <a class="dropdown-item" href="{{ route('user.wishList') }}"
-                                       >
-                                        {{ __('User Shopping Cart') }}
-                                    </a>                        
+                                <a class="dropdown-item" href="{{ route('item.cart') }}">
+                                    {{ __('User Shopping Cart') }}
+                                </a>
 
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                                 @endguest
-                                </div>
+                            </div>
                     </li>
 
-                    </ul>
-                </div>
+                </ul>
+            </div>
             <!-- </div> -->
         </nav>
 
         <main class="py-4">
             @yield('content')
-            
+
         </main>
     </div>
-<!-- Footer -->
+    <!-- Footer -->
 
-<!-- Footer -->
+    <!-- Footer -->
     <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}" ></script>
-    <script src="{{ asset('js/bootstrap.js') }}" ></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
     <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" ></script> -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-    @yield('js_role_page') 
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    @yield('js_role_page')
     @yield('js_user_page')
     @yield('scripts')
 </body>
