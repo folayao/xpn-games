@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-// use Laravel\Scout\Searchable;
 class VideoGame extends Model
 {
-    // use Searchable;
     //attributes id, name, price, created_at, updated_at
     public $table = "videogames";
     protected $fillable = ['title', 'category', 'details','price',
@@ -108,7 +106,7 @@ class VideoGame extends Model
     }
 
     public function items(){
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Item::class);
     }
 
     public function wishList()

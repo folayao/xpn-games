@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
  */
 Route::get('/', 'HomeController@index')->name('home');
-/* VideoGame Routes  */
+Route::get('lang/{locale}', 'HomeController@lang');
 
+/* VideoGame Routes  */
 Route::get('/videogames/show/{id}', 'VideoGameController@show')->name('videogame.show');
 Route::get('/videogames/create', 'VideoGameController@create')->name('videogame.create');
 Route::get('/videogames/delete/{id}','VideoGameController@delete')->name("videogame.delete");
 Route::get('/videogames', 'VideoGameController@list')->name('videogame.list');
 Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.save');
-
 Route::post('/videogames/add-to-cart/{id}', 'ItemController@addToCart')->name("item.addToCart");
+
+/* Cart Routes  */
 Route::get('/cart/remove', 'ItemController@removeCart')->name("item.removeCart");
 Route::get('/cart/cart', 'ItemController@cart')->name("item.cart");
 Route::post('/cart/buy', 'OrderController@buy')->name("order.buy");

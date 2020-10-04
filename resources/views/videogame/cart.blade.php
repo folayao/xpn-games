@@ -11,12 +11,10 @@
                     @foreach($data["videogames"] as $videogame)
                     <div class="card mt-3">
                         <div class="card-body">
-                            <b>Nombre: {{ $videogame->getTitle() }}</b> <br>
-                            <b>Precio: {{ $videogame->getPrice() }}</b><br>
-                            <b>Cantidad: {{ Session::get('videogames')[$videogame->getId()] }}</b><br>
-                            
+                            <b>{{__('messages.videogame.name')}}: {{ $videogame->getTitle() }}</b> <br>
+                            <b>{{__('messages.videogame.price')}}: {{ $videogame->getPrice() }}</b><br>
+                            <b>{{__('messages.cart.quantity')}}: {{ Session::get('videogames')[$videogame->getId()] }}</b><br>
                         </div>
-
                     </div>
                     @endforeach
                     <br /><br />
@@ -24,7 +22,7 @@
                     <form action="{{ route('order.buy') }}" method="POST">
                         @csrf
                         <input type="hidden" name="user_id" id="user_id" value="{{ $data['user_id']}}" />
-                        <button class="btn btn-primary" type="submit">Buy</button>
+                        <button class="btn btn-primary" type="submit">{{__('messages.cart.buy')}}</button>
                     </form>
                 </ul>
             </div>

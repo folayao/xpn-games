@@ -17,51 +17,51 @@
 <form method="POST" action="/users/{{ $user->id }}" enctype="multipart/form-data">
     @method('PATCH')
     @csrf()
-    
+
     <div class="form-group">
-        <label for="name">User name</label>
+        <label for="name">{{__('messages.user.name')}}</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Name..." value="{{ $user->name }}" required>
     </div>
     <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">{{__('messages.user.email')}}</label>
         <input type="email" name="email" class="form-control" id="email" placeholder="Email..." value="{{ $user->email }}">
     </div>
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">{{__('messages.user.username')}}</label>
         <input type="username" name="username" class="form-control" id="username" placeholder="Username..." value="{{$user->username}}" >
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">{{__('messages.user.password')}}</label>
         <input type="password" name="password" class="form-control" id="password" placeholder="Password..." minlength="8">
     </div>
     <div class="form-group">
-        <label for="password_confirmation">Password Confirm</label>
+        <label for="password_confirmation">{{__('messages.user.confirmPasswd')}}</label>
         <input type="password" name="password_confirmation" class="form-control" placeholder="Password..." id="password_confirmation" >
     </div>
-    
+
     <div class="form-group">
-        <label for="role">Select Role</label>
+        <label for="role">{{__('messages.admin.roles.selectRole')}}</label>
         <select class="role form-control" name="role" id="role">
-            <option value="">Select Role...</option>
+            <option value="">{{__('messages.admin.roles.selectRole')}}...</option>
             @foreach ($roles as $role)
-                <option data-role-id="{{$role->id}}" data-role-slug="{{$role->slug}}" value="{{$role->id}}" {{ $user->roles->isEmpty() || $role->name != $userRole->name ? "" : "selected"}}>{{$role->name}}</option>                
+                <option data-role-id="{{$role->id}}" data-role-slug="{{$role->slug}}" value="{{$role->id}}" {{ $user->roles->isEmpty() || $role->name != $userRole->name ? "" : "selected"}}>{{$role->name}}</option>
             @endforeach
-        </select>          
+        </select>
     </div>
 
     <div id="permissions_box" >
-        <label for="roles">Select Permissions</label>        
-        <div id="permissions_ckeckbox_list">                    
+        <label for="roles">{{__('messages.admin.roles.selectPermissions')}}</label>
+        <div id="permissions_ckeckbox_list">
         </div>
-    </div>   
+    </div>
 
     @if($user->permissions->isNotEmpty())
         @if($rolePermissions != null)
             <div id="user_permissions_box" >
                 <label for="roles">User Permissions</label>
-                <div id="user_permissions_ckeckbox_list">                    
+                <div id="user_permissions_ckeckbox_list">
                     @foreach ($rolePermissions as $permission)
-                    <div class="custom-control custom-checkbox">                         
+                    <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" name="permissions[]" id="{{$permission->slug}}" value="{{$permission->id}}" {{ in_array($permission->id, $userPermissions->pluck('id')->toArray() ) ? 'checked="checked"' : '' }}>
                         <label class="custom-control-label" for="{{$permission->slug}}">{{$permission->name}}</label>
                     </div>
@@ -73,7 +73,7 @@
 
 
     <div class="form-group pt-2">
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="{{__('messages.submit')}}">
     </div>
 </form>
 
@@ -87,7 +87,7 @@
             var user_permissions_ckeckbox_list = $('#user_permissions_ckeckbox_list');
             permissions_box.hide(); // hide all boxes
             $('#role').on('change', function() {
-                var role = $(this).find(':selected');    
+                var role = $(this).find(':selected');
                 var role_id = role.data('role-id');
                 var role_slug = role.data('role-slug');
                 permissions_ckeckbox_list.empty();
@@ -101,14 +101,14 @@
                         role_slug: role_slug,
                     }
                 }).done(function(data) {
-                    
+
                     console.log(data);
-                    
-                    permissions_box.show();                        
+
+                    permissions_box.show();
                     // permissions_ckeckbox_list.empty();
                     $.each(data, function(index, element){
-                        $(permissions_ckeckbox_list).append(       
-                            '<div class="custom-control custom-checkbox">'+                         
+                        $(permissions_ckeckbox_list).append(
+                            '<div class="custom-control custom-checkbox">'+
                                 '<input class="custom-control-input" type="checkbox" name="permissions[]" id="'+ element.slug +'" value="'+ element.id +'">' +
                                 '<label class="custom-control-label" for="'+ element.slug +'">'+ element.name +'</label>'+
                             '</div>'

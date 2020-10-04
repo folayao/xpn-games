@@ -1,7 +1,7 @@
 @extends('layouts.header')
 @section('content')
 
-<h1>Create new role</h1>
+<h1>{{__('messages.admin.roles.create')}}</h1>
 
 @if($errors->any())
     <div class="alert alert-danger" role="alert">
@@ -18,19 +18,19 @@
 {{ csrf_field()}}
 
 <div class="form-group">
-    <label for="role_name">Role name</label>
+    <label for="role_name">{{__('messages.admin.roles.name')}}</label>
     <input type="text" name="role_name" id="role_name" class="form-control" placeholder="Role name ..." value="{{old('role_name')}}" >
 </div>
 <div class="form-group">
-    <label for="role_name">Role slug</label>
+    <label for="role_name">{{__('messages.admin.roles.slug')}}</label>
     <input type="text" name="role_slug" id="role_slug" class="form-control" placeholder="Role slug ..." value="{{old('role_slug')}}" >
 </div>
 <div class="form-group" >
-        <label for="roles_permissions">Add Permissions</label>
-        <input type="text" data-role="tagsinput" name="roles_permissions" class="form-control" id="roles_permissions" value="{{ old('roles_permissions') }}">   
-    </div> 
+        <label for="roles_permissions">{{__('messages.admin.roles.addPermissions')}}</label>
+        <input type="text" data-role="tagsinput" name="roles_permissions" class="form-control" id="roles_permissions" value="{{ old('roles_permissions') }}">
+    </div>
 <div class="form-group pt-2">
-    <input type="submit" class="btn btn-primary" value="submit">
+    <input type="submit" class="btn btn-primary" value="{{__('messages.submit')}}">
 </div>
 </form>
 
@@ -48,7 +48,7 @@
                 $('#role_slug').attr('placeholder', str);
             });
         });
-        
+
     </script>
     @endsection
 @endsection

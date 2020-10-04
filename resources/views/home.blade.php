@@ -19,10 +19,10 @@
             <div class="col mt-5 mb-5">
             
                 <h1>
-                    Best Games In Town!!
+                    {{__('messages.home.title')}}
                 </h1>
                 <div class="publish_text">
-                    Welcome to XPN-Games where your dreams come true. Come by, purchase a game, whatch a gameplay. Or do wathever you want. Enjoy!!
+                    {{__('messages.home.welcome')}}
                 </div>
             </div>
         </div>
