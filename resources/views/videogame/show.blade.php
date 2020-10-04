@@ -123,7 +123,7 @@
                 </form>
             @else
                 @foreach(auth()->user()->wishlists as $wishlist)
-                    <form method="POST" action="{{ route('wishList.addToWishlist', ['id' => $wishlist->getId()]) }}">
+                    <form method="POST" action="{{ route('wishlist.addToWish_list', ['id' => $wishlist->getId()]) }}">
                         @csrf
                         <div class="container">
                             <div class="row">

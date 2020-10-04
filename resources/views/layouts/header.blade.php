@@ -106,7 +106,7 @@
                                 {{ __('messages.register') }}
                             </a>
                             @else
-                            <img src="{{ asset('icons/user.png') }}" class="show-icon" height="40" width="40">
+                            <img src="{{ asset('icons/user_icons/user.png') }}" class="show-icon" height="40" width="40">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -114,7 +114,7 @@
                                     {{ __('messages.logout') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('user.wishList') }}">
+                                <a class="dropdown-item" href="{{ route('user.settings', [ 'username' => auth()->user()->username])  }}">
                                     {{ __('messages.wishlist.show') }}
                                 </a>
 
@@ -141,9 +141,8 @@
 
         <div class="row" id="main">
             @yield('content')
-            
-            
         </div>
+
         <footer class="row">
             @include('layouts.footer')
         </footer>

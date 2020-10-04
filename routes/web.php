@@ -30,7 +30,7 @@ Route::post('/cart/buy', 'OrderController@buy')->name("order.buy");
 
 Route::post('/comment/save', 'CommentController@save')->name("comment.save");
 Route::post('/wishList/save', 'WishListController@store')->name("wishList.store");
-Route::post('/wishList/add/{id}', 'WishListController@wishlistAdd')->name("wishlist.wishlistAdd");
+Route::post('/wishList/add/{id}', 'WishListController@wishlistAdd')->name("wishlist.addToWish_list");
 Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
 Route::get('/role/destroy/{id}', 'RolesController@destroy')->name("role.destroy");
 Route::get('/user/destroy/{id}', 'UserController@destroy')->name("user.destroy");
