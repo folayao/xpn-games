@@ -14,20 +14,22 @@ class VideoGameController extends Controller
         $data = [];
         $data["title"] = "List of products";
         $data["videogames"] = VideoGame::all();
-        return view('videogame.list')->with("data", $data);
+        $videogame = VideoGame::paginate(9);
+        // return view('videogame.list')->with("data", $data);
+        return view('videogame.list', ["videogames" => $videogame]);
     }
-    /* Sho */
+
     public function show($id)
     {
         $data = [];
         $videogame = VideoGame::findOrFail($id);
         // $data["title"] = $videogame->getTitle();
         $data["videogame"] = $videogame;
-        $data['comments'] = Comment::all();  //No sé si debería pasar todo ???
+        $data['comments'] = Comment::all();  //No se debería pasar todo
         if(auth()->user() == null){
-         $data['user_id'] = 0;
+            $data['user_id'] = 0;
         }else{
-        $data['user_id'] = auth()->user()->id;
+            $data['user_id'] = auth()->user()->id;
         }
         return view('videogame.show')->with("data", $data);
     }

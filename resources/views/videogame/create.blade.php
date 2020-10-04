@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @include('util.message')
             <div class="card">
-                <div class="card-header">Create VideoGame</div>
+                <div class="card-header">{{__('messages.admin.videogame.create')}}</div>
                 <div class="card-body">
                     @if ($errors->any())
                         <ul id="errors">
@@ -17,21 +17,21 @@
                     @endif
                     <form method="POST" action="{{ route('videogame.save') }}">
                         @csrf
-                        <input class="mt-2" type="text" placeholder="Enter title" name="title"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.title')}}" name="title"
                             value="{{ old('title') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="Enter price" name="price"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.price')}}" name="price"
                             value="{{ old('price') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="Enter category" name="category"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.category')}}" name="category"
                             value="{{ old('category') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="Enter designer" name="designer"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.designer')}}" name="designer"
                             value="{{ old('designer') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="Enter pegy" name="pg"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.PG')}}" name="pg"
                             value="{{ old('pg') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="Enter detail" name="details"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.details')}}" name="details"
                             value="{{ old('detail') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="Enter keyword" name="keyword"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.keyword')}}" name="keyword"
                             value="{{ old('keyword') }}" /><br>
-                        <input class="mt-2 btn btn-success" type="submit" value="Send" />
+                        <input class="mt-2 btn btn-success" type="submit" value="{{__('messages.submit')}}" />
                     </form>
                 </div>
 

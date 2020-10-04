@@ -4503,7 +4503,10 @@ input[type="button"].btn-block {
   justify-content: space-between;
   padding: 0.5rem 1rem;
 }
+.navbar .container-md, .navbar .container-sm{
+background-color: beige;
 
+}
 .navbar .container,
 .navbar .container-fluid,
 .navbar .container-sm,
@@ -4601,6 +4604,7 @@ input[type="button"].btn-block {
   .navbar-expand-sm {
     flex-flow: row nowrap;
     justify-content: flex-start;
+    
   }
 
   .navbar-expand-sm .navbar-nav {
@@ -10902,7 +10906,7 @@ a.text-dark:focus {
   }
 }
 
-
+/* 
 body::-webkit-scrollbar{
   width: 25px;
 }
@@ -10920,5 +10924,9 @@ body::-webkit-scrollbar-thumb {
   border-radius: 3px;
   
   -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
-}
+} */
 
+/* body{
+  background: url('../images/h.jpg') ;
+
+} */

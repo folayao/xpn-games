@@ -1,0 +1,71 @@
+body{
+    background-color: black;
+
+}
+#wishListModal{
+    background-color: hsla(184,98%,83%,0.4);
+    border: blue;
+
+}
+
+.modal-header{
+    background-color: black;
+    color: #ff0077;
+}
+
+.modal-content{
+    background-color: black;
+    color: #ff0077;
+}
+
+#close_button{
+    background-color: black ;
+    border: 1px solid #ff0077;
+    color: #ff0077;
+}
+
+#close_button:hover {
+    background-color:#ff0077 ;
+    color: black;
+}
+
+#closeIcon {
+    color:#ff0077;
+}
+
+#create_wish_list{
+    background-color: black ;
+    border: 1px solid #FF9000;
+    color:#FF9000;
+
+}
+#create_wish_list:hover{
+    background-color: #FF9000 ;
+    border: 1px solid #FF9000;
+    color: black;
+
+}
+#create_wish{
+    background-color: black ;
+    border: 1px solid aqua;
+    color:aqua;
+
+}
+#create_wish:hover{
+    background-color: aqua ;
+    border: 1px solid aqua;
+    color: black;
+
+}
+.card, .card-body {
+    background-color: black;
+    border: 1px solid aqua;
+    color: white;
+}
+.card-title, .card-label{
+    color: #FF9000;
+}
+
+small, .add-comments{
+    color: #FF9000;
+}

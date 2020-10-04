@@ -9,6 +9,7 @@ body{
 .card > .card-body{
     background-color: #240644;
     border-radius: 5px;
+    color: white;
 }
 
 .card > .card-header {

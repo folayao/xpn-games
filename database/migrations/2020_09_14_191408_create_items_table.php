@@ -16,8 +16,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->bigInteger('videogame_id')->unsigned();
-            $table->foreign('videogame_id')->references('id')->on('videogames');
+            $table->bigInteger('video_game_id')->unsigned();
+            $table->foreign('video_game_id')->references('id')->on('videogames');
             $table->bigInteger('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();

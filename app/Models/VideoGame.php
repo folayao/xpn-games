@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-
 class VideoGame extends Model
 {
     //attributes id, name, price, created_at, updated_at
@@ -107,7 +106,12 @@ class VideoGame extends Model
     }
 
     public function items(){
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Item::class);
+    }
+
+    public function wishList()
+    {
+        return $this->belongsToMany(WishList::class,'wishlists_videogames');
     }
 
 }

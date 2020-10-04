@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('/home', 'HomeController@index')->name('home.index');
+Route::get('/', 'HomeController@index')->name('home');
 /* VideoGame Routes  */
+
 Route::get('/videogames/show/{id}', 'VideoGameController@show')->name('videogame.show');
 Route::get('/videogames/create', 'VideoGameController@create')->name('videogame.create');
 Route::get('/videogames/delete/{id}','VideoGameController@delete')->name("videogame.delete");
-Route::get('/', 'VideoGameController@list')->name('videogame.list');
+Route::get('/videogames', 'VideoGameController@list')->name('videogame.list');
 Route::post('/videogames/save', 'VideoGameController@save')->name('videogame.save');
 
 Route::post('/videogames/add-to-cart/{id}', 'ItemController@addToCart')->name("item.addToCart");
@@ -27,11 +28,11 @@ Route::post('/cart/buy', 'OrderController@buy')->name("order.buy");
 
 Route::post('/comment/save', 'CommentController@save')->name("comment.save");
 Route::post('/wishList/save', 'WishListController@store')->name("wishList.store");
+Route::post('/wishList/add/{id}', 'WishListController@addToWishlist')->name("wishList.addToWishlist");
 Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
 Route::get('/role/destroy/{id}', 'RolesController@destroy')->name("role.destroy");
 Route::get('/user/destroy/{id}', 'UserController@destroy')->name("user.destroy");
-Route::resource('posts', 'PostsController');
-Route::resource('users', 'UserController');
+Route::resource('users', 'UserController')->middleware('can:isAdmin');
 Route::resource('roles', 'RolesController')->middleware('can:isAdmin');
 Route::get('dataTableUser' ,'UserController@dataTable')->name('dataTable');
 
