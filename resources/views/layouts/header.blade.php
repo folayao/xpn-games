@@ -64,6 +64,27 @@
                 <!-- Right Side Of Navbar -->
 
                 <ul class="navbar-nav ml-auto">
+
+
+                    @php $locale = session()->get('locale'); @endphp
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Language <span class="caret"></span>
+                            </a>
+                            {{-- @switch($locale)
+                                @case('es')
+                                <img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish
+                                @break
+                                @default
+                                <img src="{{asset('images/us.png')}}" width="30px" height="20x"> English
+                            @endswitch --}}
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="lang/en"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> English</a>
+                                <a class="dropdown-item" href="lang/es"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish</a>
+                            </div>
+                        </li>
+
+
                     <li class="nav-item dropdown">
                     <li>
                         <form class="form-inline my-2 my-lg-0 " id="navbar-search">
