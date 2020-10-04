@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Laravel\Scout\Searchable;
+// use Laravel\Scout\Searchable;
 class VideoGame extends Model
 {
-    use Searchable;
+    // use Searchable;
     //attributes id, name, price, created_at, updated_at
     public $table = "videogames";
     protected $fillable = ['title', 'category', 'details','price',

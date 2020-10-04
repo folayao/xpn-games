@@ -136,4 +136,8 @@ class UserController extends Controller
         return view('admin.users.index',['users' => $users]);
     }
 
+    public function userSettings(){
+        return view('user.user_settings');
+
+    }
 }

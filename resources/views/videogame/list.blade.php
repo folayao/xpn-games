@@ -1,4 +1,5 @@
 @extends('layouts.header')
+@section('title', "Video Game List")
 @section('content')
 
 <link href="{{ asset('css/list.css') }}" rel="stylesheet">
@@ -22,9 +23,9 @@
                     </a>
                     <span class="product-trend-label">NEW</span>
                     <ul class="social">
-                        <li><a href="" data-toggle="tooltip" data-placement="right"title="Add to cart"><img class="game_options" src="{{ asset('icons/cartt.png') }}" width="40" height='40'></a></li>
-                        <li><a href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}" data-tip="Show me more" data-toggle="tooltip" data-placement="right"title="Show more info"><img class="game_options" src="{{ asset('icons/info.png') }}" width="40" height='40'></a></li>
-                        <li><a href="" data-tip="Wishlist" data-toggle="tooltip" data-placement="right"title="Add to wishlist"><img class="game_options" src="{{ asset('icons/add.png') }}" width="40" height='40'></a></li>
+                        <li><a href="" data-toggle="tooltip" data-placement="right"title="Add to cart"><img class="game_options" src="{{ asset('icons/game_icons/cart.png') }}" width="40" height='40'></a></li>
+                        <li><a href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}" data-tip="Show me more" data-toggle="tooltip" data-placement="right"title="Show more info"><img class="game_options" src="{{ asset('icons/game_icons/info.png') }}" width="40" height='40'></a></li>
+                        <li><a href="" data-tip="Wishlist" data-toggle="tooltip" data-placement="right"title="Add to wishlist"><img class="game_options" src="{{ asset('icons/game_icons/wishlist.png') }}" width="40" height='40'></a></li>
                         @can('isAdmin')
                         <li><a href=""data-toggle="tooltip" data-placement="right" title="delete"><img class="game_options" src="{{ asset('icons/deletee.png') }}"></a></li>
                         @endcan

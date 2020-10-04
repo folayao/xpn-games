@@ -39,9 +39,11 @@ class WishListController extends Controller
         return back()->with('success', 'Item Created Succesfully');
     }
 
-    public function addToWishlist(Request $request,$id)
-    {
+    public function wishlistAdd(Request $request,$id)
+    {   
+        
         $wishlist = WishList::find($id);
+        
         $wishlist -> videogames() -> attach($request -> videogame);
         return back()->with('success', 'Item Added to wishlist');
     }
