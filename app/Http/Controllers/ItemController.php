@@ -26,11 +26,20 @@ class ItemController extends Controller
     public function cart(Request $request)
     {
         $videogames = $request->session()->get("videogames");
+        $totalPrice = 0;
         if($videogames){
+            $keys = array_keys($videogames);
+            for($i=0;$i<count($keys);$i++){
+                $actualVideoGame = VideoGame::find($keys[$i]);
+                $totalPrice = $totalPrice + $actualVideoGame->getPrice()*$videogames[$keys[$i]];
+            }
             $keys = array_keys($videogames);
             $videogamesModels = VideoGame::find($keys);
             $data["videogames"] = $videogamesModels;
             $data["user_id"] = auth()->user()->id;
+            $data["total_price"] = $totalPrice;
+    
+            
             return view('videogame.cart')->with("data",$data);
         }
         return redirect()->route('videogame.list');

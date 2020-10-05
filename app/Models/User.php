@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    use Notifiable, UserRelations;
+    use Notifiable;
 
     protected $table = "users";
 
@@ -30,5 +30,26 @@ class User extends Authenticatable
     public function setId($id)
     {
         $this->attributes['id'] = $id;
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'users_roles');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'users_permissions');
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany(WishList::class,'users_wishlists');
     }
 }

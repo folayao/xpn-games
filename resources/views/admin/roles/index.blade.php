@@ -2,7 +2,7 @@
 
 @section('content')
 @can('isAdmin')
-<link href="{{ asset('css/list.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('css/list.css') }}" rel="stylesheet"> -->
         <div class="card-header">
             <i class="fas fa-table"></i>
             {{__('messages.admin.roles.table')}}

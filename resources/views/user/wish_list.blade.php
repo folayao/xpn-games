@@ -1,15 +1,16 @@
-@if(auth()->user()->wishlists->first() != null)
+@if(auth()->user()->orders->first() != null)
 
-@foreach(auth()->user()->wishlists as $wishlist)
+@foreach(auth()->user()->orders as $wishlist)
     <div class="row">
             <div class="col">
-                <a href="">{{$wishlist->getName()}}</a>
+                <a href="">{{$wishlist->getTotal()}}</a>
             </div>
     </div>
 
 
 @endforeach
-
+@else
+no hay orden
     <div class="row">
 
     <div class="col">

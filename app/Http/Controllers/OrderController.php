@@ -27,13 +27,11 @@ class OrderController extends Controller
                 $item->setOrderId($order->getId());
                 $item->setQuantity($videogame[$keys[$i]]);
                 $item->save();
-                $actualVideoGame = VideoGame::find($keys[$i]);
-                $totalPrice = $totalPrice + $actualVideoGame->getPrice()*$videogame[$keys[$i]];
             }
 
-            $order->setTotal($totalPrice);
+            $order->setTotal($request->total);
             $order->save();
-
+            auth()->user()->orders()->save($order);
             $request->session()->forget('videogames');
         }
 

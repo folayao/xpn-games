@@ -63,7 +63,7 @@
 
 
                     @php $locale = session()->get('locale'); @endphp
-                        <li class="nav-item dropdown">
+                        <li class=" dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Language <span class="caret"></span>
                             </a>
@@ -81,14 +81,14 @@
                         </li>
 
 
-                    <li class="nav-item dropdown">
+                    <li class="dropdown">
                     <li>
                         <form class="form-inline my-2 my-lg-0 " id="navbar-search">
                             <input class="form-control mr-2" type="search" placeholder="{{__('messages.searchVideogame')}}..." aria-label="Search">
                             <button class="btn btn-outline-success " type="submit">{{__('messages.search')}}</button>
                         </form>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                             @auth
                             {{ Auth::user()->name }}
