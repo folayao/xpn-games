@@ -74,7 +74,7 @@ class WishListController extends Controller
      * @param  \App\Models\wishList  $wishList
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         try {
             $videogame = VideoGame::findOrFail($id);

@@ -1,9 +1,9 @@
 @extends('layouts.header')
 @section("title", "Home")
 @section('content')
-@section('home_css')
+
 <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-@endsection
+
 
 <body onmouseover="mario.stop()">
     <div class="container">
@@ -11,10 +11,7 @@
             <div class="col">
             <div class="home-img">
 
-                <img class="home-image" src="{{ asset('images/yoshi.png') }}" alt=""></div>
-                
-
-                
+                <img class="home-image" src="{{ asset('images/yoshi.png') }}" alt=""></div>       
             </div>
             <div class="col mt-5 mb-5">
             

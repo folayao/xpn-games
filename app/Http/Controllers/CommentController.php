@@ -16,8 +16,8 @@ class CommentController extends Controller {
     }
 
 
-    // Falta implementar el destroy
-    public function destroy($id) {
+    // Falta implementar el delete
+    public function delete($id) {
         $comment = Comment::find($id);
         $comment->delete();
 

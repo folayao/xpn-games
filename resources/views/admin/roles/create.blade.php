@@ -34,9 +34,9 @@
 </div>
 </form>
 
-@section('css_role_page')
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
-@endsection
+
 @section('js_role_page')
     <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
     <script>

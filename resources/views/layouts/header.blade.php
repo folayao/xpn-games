@@ -17,11 +17,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css">
-    @yield('home_css')
-    @yield('css_role_page')
-    @yield('video_game_show_css')
-    @yield('user_settings_css')
+    <!-- <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css"> -->
+
 </head>
 
 <body>
@@ -63,7 +60,7 @@
 
 
                     @php $locale = session()->get('locale'); @endphp
-                        <li class=" dropdown">
+                        <li class=" dropdown mega-menu">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Language <span class="caret"></span>
                             </a>
@@ -74,9 +71,9 @@
                                 @default
                                 <img src="{{asset('images/us.png')}}" width="30px" height="20x"> English
                             @endswitch --}}
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="lang/en"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> English</a>
-                                <a class="dropdown-item" href="lang/es"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish</a>
+                            <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('/lang/en') }}"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> English</a>
+                                <a class="dropdown-item" href="{{ url('/lang/es') }}"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish</a>
                             </div>
                         </li>
 
@@ -86,7 +83,7 @@
                         <form class="form-inline my-2 my-lg-0 " id="navbar-search">
                             <input class="form-control mr-2" type="search" placeholder="{{__('messages.searchVideogame')}}..." aria-label="Search">
                             <button class="btn btn-outline-success " type="submit">{{__('messages.search')}}</button>
-                        </form>
+                        </form> 
                     </li>
                     <li class="dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">

@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row addgame">
         @can('isAdmin')
-        <div class="col-md-2 float-right">
-            <a href="/videogames/create"><img src="{{ asset('icons/addgame.png') }}"
+        <div class="col-md-6 float-right mb-3">
+            <a href="/videogames/create"><img height="40" width="auto" src="{{ asset('icons/game_icons/create.png') }}"
                 class="show-icon"> {{__('messages.admin.videogame.add')}}
             </a>
         </div>
@@ -27,20 +27,20 @@
                     <span class="product-trend-label">{{__('messages.new')}}</span>
                     <ul class="social">
                         <li><a href="" data-toggle="tooltip" data-placement="right" title="{{__('messages.cart.add')}}">
-                            <img class="game_options" src="{{ asset('icons/cartt.png') }}" width="40" height='40'></a>
+                            <img class="game_options" src="{{ asset('icons/game_icons/cart.png') }}" width="40" height='40'></a>
                         </li>
                         <li><a href="{{ route('videogame.show', ['id' => $videogame->getId()]) }}"
                                 data-tip="Show me more" data-toggle="tooltip" data-placement="right"
-                                title="{{__('messages.videogame.info')}}"><img class="game_options" src="{{ asset('icons/info.png') }}"
+                                title="{{__('messages.videogame.info')}}"><img class="game_options" src="{{ asset('icons/game_icons/info.png') }}"
                                     width="40" height='40'></a>
                         </li>
                         <li><a href="" data-tip="Wishlist" data-toggle="tooltip" data-placement="right"
-                                title="{{__('messages.wishlist.add')}}"><img class="game_options" src="{{ asset('icons/add.png') }}"
+                                title="{{__('messages.wishlist.add')}}"><img class="game_options" src="{{ asset('icons/game_icons/wishlist.png') }}"
                                     width="40" height='40'></a>
                         </li>
                         @can('isAdmin')
-                        <li><a href="" data-toggle="tooltip" data-placement="right" title="delete"><img
-                                    class="game_options" src="{{ asset('icons/deletee.png') }}"></a></li>
+                        <li><a href="" data-toggle="tooltip" data-placement="right" title="Delete"><img
+                                    class="game_options" src="{{ asset('icons/admin_icons/delete.png') }}"></a></li>
                         @endcan
                     </ul>
                 </div>

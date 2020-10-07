@@ -70,6 +70,17 @@ return [
         'verificationEmail' => 'Before proceeding, please check your email for a verification link',
         'mailNotReceived'   => 'If you did not receive the email',
         'requestNewLink'    => 'click here to request another',
+        
+        'settings'            => [
+            'info'   => 'Personal Info',
+            'name' => 'Full Name',
+            'edit' => 'Edit your info',
+            'payment_info' => 'Payment Info',
+            'card' => 'Card number',
+            'type_card' => 'Type of card',
+            'balance' => 'Balance',
+            'wishlist' => 'Your wishlists',
+        ],
     ],
     'videogame'       => [
         'name'     => 'Name',
@@ -104,5 +115,6 @@ return [
         'welcome' => 'Welcome to XPN-Games where your dreams come true. Come by, purchase a game, watch a gameplay.
                       Or look whatever you want. Enjoy!!',
     ],
+
 
 ];
