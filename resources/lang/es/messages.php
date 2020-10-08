@@ -110,6 +110,7 @@ return [
         'loginRequired' => 'Debes iniciar sesión para comentar',
         'add'           => 'Escribe tu comentario',
         'create'        => 'Añadir comentario',
+        'posted'        => 'Tu comentario ha sido publicado exitosamente',
     ],
     'home'            => [
         'title'   => 'Los Mejores Videjuegos de la Vida',

@@ -11,7 +11,7 @@ class Comment extends Model
 
     //attributes id, description, created_at, updated_at
 
-    protected $fillable = ['description', 'user_id', 'video_game_id', 'parent_id'];
+    protected $fillable = ['description', 'user_id', 'video_game_id'];
 
     protected $table = 'comments';
 
@@ -51,8 +51,8 @@ class Comment extends Model
         return $this->belongsTo(VideoGame::class);
     }
 
-    public function replies()
-    {
-        return $this->hasMany(Comment::class, 'parent_id');
-    }
+    // public function replies()
+    // {
+    //     return $this->hasMany(Comment::class, 'parent_id');
+    // }
 }

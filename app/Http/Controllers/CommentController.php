@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Lang;
 
 class CommentController extends Controller {
 
@@ -12,7 +13,9 @@ class CommentController extends Controller {
         $data['user_id'] = auth()->user()->id;
         Comment::create($data);
         // Comment::create($request->all());
-        return back();
+        // return back();
+        // return back()->with('success', 'Item Created Succesfully');
+        return back()->with('success', Lang::get('messages.comment.posted'));
     }
 
 

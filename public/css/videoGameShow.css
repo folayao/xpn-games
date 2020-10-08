@@ -65,7 +65,7 @@ body{
 }
 .col-videogame h4{
     color: #555;
-    font-weight: normal;    
+    font-weight: normal;
 }
 .col-videogame img{
     max-width: 400px;
@@ -125,6 +125,12 @@ body{
 .single-videogame input:focus {
 
     border: 1px solid #2d9fd9;
+}
+
+.view-comments {
+    margin: auto;
+    width: 10in;
+
 }
 
 /* .card, .card-body {

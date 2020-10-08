@@ -70,16 +70,16 @@ return [
         'verificationEmail' => 'Before proceeding, please check your email for a verification link',
         'mailNotReceived'   => 'If you did not receive the email',
         'requestNewLink'    => 'click here to request another',
-        
-        'settings'            => [
-            'info'   => 'Personal Info',
-            'name' => 'Full Name',
-            'edit' => 'Edit your info',
+
+        'settings'          => [
+            'info'         => 'Personal Info',
+            'name'         => 'Full Name',
+            'edit'         => 'Edit your info',
             'payment_info' => 'Payment Info',
-            'card' => 'Card number',
-            'type_card' => 'Type of card',
-            'balance' => 'Balance',
-            'wishlist' => 'Your wishlists',
+            'card'         => 'Card number',
+            'type_card'    => 'Type of card',
+            'balance'      => 'Balance',
+            'wishlist'     => 'Your wishlists',
         ],
     ],
     'videogame'       => [
@@ -92,10 +92,10 @@ return [
         'info'     => 'Show more info',
     ],
     'cart'            => [
-        'add'      => 'Add to cart',
-        'quantity' => 'Quantity',
+        'add'        => 'Add to cart',
+        'quantity'   => 'Quantity',
         'totalPrice' => 'Total price',
-        'buy'      => 'Buy',
+        'buy'        => 'Buy',
     ],
     'wishlist'        => [
         'add'      => 'Add to wishlist',
@@ -110,12 +110,12 @@ return [
         'loginRequired' => 'Log in or sign up to leave a comment',
         'add'           => 'Write your comment',
         'create'        => 'Add Comment',
+        'posted'        => 'Your comment has been posted succesfully',
     ],
     'home'            => [
         'title'   => 'Best Games Ever',
         'welcome' => 'Welcome to XPN-Games where your dreams come true. Come by, purchase a game, watch a gameplay.
                       Or look whatever you want. Enjoy!!',
     ],
-
 
 ];

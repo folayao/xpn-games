@@ -22,8 +22,9 @@ class VideoGameController extends Controller
         $data = [];
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
-        
-        $data['comments'] = $videogame->comments();
+
+        // $data['comments'] = $videogame->comments();
+        // dd($data['comments']);
         return view('videogame.show')->with("data", $data);
     }
 
