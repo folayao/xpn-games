@@ -1,13 +1,62 @@
 @extends('layouts.header')
+
 @section('content')
 
-
+<link rel="stylesheet" href="{{ asset('css/videoGameShow.css') }}">
 <!-- Css de esta pagina -->
-@section('video_game_show_css')
-<link rel="stylesheet" href="{{ asset('css/video_game_show.css') }}">
-@endsection
 
-<!-- Inicio de la informacion del producto -->
+    <div class="row row-auto single-videogame">
+        <div class="col col-auto col-videogame">
+            <img src="{{ asset('images/fifa.jpg') }}" >
+        </div>
+        <div class="col col-auto col-videogame">
+            <h1>{{ $data['videogame']->getTitle() }}</h1>
+            <h4>${{ $data['videogame']->getPrice() }}</h4>
+            @guest
+            @else
+            <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
+                @csrf
+                <input type="number" name="quantity" value="1" min="0">
+            <button class="btn btn-videogame" type="submit">{{__('messages.cart.add')}}</button>
+            <button type="button" class="btn btn-wishlist" id="create_wish" data-toggle="modal" data-target="#wishListModal">
+                 {{__('messages.wishlist.add')}}
+                 
+            </button>
+            </form>
+            @endguest
+
+
+            <h3 data-wrap ="wrap[">{{__('messages.videogame.details')}}</h3>
+
+            <p class="details">{{ $data['videogame']->getDetails() }}</p>
+        </div>
+        
+    </div>
+    <div class="row">
+    @include('comment.show', ['comments' => $data['videogame']->comments(), 'video_game_id' =>
+                            $data['videogame']->getId()])
+                            @guest
+                                <small class="initSession">{{__('messages.comment.loginRequired')}}</small>
+                            @else
+
+                            <h4 class="add-comments">{{__('messages.comment.add')}}</h4>
+                            <form method="POST" action="{{ route('comment.save') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="description"></textarea>
+                                    <input type="hidden" name="video_game_id" id="video_game_id"
+                                        value="{{ $data['videogame']->getId() }}" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="{{__('messages.comment.create')}}" />
+                                </div>
+                            </form>
+                            @endguest
+    </div>
+
+
+
+<!-- 
 <div class="container">
     <section class="card-product">
         <div class="container">
@@ -58,7 +107,7 @@
                 </div>
                 <hr />
 
-                <!-- Sección de comentarios -->
+
                 <div id="view-comments">
                     <hr />
                     <div id="view-comments">
@@ -89,7 +138,7 @@
                 </div>
             </div>
     </section>
-</div>
+</div> -->
 
 <!-- pop up modal para elegir wishlist o en caso de no tenerla, crearla -->
 <div class="modal fade" id="wishListModal" tabindex="-1" role="dialog" aria-labelledby="wishListModalLabel"
@@ -146,4 +195,8 @@
         </div>
     </div>
 </div>
+<script>
+    details.style.display = "none";
+
+</script>
 @endsection

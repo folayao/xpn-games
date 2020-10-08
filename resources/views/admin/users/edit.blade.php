@@ -14,14 +14,15 @@
     </div>
 @endif
 
-<form method="POST" action="/users/{{ $user->id }}" enctype="multipart/form-data">
-    @method('PATCH')
+<form method="POST" action="/users/{{ $user->id }}/update">
+    
     @csrf()
 
     <div class="form-group">
         <label for="name">{{__('messages.user.name')}}</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Name..." value="{{ $user->name }}" required>
     </div>
+   
     <div class="form-group">
         <label for="email">{{__('messages.user.email')}}</label>
         <input type="email" name="email" class="form-control" id="email" placeholder="Email..." value="{{ $user->email }}">

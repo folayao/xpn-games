@@ -1,11 +1,13 @@
-<h2 class="add-comments"><b> {{__('messages.comments')}} <br></h2> </b>
-<br>
+
 @foreach($comments as $comment)
     @if ($comment->video_game_id == $data['videogame']->getId())
     {{-- PENDIENTE: Corregir la implementación del style --}}
-        <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
-            <div class="card">
+        <div class="container display-comment">
+            <div class="row">
+             <h2 class="add-comments"><b> {{__('messages.comments')}} <br></h2> </b>
+            </div>
                 <div class="row">
+                
                     <div class="col-sm">
                         <strong>{{ $comment->user->name }}</strong>
                         <p>{{ $comment->description }}</p>
@@ -15,7 +17,7 @@
                         {{-- <a href="" id="reply"></a> --}}
                     </div>
                 </div>
-            </div>
+
         </div>
     @endif
         {{-- <div class="display-comment">

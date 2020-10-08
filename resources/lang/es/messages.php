@@ -71,6 +71,17 @@ return [
         'mailNotReceived'   => 'Si no recibió el correo electrónico',
         'requestNewLink'    => 'haga clic aquí para solicitar otro',
 
+        'settings'            => [
+            'info'   => 'Información personal',
+            'name' => 'Nombre completo',
+            'edit' => 'Edita tu información',
+            'payment_info' => 'Metodo de pago',
+            'card' => 'Numero de tarjeta',
+            'type_card' => 'Tipo de tarjeta',
+            'balance' => 'Balance',
+            'wishlist' => 'Tus listas de deseos',
+        ],
+
     ],
     'videogame'       => [
         'name'     => 'Nombre',
@@ -105,4 +116,5 @@ return [
         'welcome' => 'Bienvenido a XPN-Games, donde tus sueños se hacen realidad. Ven, compra un juego, mira una partida.
                         O busca lo que quieras. ¡Disfruta!',
     ],
+
 ];
