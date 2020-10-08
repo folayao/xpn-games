@@ -16,8 +16,6 @@ class OrderController extends Controller
         $order->user_id = $request->user_id;
         $order->save();
 
-        $totalPrice = 0;
-
         $videogame = $request->session()->get("videogames");
         if($videogame){
             $keys = array_keys($videogame);
@@ -36,5 +34,17 @@ class OrderController extends Controller
         }
 
         return redirect()->route('videogame.list');
+    }
+
+    public function showOrder(Request $id){
+        $data = [];
+        $order = Order::findOrFail($id);
+        $data["order"] = $order;
+        // if(auth()->user() == null){
+        //     $data['user_id'] = 0;
+        // }else{
+        //     $data['user_id'] = auth()->user()->id;
+        // }
+        return view('order.show')->with("data", $data);
     }
 }

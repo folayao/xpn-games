@@ -84,6 +84,7 @@ return [
     'cart'            => [
         'add'      => 'Añadir al carrito',
         'quantity' => 'Cantidad',
+        'totalPrice' => 'Precio total',
         'buy'      => 'Comprar',
     ],
     'wishlist'        => [

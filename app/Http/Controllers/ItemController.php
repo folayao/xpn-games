@@ -14,7 +14,7 @@ class ItemController extends Controller
         $videogames = $request->session()->get("videogames");
         $videogames[$id] = $quantity;
         $request->session()->put('videogames', $videogames);
-        return back();
+        return back()->with('success', 'Product added to cart successfully!');
     }
 
     public function removeCart(Request $request)
@@ -38,9 +38,8 @@ class ItemController extends Controller
             $data["videogames"] = $videogamesModels;
             $data["user_id"] = auth()->user()->id;
             $data["total_price"] = $totalPrice;
-    
-            
-            return view('videogame.cart')->with("data",$data);
+
+            return view('user.cart')->with("data",$data);
         }
         return redirect()->route('videogame.list');
     }

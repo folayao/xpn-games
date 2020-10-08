@@ -83,6 +83,7 @@ return [
     'cart'            => [
         'add'      => 'Add to cart',
         'quantity' => 'Quantity',
+        'totalPrice' => 'Total price',
         'buy'      => 'Buy',
     ],
     'wishlist'        => [
