@@ -5,7 +5,7 @@
 <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
 
-<body onmouseover="mario.stop()">
+<body>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -25,7 +25,7 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-4 align-self-end">
-                <button class="btn" onmouseover="mario.play()" onmouseleave="mario.pause(), mario.currentTime=0;"> 
+                <button class="btn" onmouseover="mario.play()" onmouseleave="mario.pause(), mario.currentTime=0"> 
                 <img src="{{ asset('images/nintendoLogo.png') }}" height='auto' alt="">
                 </button>
                 

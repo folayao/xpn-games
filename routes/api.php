@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/videogames', 'Api\VideoGameApi@index')->name("api.videogame.index");
+Route::get('/videogames/{id}', 'Api\VideoGameApi@show')->name("api.videogame.show");
+
+
+Route::get('/presave', 'Api\VideoGameApi@presave')->name("api.videogame.save");
+Route::post('/videogame/save', 'Api\VideoGameApi@save')->name("api.videogame.save");
