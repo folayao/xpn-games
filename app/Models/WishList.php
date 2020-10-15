@@ -24,5 +24,8 @@ class WishList extends Model
     {
         return $this->attributes['id'];
     }
+    public function setName(){
 
+
+    }
 }

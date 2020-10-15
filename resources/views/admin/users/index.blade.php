@@ -1,7 +1,7 @@
 @extends('layouts.header')
 
 @section('content')
-<link href="{{ asset('css/list.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('css/list.css') }}" rel="stylesheet"> -->
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
@@ -62,11 +62,11 @@
                             @endif
                         </td>
                         <td>
-                            <a href="/users/{{ $user['id'] }}/edit"><img src="{{ asset('icons/edit.png') }}"
+                            <a href="{{ route('user.edit', ['id' => $user->getId()]) }}"><img src="{{ asset('icons/admin_icons/edit.png') }}"
                                     class="show-icon"></i></a>
                             <a href="#" data-toggle="modal" data-target="#deleteModal"
-                                data-roleid="{{$user['id']}}"><img src="{{ asset('icons/trash.png') }}"
-                                    class="show-icon"></i></a>
+                                data-roleid="{{$user['id']}}"><img src="{{ asset('icons/admin_icons/delete.png') }}"
+                                    class="show-icon" width="40" height="auto"></i></a>
                         </td>
                     </tr>
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -83,7 +83,7 @@
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('messages.cancel')}}</button>
                                     <a class="btn btn-primary"
-                                        href="{{ route('user.destroy', ['id' => $user->getId()]) }}">{{__('messages.delete')}}</a>
+                                        href="{{ route('user.delete', ['id' => $user->getId()]) }}">{{__('messages.delete')}}</a>
                                 </div>
                             </div>
                         </div>

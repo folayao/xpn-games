@@ -39,9 +39,11 @@ class WishListController extends Controller
         return back()->with('success', 'Item Created Succesfully');
     }
 
-    public function addToWishlist(Request $request,$id)
-    {
+    public function wishlistAdd(Request $request,$id)
+    {   
+        
         $wishlist = WishList::find($id);
+        
         $wishlist -> videogames() -> attach($request -> videogame);
         return back()->with('success', 'Item Added to wishlist');
     }
@@ -72,7 +74,7 @@ class WishListController extends Controller
      * @param  \App\Models\wishList  $wishList
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         try {
             $videogame = VideoGame::findOrFail($id);

@@ -2,9 +2,8 @@
 
 @section('content')
 @can('isAdmin')
-<link href="{{ asset('css/list.css') }}" rel="stylesheet">
-        <div class="card-header">
-            <i class="fas fa-table"></i>
+<div class="card">
+<div class="card-header">
             {{__('messages.admin.roles.table')}}
             <div class="col-md-2 float-right"><a href="/roles/create"><img src="{{ asset('icons/addRole.png') }}" class="show-icon"></a>{{__('messages.admin.roles.create')}}</div>
         </div>
@@ -61,7 +60,7 @@
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('messages.cancel')}}</button>
                                         {{-- <input type="hidden" id="role_id" name="role_id" value=""> --}}
-                                        <a class="btn btn-primary" href="{{ route('role.destroy', ['id' => $role->getId()]) }}">{{__('messages.delete')}}</a>
+                                        <a class="btn btn-primary" href="{{ route('role.delete', ['id' => $role->getId()]) }}">{{__('messages.delete')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +72,8 @@
             </div>
 
         </div>
+</div>
+       
 
 @endcan
-    <!-- delete Modal-->
-
 @endsection

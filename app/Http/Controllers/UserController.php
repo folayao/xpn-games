@@ -13,7 +13,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id','desc')->get();
-
         return view('admin.users.index',['users' => $users]);
     }
 
@@ -34,13 +33,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //validate the fields
-        $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|unique:users|email|max:255',
-            'username' => 'required|unique:users|max:255',
-            'password' => 'required|between:8,255|confirmed',
-            'password_confirmation' => 'required'
-        ]);
+        User::validateUser($request);
 
         $user = new User;
         $user->name = $request->name;
@@ -65,8 +58,9 @@ class UserController extends Controller
     }
 
 
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
         $roles = Role::get();
         $userRole = $user->roles->first();
         if($userRole != null){
@@ -88,16 +82,12 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
 
         //validate the fields
-        $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'username' => 'required|unique:users|max:255',
-            'password' => 'confirmed',
-        ]);
+        $user=User::find($id);
+        User::validateUser($request);
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -121,10 +111,10 @@ class UserController extends Controller
                 $user->save();
             }
         }
-        return redirect('/users');
+        return back();
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
 
         $user =User::findorfail($id);
@@ -136,4 +126,8 @@ class UserController extends Controller
         return view('admin.users.index',['users' => $users]);
     }
 
+    public function userSettings(){
+        return view('user.user_settings');
+
+    }
 }

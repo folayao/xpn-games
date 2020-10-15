@@ -1,3 +1,4 @@
+
 .btn  {
     background-color: transparent;
 } 
@@ -46,6 +47,8 @@ background-color: black;
    background-color: #240644;
    color: white;
 }
+
+
  /* .row{ 
      background: url('../images/op.jpg')  no-repeat fixed;
 
@@ -53,7 +56,7 @@ background-color: black;
 
 body{ 
    /* background: url('../images/h.jpg')  no-repeat center center; */
-   background-color: black;
+   background-color:#141414;
 }
  h2{
     color: white;
@@ -88,6 +91,7 @@ body{
 
 .product-grid:hover .product-image:before{
    opacity: 1;
+   background-color: hsla(0, 0%, 0%, 0.6);
 }
 
 .product-grid .product-image a{
@@ -97,7 +101,9 @@ body{
    width: 100%;
    height: auto;
 }
-
+.product-grid .product-image img:hover{
+   scale: 1.2; 
+}
 .product-grid .product-image .game_options{
    width: 40px;
 }

@@ -11,21 +11,14 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'XPN-Games') }}</title>
-
-    <!-- Scripts -->
-
+    <title>@yield('title','XPN-Games')</title>
     <!-- css -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css"> -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
-    @yield('home_css')
-    @yield('css_role_page')
-    @yield('video_game_show_css')
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css"> -->
+
 </head>
 
 <body>
@@ -67,7 +60,7 @@
 
 
                     @php $locale = session()->get('locale'); @endphp
-                        <li class="nav-item dropdown">
+                        <li class=" dropdown mega-menu">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Language <span class="caret"></span>
                             </a>
@@ -78,21 +71,21 @@
                                 @default
                                 <img src="{{asset('images/us.png')}}" width="30px" height="20x"> English
                             @endswitch --}}
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="lang/en"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> English</a>
-                                <a class="dropdown-item" href="lang/es"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish</a>
+                            <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('/lang/en') }}"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> English</a>
+                                <a class="dropdown-item" href="{{ url('/lang/es') }}"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish</a>
                             </div>
                         </li>
 
 
-                    <li class="nav-item dropdown">
+                    <li class="dropdown">
                     <li>
                         <form class="form-inline my-2 my-lg-0 " id="navbar-search">
                             <input class="form-control mr-2" type="search" placeholder="{{__('messages.searchVideogame')}}..." aria-label="Search">
                             <button class="btn btn-outline-success " type="submit">{{__('messages.search')}}</button>
-                        </form>
+                        </form> 
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                             @auth
                             {{ Auth::user()->name }}
@@ -110,7 +103,7 @@
                                 {{ __('messages.register') }}
                             </a>
                             @else
-                            <img src="{{ asset('icons/user.png') }}" class="show-icon" height="40" width="40">
+                            <img src="{{ asset('icons/user_icons/user.png') }}" class="show-icon" height="40" width="40">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -118,7 +111,7 @@
                                     {{ __('messages.logout') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('user.wishList') }}">
+                                <a class="dropdown-item" href="{{ route('user.settings', [ 'username' => auth()->user()->username])  }}">
                                     {{ __('messages.wishlist.show') }}
                                 </a>
 
@@ -139,10 +132,17 @@
             <!-- </div> -->
         </nav>
 
-        <main class="py-4">
-            @yield('content')
 
-        </main>
+    <div class="container" id="app">
+
+
+        <div class="row" id="main">
+            @yield('content')
+        </div>
+
+        <footer class="row">
+            @include('layouts.footer')
+        </footer>
     </div>
     <!-- Footer -->
 
@@ -155,7 +155,9 @@
     </script>
     @yield('js_role_page')
     @yield('js_user_page')
+    @yield('home_music_js')
     @yield('scripts')
+    @yield('user_settings_scripts')
 </body>
 <!-- Footer -->
 

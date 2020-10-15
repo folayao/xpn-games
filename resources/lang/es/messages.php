@@ -71,6 +71,17 @@ return [
         'mailNotReceived'   => 'Si no recibió el correo electrónico',
         'requestNewLink'    => 'haga clic aquí para solicitar otro',
 
+        'settings'            => [
+            'info'   => 'Información personal',
+            'name' => 'Nombre completo',
+            'edit' => 'Edita tu información',
+            'payment_info' => 'Metodo de pago',
+            'card' => 'Numero de tarjeta',
+            'type_card' => 'Tipo de tarjeta',
+            'balance' => 'Balance',
+            'wishlist' => 'Tus listas de deseos',
+        ],
+
     ],
     'videogame'       => [
         'name'     => 'Nombre',
@@ -84,6 +95,7 @@ return [
     'cart'            => [
         'add'      => 'Añadir al carrito',
         'quantity' => 'Cantidad',
+        'totalPrice' => 'Precio total',
         'buy'      => 'Comprar',
     ],
     'wishlist'        => [
@@ -98,10 +110,12 @@ return [
         'loginRequired' => 'Debes iniciar sesión para comentar',
         'add'           => 'Escribe tu comentario',
         'create'        => 'Añadir comentario',
+        'posted'        => 'Tu comentario ha sido publicado exitosamente',
     ],
     'home'            => [
         'title'   => 'Los Mejores Videjuegos de la Vida',
         'welcome' => 'Bienvenido a XPN-Games, donde tus sueños se hacen realidad. Ven, compra un juego, mira una partida.
                         O busca lo que quieras. ¡Disfruta!',
     ],
+
 ];
