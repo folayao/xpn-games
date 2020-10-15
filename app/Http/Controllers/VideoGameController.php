@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\VideoGame;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class VideoGameController extends Controller
@@ -12,9 +13,17 @@ class VideoGameController extends Controller
     /* List the products */
     function list() {
         $data = [];
+        $videogames = VideoGame::orderBy('created_at','desc')->paginate(20);
 
-        $videogame = VideoGame::paginate(20);
-        return view('videogame.list', ["videogames" => $videogame]);
+        $date = Carbon::today()->subDays(3);
+        $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
+
+        $data["videogames"] = $videogames;
+        $data["latestVG"] = $latestVideogames;
+        $data["quantityNewVG"] = sizeof($data["latestVG"]);
+
+        return view('videogame.list')->with("data", $data);
+
     }
 
     public function show($id)

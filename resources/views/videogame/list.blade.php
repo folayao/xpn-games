@@ -17,14 +17,21 @@
 
 <div class="container">
     <div class="row mr-5 ml-5">
-        @foreach ($videogames as $videogame)
+        @foreach ($data["videogames"] as $videogame)
         <div class="col-md-4 col-sm-6 ">
             <div class="product-grid">
                 <div class="product-image">
                     <a href="">
                         <img src="{{ asset('images/fifa.jpg') }}" alt="Card image cap" width="200" height='200'>
                     </a>
-                    <span class="product-trend-label">{{__('messages.new')}}</span>
+
+                    @if ($loop->iteration <= $data["quantityNewVG"])
+                        <span class="product-trend-label">
+                            {{__('messages.new')}}
+                        </span>
+
+                    @endif
+
                     <ul class="social">
                         <li><a href="" data-toggle="tooltip" data-placement="right" title="{{__('messages.cart.add')}}">
                             <img class="game_options" src="{{ asset('icons/game_icons/cart.png') }}" width="40" height='40'></a>
@@ -58,7 +65,7 @@
 
     </div>
 </div>
-{{$videogames->links()}}
+{{$data["videogames"]->links()}}
 
 
 @endsection

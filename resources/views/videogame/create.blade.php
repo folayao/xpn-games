@@ -25,7 +25,7 @@
                             value="{{ old('category') }}" /><br>
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.designer')}}" name="designer"
                             value="{{ old('designer') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.PG')}}" name="pg"
+                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.pg')}}" name="pg"
                             value="{{ old('pg') }}" /><br>
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.details')}}" name="details"
                             value="{{ old('detail') }}" /><br>
