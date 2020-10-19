@@ -16,7 +16,7 @@
             <td>
 
                 <div class="cart-info">
-                    <img src="{{ asset('images/fifa.jpg') }}" >
+                    <img src="{{ $videogame ->getImage()}}" >
                     <div>
                         <p>{{ $videogame->getTitle() }}</p>
                         <small>
@@ -35,10 +35,6 @@
     </table>
     <div class="total-price">
         <table>
-            <tr>
-                <td>{{__('messages.home.welcome')}}</td>
-                <td>{{ $videogame->getPrice() }}</td>
-            </tr>
 
             <tr>
                 <td>{{__('messages.home.welcome')}}</td>

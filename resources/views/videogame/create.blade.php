@@ -15,7 +15,7 @@
                             @endforeach
                         </ul>
                     @endif
-                    <form method="POST" action="{{ route('videogame.save') }}">
+                    <form method="POST" action="{{ route('videogame.save') }}" enctype="multipart/form-data">
                         @csrf
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.title')}}" name="title"
                             value="{{ old('title') }}" /><br>
@@ -31,6 +31,8 @@
                             value="{{ old('detail') }}" /><br>
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.keyword')}}" name="keyword"
                             value="{{ old('keyword') }}" /><br>
+                        <input class="mt-2 btn btn-success" type="file" name="gameImage" value="file" />
+
                         <input class="mt-2 btn btn-success" type="submit" value="{{__('messages.submit')}}" />
                     </form>
                 </div>

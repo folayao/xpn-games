@@ -53,24 +53,30 @@ body{
     justify-content: space-around;
 }
 .col-videogame{
-    flex-basis:50%;
     min-width: 300px;
+    margin-right: 5px;
 }
 
 .col-videogame h1{
     font-size: 50px;
     line-height: 60px;
     margin: 25px 0;
-    color: #4C4A4C;
+    color: #FFF;
 }
 .col-videogame h4{
-    color: #555;
+    color: #FFF;
+    font-weight: normal;
+}
+.col-videogame small{
+    color: #FFF;
     font-weight: normal;
 }
 .col-videogame img{
     max-width: 400px;
     padding: 20px 0;
+    
 }
+
 .btn-videogame{
     display: inline-block;
     background:#ff0077;
@@ -79,6 +85,7 @@ body{
     margin: 30px;
     border-radius: 30px;
 }
+
 .btn-wishlist{
     display: inline-block;
     background:aqua;
@@ -101,9 +108,16 @@ body{
 .single-videogame .col-videogame {
     padding: 20px;
 }
+
 .single-videogame h4 {
     margin: 20px 0;
     font-size: 22px;
+    font-weight: bold;
+    color: grey;
+}
+.single-videogame .details {
+    margin: 20px 0;
+    font-size: 14px;
     font-weight: bold;
     color: grey;
 }

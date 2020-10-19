@@ -1,66 +1,16 @@
 
-.btn  {
-    background-color: transparent;
-} 
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-    background-color: #0059BF;
- }
-
- .addGame{
-   background-color: #0059BF;
-
- }
-.card{
-   width: 15rem;
-background-color: black;
-   text-align: center;
-   color: white;
-}
-
- .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
-    background-color:#912CEA;
-    opacity: 0.5;
-   
- }
- .table-striped {
-   color: white!important;
-}
- .table-striped > thead {
-    background-color: #240644;
-    color: white!important;
- }
- .table-striped > thead > tr > th{
-    color: white!important;
- }
- .table-striped > tfoot > tr > td{
-   color: white!important;
-}
-
- .products  {
-    background-color: #240644;
- }
- .card-header  {
-    background-color: blue;
-    color: white;
- }
- .card-body  {
-   background-color: #240644;
-   color: white;
-}
-
-
- /* .row{ 
-     background: url('../images/op.jpg')  no-repeat fixed;
-
- } */
 
 body{ 
    /* background: url('../images/h.jpg')  no-repeat center center; */
-   background-color:#141414;
+   background-color:#232323;
 }
- h2{
-    color: white;
- }
+
+.addToCart{
+   background-color: transparent;
+   border: none;
+   text-align: center;
+}
+
  .modal{
    color:#BB79F2;
 
@@ -79,8 +29,8 @@ body{
 .product-grid .product-image:before{
    content: "";
    background: rgba(0,0,0,0.3);
-   width: 100%;
-   height: 100%;
+   width: 400px;
+   height: 400px;
    opacity: 0;
    position: absolute;
    top: 0;
@@ -96,10 +46,11 @@ body{
 
 .product-grid .product-image a{
    display: block;
+   
 }
 .product-grid .product-image img{
-   width: 100%;
-   height: auto;
+   width: 350px;
+   height: 350px;
 }
 .product-grid .product-image img:hover{
    scale: 1.2; 
@@ -108,19 +59,28 @@ body{
    width: 40px;
 }
 .product-image .product-trend-label{
-   content: "";
-   color: white;
-   background-color: orange;
-   font-size: 12px;
-   line-height: 28px;
-   font-weight: 700;
-   text-align: center;
-   text-transform: uppercase;
-   padding: 0 7px;
-   position:  absolute ;
-   top: 12px;
-   left: 12px;
+   width: 150px;
+   height: 150px;
+   position: absolute;
+   top: -10px;
+   right: -10px;
+
 }
+.product-image .product-trend-label span{
+      width: 220px;
+      padding: 15px 0px;
+      background-color: #555;
+      display: block;
+      position: absolute;
+      top: 30px;
+      left: -20px;
+      transform: rotate(45deg);
+      text-align: center;
+      color: red;
+      text-shadow: 0 0 15px red;
+      text-transform: uppercase;
+      font-weight: bold;
+   }
 
 .product-image .social{
    padding: 0;
@@ -138,30 +98,158 @@ body{
    opacity: 0;
    transform: translateX(-60px);
    transition: transform  0.3s ease-out 0s;
+   text-align: center;
+   line-height: 80px auto;
+   background: #18191f;
+   border-radius: 15px;
+   width: 50px;
+   height: auto;
+   box-shadow: -2px -2px 3px rgba(255,255,255,0.05),
+                  3px 3px 3px rgba(0,0,0,0.2);
+}
+
+.product-grid .social li a .fas{
+   font-size: 22px;
+   color: #555;
 }
 
 .product-grid:hover .social li{
    opacity: 1;
    transform: translateX(0);
+}
 
+.product-grid .social li:nth-child(2) a:hover .fas{
+   color: #FF0077;
+   text-shadow: 0 0 15px #FF0077;
+
+}
+.product-grid .social li:nth-child(3) a:hover .fas{
+   color: yellow;
+   text-shadow: 0 0 15px yellow;
+
+}
+.product-grid .social li:nth-child(4) a:hover .fas{
+   color: red;
+   text-shadow: 0 0 15px red;
+
+}
+
+.product-grid .social li .addToCart a:hover .fas{
+   color: #00f3ff;
+   text-shadow: 0 0 15px #00f3ff;
 
 }
 .product-grid:hover .social li:nth-child(2){
    transition-delay: 0.1 ;
 }
 
+
 .product-grid:hover .social li:nth-child(3){
    transition-delay: 0.2 ;
 }
 
-.product-grid .social li a{
-   color: white;
-   font-size: 22px;
-   transition: all 0.3s;
+
+
+/* filter tags */
+.text-center{
+   padding: 40px 0 0 0;
 }
 
-.product-grid .social li a{
-   color: white;
-   font-size: 22px;
-   transition: all 0.3s;
+#select-category{
+   margin:0;
+   list-style-type: none;
+   display: inline-block;
+   border: 1px solid transparent;
+   border-radius: 30px;
+   padding: 4px;
+   margin: 0 0 60px;
+
+}
+#select-category li{
+   display: inline-block;
+   font-size: 16px;
+   color: #888888;
+   text-transform: uppercase;
+   line-height: 50px;
+   text-align: center;
+   border-radius: 25px ;
+   border: transparent;
+   font-weight: 500;
+   padding: 0 20px;
+   min-width: 130px;
+   cursor: pointer;
+   -webkit-transition: all 0.3s ease-in-out;
+   -ms-transition:all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+}
+#select-category li:nth-child(1):hover p{
+   color: aqua; 
+   text-shadow: 0 0 15px  aqua;
+}
+#select-category li:nth-child(2):hover p{
+   color: red; 
+   text-shadow: 0 0 15px  red;
+}
+#select-category li:nth-child(3):hover p{
+   color: orange; 
+   text-shadow: 0 0 15px  orange;
+}
+#select-category li:nth-child(4):hover p{
+   color: yellow; 
+   text-shadow: 0 0 15px  yellow;
+}
+#select-category li:nth-child(5):hover p{
+   color: greenyellow; 
+   text-shadow: 0 0 15px  greenyellow;
+}
+#select-category li:nth-child(6):hover p{
+   color: rebeccapurple; 
+   text-shadow: 0 0 15px  rebeccapurple;
+}
+#select-category li:nth-child(7):hover p{
+   color:   #FF0077; 
+   text-shadow: 0 0 15px  #FF0077;
+}
+a:hover{
+   text-decoration: none;
+}
+a{
+   text-decoration: none;
+   color: #555;
+}
+#select-category li:nth-child(1).active a{
+   color: aqua; 
+   text-shadow: 0 0 15px  aqua;
+   text-decoration: none;
+}
+#select-category li:nth-child(2).active a{
+   color: red; 
+   text-shadow: 0 0 15px  red;
+   text-decoration: none;
+}
+#select-category li:nth-child(3).active a{
+   color: orange; 
+   text-shadow: 0 0 15px  orange;
+   text-decoration: none;
+}
+#select-category li:nth-child(4).active a{
+   color: yellow; 
+   text-shadow: 0 0 15px  yellow;
+   text-decoration: none;
+}
+#select-category li:nth-child(5).active a{
+   color: greenyellow; 
+   text-shadow: 0 0 15px  greenyellow;
+   text-decoration: none;
+}
+#select-category li:nth-child(6).active a{
+   color: rebeccapurple; 
+   text-shadow: 0 0 15px  rebeccapurple;
+   text-decoration: none;
+}
+#select-category li:nth-child(7).active a{
+   color:   #FF0077; 
+   text-shadow: 0 0 15px  #FF0077;
+   text-decoration: none;
 }
