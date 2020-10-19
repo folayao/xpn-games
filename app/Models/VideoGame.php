@@ -9,7 +9,7 @@ class VideoGame extends Model
     //attributes id, name, price, created_at, updated_at
     public $table = "videogames";
     protected $fillable = ['title', 'category', 'details','price',
-    'designer','pg', 'keyword', 'comments'
+    'designer','pg', 'keyword', 'comments','image'
         // This is the category of game, for example pg +18 'stock',
         /* The others fillable labels are not enable 'cause these are not primitive data fields
         'comments', 'items', 'videos', 'wishList'*/
@@ -35,6 +35,15 @@ class VideoGame extends Model
     public function setId($id)
     {
         $this->attributes['id'] = $id;
+    }
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+    
+    public function setImage($Image)
+    {
+        $this->attributes['image'] = $Image;
     }
     /* Title */
     public function getTitle()

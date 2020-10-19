@@ -22,6 +22,7 @@ class CreateVideoGamesTable extends Migration
             $table->text('designer');
             $table->integer('pg');
             $table->text('keyword');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

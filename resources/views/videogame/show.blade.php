@@ -7,12 +7,14 @@
 @include('util.message')
 <div class="row row-auto single-videogame">
     <div class="col col-auto col-videogame">
-        <img src="{{ asset('images/fifa.jpg') }}">
+        <img src="{{  $data['videogame']->getImage() }}">
     </div>
     <div class="col col-auto col-videogame">
+        <small>{{$data['videogame']->getCategory()}} Game</small>
         <h1>{{ $data['videogame']->getTitle() }}</h1>
         <h4>${{ $data['videogame']->getPrice() }}</h4>
         @guest
+        <div class="whiteSpace"></div>
         @else
             <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
                 @csrf

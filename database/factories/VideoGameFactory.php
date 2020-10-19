@@ -18,9 +18,9 @@ use Faker\Generator as Faker;
 
 $factory->define(VideoGame::class, function (Faker $faker) {
     return [
-        'title'    => $faker->words($nb = 3, $asText = true),
-        'category' => $faker->word(),
-        'details'  => $faker->text(),
+        'title'    => $faker->randomElement(['Fifa21','Fifa20','Fifa19','Fifa18','Fifa17','Fifa16']),
+        'category' => $faker->randomElement(['Action','Simulation','Sports','FPS','Adventure','Rpg']),
+        'details'  => $faker->randomElement(['This is an Game, Enjoy','This is a simulation Game, Enjoy','This is a sports Game, Enjoy','This is a FPS Game, Enjoy','This is an adventure Game, Enjoy','This is a RPG Game, Enjoy']),
         'price'    => $faker->numberBetween($min = 20, $max = 1000),
         'designer' => $faker->name(),
         'pg'       => $faker->numberBetween($min = 6, $max = 18),
