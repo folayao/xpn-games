@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/videogames', 'Api\NewVideoGamesApi@index')->name("api.videogames.index");
+Route::get('/videogames/{id}', 'Api\NewVideoGamesApi@show')->name("api.videogames.show");

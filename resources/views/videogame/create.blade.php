@@ -31,6 +31,7 @@
                             value="{{ old('detail') }}" /><br>
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.keyword')}}" name="keyword"
                             value="{{ old('keyword') }}" /><br>
+                        <input type="file" name="productImage" />
                         <input class="mt-2 btn btn-success" type="submit" value="{{__('messages.submit')}}" />
                     </form>
                 </div>

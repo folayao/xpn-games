@@ -48,7 +48,9 @@ class VideoGameController extends Controller
 
     public function save(Request $request)
     {
+
         VideoGame::validateVideoGame($request);
+        dd(file('productImage'));
         VideoGame::create($request->all());
         return back()->with('success', 'Item Created Succesfully');
     }
