@@ -17,13 +17,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="{{ asset('css/table.css') }}" type="text/css"> -->
 
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top mb-1">
+        <nav class="navbar navbar-expand-md navbar-dark  shadow-sm sticky-top mb-1" style ="background-color: black">
             <!-- <div class="container"> -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('logo.png') }}" alt="" width="75" height="75">

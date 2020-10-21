@@ -91,6 +91,15 @@ return [
         'pg'       => 'PG',
         'details'  => 'Detalles',
         'info'     => 'Más información',
+
+        'categories' => [
+            'action' => 'Acción',
+            'adventure' => 'Aventura',
+            'simulation' => 'Simulacion',
+            'rpg' => 'RPG',
+            'fps' => 'FPS',
+            'sports' => 'Deportes',
+        ]
     ],
     'cart'            => [
         'add'      => 'Añadir al carrito',
