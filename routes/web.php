@@ -48,4 +48,9 @@ Route::post('/users/{id}/update', 'UserController@update')->name("user.update");
 Route::get('/users/delete/{id}', 'UserController@delete')->name("user.delete");
 Route::get('/dataTableUser' ,'UserController@dataTable')->name("dataTable");
 
+
+
+Route::get('/image/index', 'ImageController@index')->name("image.index");
+Route::post('/image/save', 'ImageController@save')->name("image.save");
+
 Auth::routes();

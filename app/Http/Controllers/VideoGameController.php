@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\VideoGame;
+use App\Interfaces\ImageStorage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -71,11 +72,19 @@ class VideoGameController extends Controller
         // $videoGame -> keyword = $request -> keyword;
         // $videoGame -> comments = $request -> comments;
 
+
+
+
+
         if($request->hasFile('gameImage')){
 
-            $path =$request->file('gameImage')->store('images','s3');
+            // $path =$request->file('gameImage')->store('images','s3');
 
-            $videoGame -> image = Storage::disk('s3')->url($path);
+            // $videoGame -> image = Storage::disk('s3')->url($path);
+
+            $storeInterface = app(ImageStorage::class);
+            $storeInterface->store($request);
+            // dd($storeInterface->store($request));
             $videoGame->save();
 
         }
