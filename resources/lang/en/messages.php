@@ -70,6 +70,7 @@ return [
         'verificationEmail' => 'Before proceeding, please check your email for a verification link',
         'mailNotReceived'   => 'If you did not receive the email',
         'requestNewLink'    => 'click here to request another',
+        'accountRegister' => 'Create your account',
 
         'settings'          => [
             'info'         => 'Personal Info',

@@ -19,7 +19,7 @@ return [
     'goBack'          => 'Regresar',
     'new'             => 'Nuevo',
     'id'              => 'ID',
-
+    
     'admin'           => [
         'videogame' => [
             'create'   => 'Crear videojuego',
@@ -70,6 +70,8 @@ return [
         'verificationEmail'    => 'Antes de continuar, por favor revise su correo electrónico para un enlace de verificación.',
         'mailNotReceived'   => 'Si no recibió el correo electrónico',
         'requestNewLink'    => 'haga clic aquí para solicitar otro',
+        'accountRegister' => 'Cree su cuenta',
+
 
         'settings'            => [
             'info'   => 'Información personal',

@@ -11,18 +11,17 @@ use Storage;
 
 class VideoGameController extends Controller
 {
+    public static $categorias = ['Action','Simulation','RPG','FPS','Adventure','Sports'];
     /* List the products */
-    function list(Request $request) {
+    public function list(Request $request) {
         $data = [];
         $date = Carbon::today()->subDay(1);
         if($request->category){
             $videogames = VideoGame::where('category',$request->category)->paginate(12);
             $latestVideogames = VideoGame::where('created_at','>=',$date)->where('category',$request->category)->get();
-           
         }
         else{
             $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
-            
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
         $data["videogames"] = $videogames;
@@ -39,9 +38,6 @@ class VideoGameController extends Controller
         $data = [];
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
-
-        // $data['comments'] = $videogame->comments();
-        // dd($data['comments']);
         return view('videogame.show')->with("data", $data);
     }
 
@@ -49,9 +45,10 @@ class VideoGameController extends Controller
     public function create()
     {
         $data = [];
+        
         $data['title'] = "Create VideoGame";
-        $data['videogames'] = VideoGame::all();
-        return view('videogame.create')->with("data", $data);
+         $data['categorias']=VideoGameController::$categorias;
+        return view('videogame.create');
     }
 
     public function save(Request $request)
@@ -60,21 +57,12 @@ class VideoGameController extends Controller
         
         $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
 
-        // $videoGame = new VideoGame();
-        // $videoGame -> title = $request -> title;
-        // $videoGame -> category = $request -> category;
-        // $videoGame -> details = $request -> details;
-        // $videoGame -> price = $request -> price;
-        // $videoGame -> designer = $request -> designer;
-        // $videoGame -> pg = $request -> pg;
-        // $videoGame -> keyword = $request -> keyword;
-        // $videoGame -> comments = $request -> comments;
-
         if($request->hasFile('gameImage')){
 
             $path =$request->file('gameImage')->store('images','s3');
             
             $videoGame -> image = Storage::disk('s3')->url($path);
+
             $videoGame->save();
             
         }

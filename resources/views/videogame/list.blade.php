@@ -16,7 +16,7 @@
         <div class="col-md-12 text-center mb-3">
             <ul id="select-category">
                 <li  {{ (request()->query() == null) ? 'class=active' : '' }}><a  href="{{route('videogame.list')}}"><p>All</p> </a></li>
-                <li  {{ (request()->query("category")== 'Action') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Action'])}}"><p><i class="fas fa-bomb"></i>  {{__('messages.videogame.categories.action')}}</p> </li></a>
+                <li  {{ (request()->query("category")== 'Action') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Action'])}}"><p><i class="fas fa-bomb"></i>  {{__('messages.videogame.categories.action')}} </p> </li></a>
                 <li  {{ (request()->query("category")== 'Adventure') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Adventure'])}}"><p><i class="fas fa-globe-americas"></i>  {{__('messages.videogame.categories.adventure')}}</p> </a></li>
                 <li  {{ (request()->query("category")== 'FPS') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'FPS'])}}"><p><i class="fas fa-skull-crossbones"></i>  {{__('messages.videogame.categories.fps')}}</p> </a></li>
                 <li  {{ (request()->query("category")== 'RPG') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'RPG'])}}"><p><i class="fab fa-drupal"></i>  {{__('messages.videogame.categories.rpg')}}</p> </a></li>
