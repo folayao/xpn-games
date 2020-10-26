@@ -84,6 +84,7 @@ class VideoGameController extends Controller
 
             $storeInterface = app(ImageStorage::class);
             $storeInterface->store($request);
+            
             // dd($storeInterface->store($request));
             $videoGame->save();
 
