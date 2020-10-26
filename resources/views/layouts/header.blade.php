@@ -1,5 +1,4 @@
 <!doctype html>
-<link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
 <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 <!-- <link rel="stylesheet" href={{ asset('css/showVideogame.css') }}> -->
 
@@ -148,9 +147,9 @@
     <!-- Footer -->
 
     <!-- Footer -->
-    <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
+
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+
     <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" ></script> -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
     </script>

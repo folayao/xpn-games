@@ -48,6 +48,11 @@
                     @endif
 
                     <ul class="social">
+
+
+
+
+
                     <form action="{{ route('item.addToCart',['id' => $videogame->getId()]) }}" method="POST">
                      @csrf
                         <input type="hidden" name="quantity" value="1">
