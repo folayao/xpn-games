@@ -27,7 +27,7 @@ class VideoGameController extends Controller
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
         $data["videogames"] = $videogames;
-
+        dd($videogames);
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
 
@@ -83,8 +83,8 @@ class VideoGameController extends Controller
             // $videoGame -> image = Storage::disk('s3')->url($path);
 
             $storeInterface = app(ImageStorage::class);
-            $storeInterface->store($request);
-            
+            $value = $storeInterface->store($request);
+            $videoGame -> image = $value;
             // dd($storeInterface->store($request));
             $videoGame->save();
 

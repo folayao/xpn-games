@@ -26,7 +26,7 @@
         <div class="row justify-content-end">
             <div class="col-4 align-self-end">
                 <button class="btn" onmouseover="mario.play()" onmouseleave="mario.pause(), mario.currentTime=0;"> 
-                <img src="{{ asset('images/nintendoLogo.png') }}" height='auto' alt="">
+                <img src="{{ asset('storage/DiRwEPptnQl3ExKqM9eUr76fOLmMpesYaaPQ8Hqz.jpeg') }}" height='auto' alt="">
                 </button>
                 
             </div>
