@@ -32,7 +32,10 @@
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.keyword')}}" name="keyword"
                             value="{{ old('keyword') }}" /><br>
                         <input class="mt-2 btn btn-success" type="file" name="gameImage" value="file" />
-
+                        <select name="type" id="cars">
+                            <option value="Local">Local</option>
+                            <option value="S3">S3</option>
+                        </select>
                         <input class="mt-2 btn btn-success" type="submit" value="{{__('messages.submit')}}" />
                     </form>
                 </div>

@@ -21,9 +21,17 @@ class VideoGameController extends Controller
             $latestVideogames = VideoGame::where('created_at','>=',$date)->where('category',$request->category)->get();
         }
         else{
-            $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
+            if($request->title){
+                $videogames = VideoGame::search($request->title)->paginate(12);
+                $videogamesid = VideoGame::search($request->title)->get()->pluck('id');
+                $latestVideogames = VideoGame::where('created_at','>=',$date)->where('id',$videogamesid)->get();
+            }
+            else{
+                $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
+            }
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
+        
         $data["videogames"] = $videogames;
         
         $data["latestVG"] = $latestVideogames;
