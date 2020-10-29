@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\VideoGame;
+use App\Interfaces\ImageStorage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -18,15 +19,14 @@ class VideoGameController extends Controller
         if($request->category){
             $videogames = VideoGame::where('category',$request->category)->paginate(12);
             $latestVideogames = VideoGame::where('created_at','>=',$date)->where('category',$request->category)->get();
-           
+
         }
         else{
             $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
-            
+
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
         $data["videogames"] = $videogames;
-        
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
 
@@ -56,29 +56,25 @@ class VideoGameController extends Controller
 
     public function save(Request $request)
     {
-        VideoGame::validateVideoGame($request);
-        
-        $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
 
-        // $videoGame = new VideoGame();
-        // $videoGame -> title = $request -> title;
-        // $videoGame -> category = $request -> category;
-        // $videoGame -> details = $request -> details;
-        // $videoGame -> price = $request -> price;
-        // $videoGame -> designer = $request -> designer;
-        // $videoGame -> pg = $request -> pg;
-        // $videoGame -> keyword = $request -> keyword;
-        // $videoGame -> comments = $request -> comments;
+        VideoGame::validateVideoGame($request);
+
+        $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
 
         if($request->hasFile('gameImage')){
 
-            $path =$request->file('gameImage')->store('images','s3');
-            
-            $videoGame -> image = Storage::disk('s3')->url($path);
+            // $path =$request->file('gameImage')->store('images','s3');
+
+            // $videoGame -> image = Storage::disk('s3')->url($path);
+
+            $storeInterface = app(ImageStorage::class);
+            $value = $storeInterface->store($request);
+            $videoGame -> image = $value;
+            // dd($storeInterface->store($request));
             $videoGame->save();
-            
+
         }
-        
+
 
         return back()->with('success', 'Item Created Succesfully');
     }
