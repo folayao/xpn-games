@@ -14,6 +14,7 @@ class VideoGameResource extends JsonResource
             'category' => $this->getCategory(),
             'details'  => $this->getDetails(),
             'price'    => $this->getPrice(),
+            'image'    => $this->getImage(),
         ];
     }
 }

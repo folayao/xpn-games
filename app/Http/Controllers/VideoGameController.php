@@ -27,7 +27,6 @@ class VideoGameController extends Controller
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
         $data["videogames"] = $videogames;
-        dd($videogames);
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
 
@@ -61,20 +60,6 @@ class VideoGameController extends Controller
         VideoGame::validateVideoGame($request);
 
         $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
-
-        // $videoGame = new VideoGame();
-        // $videoGame -> title = $request -> title;
-        // $videoGame -> category = $request -> category;
-        // $videoGame -> details = $request -> details;
-        // $videoGame -> price = $request -> price;
-        // $videoGame -> designer = $request -> designer;
-        // $videoGame -> pg = $request -> pg;
-        // $videoGame -> keyword = $request -> keyword;
-        // $videoGame -> comments = $request -> comments;
-
-
-
-
 
         if($request->hasFile('gameImage')){
 
