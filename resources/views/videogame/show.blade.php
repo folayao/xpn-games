@@ -7,7 +7,7 @@
 @include('util.message')
 <div class="row row-auto single-videogame">
     <div class="col col-auto col-videogame">
-        <img src="{{  $data['videogame']->getImage() }}">
+        <img src="{{ $data['videogame']->getImage() }}">
     </div>
     <div class="col col-auto col-videogame">
         <small>{{$data['videogame']->getCategory()}} Game</small>

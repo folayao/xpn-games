@@ -44,7 +44,6 @@
                     <a href="">
                         <img src="{{ $videogame->image }}">
                     </a>
-
                     @if ($loop->iteration <= $data["quantityNewVG"])
                         <div class="product-trend-label">
                             <span >

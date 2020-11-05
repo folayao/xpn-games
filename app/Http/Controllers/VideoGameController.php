@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\VideoGame;
+use App\Interfaces\ImageStorage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,6 +20,7 @@ class VideoGameController extends Controller
         if($request->category){
             $videogames = VideoGame::where('category',$request->category)->paginate(12);
             $latestVideogames = VideoGame::where('created_at','>=',$date)->where('category',$request->category)->get();
+
         }
         else{
             if($request->title){
@@ -33,7 +35,6 @@ class VideoGameController extends Controller
         }
         
         $data["videogames"] = $videogames;
-        
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
 
@@ -61,9 +62,8 @@ class VideoGameController extends Controller
 
     public function save(Request $request)
     {
+
         VideoGame::validateVideoGame($request);
-        
-        $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
 
         if($request->hasFile('gameImage')){
 
@@ -72,9 +72,9 @@ class VideoGameController extends Controller
             $videoGame -> image = Storage::disk('s3')->url($path);
 
             $videoGame->save();
-            
+
         }
-        
+
 
         return back()->with('success', 'Item Created Succesfully');
     }
