@@ -1,10 +1,11 @@
 @extends('layouts.header')
 
 @section('content')
+<link href="{{ asset('css/login.css') }}" rel="stylesheet">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card login-form">
                 <div class="card-header">{{__('messages.login')}}</div>
 
                 <div class="card-body">
@@ -14,8 +15,9 @@
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{__('messages.user.username')}}</label>
 
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                            <div class="col-md-6 field">
+                               
+                            <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
@@ -27,7 +29,7 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{__('messages.user.password')}}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 field">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -52,15 +54,14 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-submit">
                                     {{ __('messages.login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('messages.user.forgotPassword') }}
+                                    <a class="btn btn-link link" href="{{ route('register') }}">
+                                        {{ __('messages.user.accountRegister') }}
                                     </a>
-                                @endif
+                                
                             </div>
                         </div>
                     </form>

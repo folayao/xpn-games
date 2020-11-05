@@ -1,5 +1,4 @@
 <!doctype html>
-<link href="{{ asset(mix('css/principalPage.css')) }}" rel="stylesheet">
 <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 <!-- <link rel="stylesheet" href={{ asset('css/showVideogame.css') }}> -->
 
@@ -81,10 +80,8 @@
 
                     <li class="dropdown">
                     <li>
-                        <form class="form-inline my-2 my-lg-0 " id="navbar-search">
-                            <input class="form-control mr-2" type="search" placeholder="{{__('messages.searchVideogame')}}..." aria-label="Search">
-                            <button class="btn btn-outline-success " type="submit">{{__('messages.search')}}</button>
-                        </form> 
+                    <input type="text" id="search" class="form-control" list="browsers" name="browser">
+                    <datalist id="browsers"></datalist>
                     </li>
                     <li class="dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
@@ -148,11 +145,13 @@
     <!-- Footer -->
 
     <!-- Footer -->
-    <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
+
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+
     <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" ></script> -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js">
+    </script>
+    <script>
     </script>
     @yield('js_role_page')
     @yield('js_user_page')

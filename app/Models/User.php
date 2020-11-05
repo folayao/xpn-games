@@ -32,6 +32,13 @@ class User extends Authenticatable
         ]);
     }
 
+    public static function validateUserUpdate(Request $request){
+        $request->validate([
+            'name' => 'required|max:255',
+            'password' => 'confirmed',
+        ]);
+    }
+
     public function getId()
     {
         return $this->attributes['id'];

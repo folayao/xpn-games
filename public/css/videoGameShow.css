@@ -78,22 +78,67 @@ body{
 }
 
 .btn-videogame{
-    display: inline-block;
-    background:#ff0077;
-    color: #fff;
-    padding: 8px 30px;
-    margin: 30px;
+    position: relative;
     border-radius: 30px;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    
+    border: 2px solid #ff0077;
+    text-transform: uppercase;
+    overflow: hidden;
+    
+    transition: 1s all ease;
 }
-
+.btn-videogame::before{
+    background: #ff0077;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left:50%;
+    
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+}
+.btn-videogame::before{
+    width: 0;
+    height: 100%;
+}
+.btn-videogame:hover::before{
+    width: 100%;
+    
+}
 .btn-wishlist{
-    display: inline-block;
-    background:aqua;
-    color: #fff;
-    padding: 8px 30px;
+    position: relative;
     border-radius: 30px;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    
+    border: 2px solid aqua;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 1s all ease;
 }
-
+.btn-videogame:hover,.btn-wishlist:hover{
+    border: 2px transparent;
+}
+.btn-wishlist::before{
+    background: aqua;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+    width: 0;
+    height: 100%;
+}
+.btn-wishlist:hover::before{
+    width: 100%;
+}
 .single-videogame{
 
     display:flex;

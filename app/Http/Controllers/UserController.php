@@ -87,11 +87,11 @@ class UserController extends Controller
 
         //validate the fields
         $user=User::find($id);
-        User::validateUser($request);
+        
+        User::validateUserUpdate($request);
 
         $user->name = $request->name;
-        $user->email = $request->email;
-        $user->username = $request->username;
+
         if($request->password != null){
             $user->password = Hash::make($request->password);
         }

@@ -13,16 +13,22 @@
         </div>
         
         @endcan
+        <div class="row">
+        <form action="{{route('videogame.list')}}" method="GET" role="search">
+        <!-- @csrf -->
+            <input type="text" name="title" Placeholder="search" class ="form-control">
+            <button type="submit">try it</button>
+        </form>
+        </div>
         <div class="col-md-12 text-center mb-3">
             <ul id="select-category">
                 <li  {{ (request()->query() == null) ? 'class=active' : '' }}><a  href="{{route('videogame.list')}}"><p>All</p> </a></li>
-                <li  {{ (request()->query("category")== 'Action') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Action'])}}"><p><i class="fas fa-bomb"></i>  {{__('messages.videogame.categories.action')}}</p> </li></a>
+                <li  {{ (request()->query("category")== 'Action') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Action'])}}"><p><i class="fas fa-bomb"></i>  {{__('messages.videogame.categories.action')}} </p> </li></a>
                 <li  {{ (request()->query("category")== 'Adventure') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Adventure'])}}"><p><i class="fas fa-globe-americas"></i>  {{__('messages.videogame.categories.adventure')}}</p> </a></li>
                 <li  {{ (request()->query("category")== 'FPS') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'FPS'])}}"><p><i class="fas fa-skull-crossbones"></i>  {{__('messages.videogame.categories.fps')}}</p> </a></li>
                 <li  {{ (request()->query("category")== 'RPG') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'RPG'])}}"><p><i class="fab fa-drupal"></i>  {{__('messages.videogame.categories.rpg')}}</p> </a></li>
                 <li  {{ (request()->query("category")== 'Sports') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Sports'])}}"><p><i class="fas fa-quidditch"></i>  {{__('messages.videogame.categories.sports')}}</p> </a></li>
-                <li  {{ (request()->query("category")== 'Simulation') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Simulation'])}}"><p><i class="fas fa-cubes"></i>  {{__('messages.videogame.categories.simulation')}}</p> </a></li>
-         
+                <li  {{ (request()->query("category")== 'Simulation') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Simulation'])}}"><p><i class="fas fa-cubes"></i>  {{__('messages.videogame.categories.simulation')}}</p> </a></li>  
             </ul>
         </div>
     </div>
@@ -47,6 +53,11 @@
                     @endif
 
                     <ul class="social">
+
+
+
+
+
                     <form action="{{ route('item.addToCart',['id' => $videogame->getId()]) }}" method="POST">
                      @csrf
                         <input type="hidden" name="quantity" value="1">

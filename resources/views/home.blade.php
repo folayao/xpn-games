@@ -5,7 +5,7 @@
 <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
 
-<body onmouseover="mario.stop()">
+<body>
     <div class="container">
         <div class="row">
             <div class="col">

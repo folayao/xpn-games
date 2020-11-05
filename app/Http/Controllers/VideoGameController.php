@@ -12,8 +12,9 @@ use Storage;
 
 class VideoGameController extends Controller
 {
+    public static $categorias = ['Action','Simulation','RPG','FPS','Adventure','Sports'];
     /* List the products */
-    function list(Request $request) {
+    public function list(Request $request) {
         $data = [];
         $date = Carbon::today()->subDay(1);
         if($request->category){
@@ -22,10 +23,17 @@ class VideoGameController extends Controller
 
         }
         else{
-            $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
-
+            if($request->title){
+                $videogames = VideoGame::search($request->title)->paginate(12);
+                $videogamesid = VideoGame::search($request->title)->get()->pluck('id');
+                $latestVideogames = VideoGame::where('created_at','>=',$date)->where('id',$videogamesid)->get();
+            }
+            else{
+                $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
+            }
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
+        
         $data["videogames"] = $videogames;
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
@@ -39,9 +47,6 @@ class VideoGameController extends Controller
         $data = [];
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
-
-        // $data['comments'] = $videogame->comments();
-        // dd($data['comments']);
         return view('videogame.show')->with("data", $data);
     }
 
@@ -49,9 +54,10 @@ class VideoGameController extends Controller
     public function create()
     {
         $data = [];
+        
         $data['title'] = "Create VideoGame";
-        $data['videogames'] = VideoGame::all();
-        return view('videogame.create')->with("data", $data);
+         $data['categorias']=VideoGameController::$categorias;
+        return view('videogame.create');
     }
 
     public function save(Request $request)
@@ -59,18 +65,12 @@ class VideoGameController extends Controller
 
         VideoGame::validateVideoGame($request);
 
-        $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
-
         if($request->hasFile('gameImage')){
 
-            // $path =$request->file('gameImage')->store('images','s3');
+            $path =$request->file('gameImage')->store('images','s3');
+            
+            $videoGame -> image = Storage::disk('s3')->url($path);
 
-            // $videoGame -> image = Storage::disk('s3')->url($path);
-
-            $storeInterface = app(ImageStorage::class);
-            $value = $storeInterface->store($request);
-            $videoGame -> image = $value;
-            // dd($storeInterface->store($request));
             $videoGame->save();
 
         }

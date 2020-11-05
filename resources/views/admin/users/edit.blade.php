@@ -25,11 +25,11 @@
    
     <div class="form-group">
         <label for="email">{{__('messages.user.email')}}</label>
-        <input type="email" name="email" class="form-control" id="email" placeholder="Email..." value="{{ $user->email }}">
+        <input type="email"  disabled="disabled" name="email" class="form-control" id="email" placeholder="Email..." value="{{ $user->email }}">
     </div>
     <div class="form-group">
         <label for="username">{{__('messages.user.username')}}</label>
-        <input type="username" name="username" class="form-control" id="username" placeholder="Username..." value="{{$user->username}}" >
+        <input type="text" disabled="disabled" name="username" class="form-control" id="username" placeholder="Username..." value="{{$user->username}}" >
     </div>
     <div class="form-group">
         <label for="password">{{__('messages.user.password')}}</label>
