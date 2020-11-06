@@ -20,11 +20,11 @@ class ImageServiceProvider extends ServiceProvider
     {
         $this->app->bind(ImageStorage::class, function () {
             if($_REQUEST['type'] == 'S3'){
-                dd($_REQUEST['type']);
+
                 return new ImageS3Storage;
             }
             if($_REQUEST['type'] == 'Local'){
-                dd($_REQUEST['type']);
+
                 return new ImageLocalStorage;
             }
         });
