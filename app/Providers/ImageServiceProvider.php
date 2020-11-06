@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Interfaces\ImageStorage;
 use App\Util\ImageLocalStorage;
+use App\Util\ImageS3Storage;
 use Illuminate\Support\ServiceProvider;
 
 class ImageServiceProvider extends ServiceProvider
@@ -19,9 +20,11 @@ class ImageServiceProvider extends ServiceProvider
     {
         $this->app->bind(ImageStorage::class, function () {
             if($_REQUEST['type'] == 'S3'){
+                dd($_REQUEST['type']);
                 return new ImageS3Storage;
             }
             if($_REQUEST['type'] == 'Local'){
+                dd($_REQUEST['type']);
                 return new ImageLocalStorage;
             }
         });

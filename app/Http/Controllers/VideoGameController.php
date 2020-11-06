@@ -23,6 +23,7 @@ class VideoGameController extends Controller
 
         }
         else{
+            
             if($request->title){
                 $videogames = VideoGame::search($request->title)->paginate(12);
                 $videogamesid = VideoGame::search($request->title)->get()->pluck('id');
