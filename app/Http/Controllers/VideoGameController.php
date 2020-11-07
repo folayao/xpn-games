@@ -33,7 +33,7 @@ class VideoGameController extends Controller
             }
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
-        
+
         $data["videogames"] = $videogames;
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
@@ -47,6 +47,8 @@ class VideoGameController extends Controller
         $data = [];
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
+        $data['videos'] = $this->showVideos($videogame->getTitle());
+        // dd($data['videos']);
         return view('videogame.show')->with("data", $data);
     }
 
@@ -54,7 +56,7 @@ class VideoGameController extends Controller
     public function create()
     {
         $data = [];
-        
+
         $data['title'] = "Create VideoGame";
          $data['categorias']=VideoGameController::$categorias;
         return view('videogame.create');
@@ -68,7 +70,7 @@ class VideoGameController extends Controller
         if($request->hasFile('gameImage')){
 
             $path =$request->file('gameImage')->store('images','s3');
-            
+
             $videoGame -> image = Storage::disk('s3')->url($path);
 
             $videoGame->save();
@@ -89,6 +91,27 @@ class VideoGameController extends Controller
         $videogame = VideoGame::find($id);
         $videogame->delete();
         return redirect()->route('videogame.list');
+    }
+
+
+    /**
+     *  Videos
+     */
+    public function showVideos($title)
+    {
+        $word = $title;
+        $youtube = new \Madcoda\Youtube\Youtube(array('key' => 'AIzaSyD7tst8nKTADpj0ZBdr-1VaTPx3RQQOpuo'));
+        // Parametros
+        $params = array(
+            'q' => $word,
+            'type' => 'video',
+            'part' => 'id, snippet',
+            'maxResults' => 5    //Número de resultados
+        );
+        // Hacer la busqueda con los parametros
+        $videos = $youtube->searchAdvanced($params, true);
+
+        return $videos;
     }
 
 }

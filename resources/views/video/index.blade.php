@@ -1,42 +1,44 @@
-@extends('layouts.header')
+Esto es un carrusel
+{{-- {{$videos}} --}}
+@if(isset($videos))
+    @foreach($videos['results'] as $video)
+        <div class="col-sm-6 col-md-6">
+            <div class="thumbnail">
+                {{-- <!-- Mostramamos la fotos mediana del video -->
+                                        <img class="img-resp" src="{{$video->snippet->thumbnails->medium->url}}">
+                <div class="caption">
+                    <!-- Mostramamos el titulo del video -->
+                    <h3><a href="https://www.youtube.com/watch?v={{$video->id->videoId}}">
+                            {{$video->snippet->title}}</a></h3> --}}
 
-@section('content')
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <form method="POST" action="{{ route('video.search') }}" enctype="multipart/form-inline">
-                @csrf
-            {{-- {!! Form::open(['route' => 'youtube.search', 'method' => 'POST', 'class' => 'form-inline']) !!} --}}
-            <div class="form-group">
-                <input class="mt-2" type="text" name="search"/><br>
-                {{-- {!! form::label('search','Buscar')!!} --}}
-                {{-- {!! form::text('search',null,['class' => 'form-control']) !!} --}}
-                <button type="submit" class="btn btn-default">Buscar</button>
-            </div>
-            </form>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                @if(isset($videos))
-                    @foreach($videos as $video)
-                        <div class="col-sm-6 col-md-6">
-                            <div class="thumbnail">
-                                <!-- Mostramamos la fotos mediana del video -->
-                                {{-- <img class="img-resp" src="{{$video->snippet->thumbnails->medium->url}}"> --}}
-                                <img class="img-resp" src="https://i.ytimg.com/vi/QKpJQbxIU1E/mqdefault.jpg">
-                                <div class="caption">
-                                    <!-- Mostramamos el titulo del video -->
-                                    {{-- <h3><a href="https://www.youtube.com/watch?v={{$video->id->videoId}}">
-                                        {{$video->snippet->title}}</a></h3> --}}
-                                    <h3><a href="https://www.youtube.com/watch?v=QKpJQbxIU1E">
-                                        I BANNED My Best Friends In MINECRAFT SURVIVAL!</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/{{$video->id->videoId}}"
+                        frameborder="0" allowfullscreen></iframe>
+
+                </div>
             </div>
         </div>
-    </div>
+    @endforeach
+@endif
+
+{{-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="container justify-content-md-center">
+            <div class="carousel-item active">
+                <h1>{{__('messages.wishlist.show')}}</h1>
 </div>
-@endsection
+@foreach($data['videogames'] as $videogame)
+<div class="carousel-item">
+    <h1>{{$videogame -> getTitle()}}</h1>
+</div>
+@endforeach
+</div>
+</div>
+<a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">{{__('messages.wishlist.previous')}}</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">{{__('messages.wishlist.next')}}</span>
+</a>
+</div> --}}

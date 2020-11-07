@@ -51,7 +51,4 @@ Route::get('/dataTableUser' ,'UserController@dataTable')->name("dataTable");
 Route::get('/image/index', 'ImageController@index')->name("image.index");
 Route::post('/image/save', 'ImageController@save')->name("image.save");
 
-Route::get('/videos/', 'YoutubeController@index')->name("video.index");
-Route::post('/videos', 'YoutubeController@search')->name('video.search');
-
 Auth::routes();
