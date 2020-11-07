@@ -17,6 +17,7 @@
         "laravel/scout": "^8.4",
         "laravel/tinker": "^2.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "madcoda/php-youtube-api": "^1.2",
         "nesbot/carbon": "^2.41",
         "yajra/laravel-datatables-oracle": "^9.11"
     },
