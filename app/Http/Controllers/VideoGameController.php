@@ -23,10 +23,13 @@ class VideoGameController extends Controller
 
         }
         else{
+            
             if($request->title){
                 $videogames = VideoGame::search($request->title)->paginate(12);
+                if($videogames != ''){
                 $videogamesid = VideoGame::search($request->title)->get()->pluck('id');
                 $latestVideogames = VideoGame::where('created_at','>=',$date)->where('id',$videogamesid)->get();
+                }
             }
             else{
                 $videogames = VideoGame::orderBy('created_at','desc')->paginate(12);
@@ -65,12 +68,32 @@ class VideoGameController extends Controller
 
         VideoGame::validateVideoGame($request);
 
+        $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
+
+        // $videoGame = new VideoGame();
+        // $videoGame -> title = $request -> title;
+        // $videoGame -> category = $request -> category;
+        // $videoGame -> details = $request -> details;
+        // $videoGame -> price = $request -> price;
+        // $videoGame -> designer = $request -> designer;
+        // $videoGame -> pg = $request -> pg;
+        // $videoGame -> keyword = $request -> keyword;
+        // $videoGame -> comments = $request -> comments;
+
+
+
+
+
         if($request->hasFile('gameImage')){
 
-            $path =$request->file('gameImage')->store('images','s3');
-            
-            $videoGame -> image = Storage::disk('s3')->url($path);
+            // $path =$request->file('gameImage')->store('images','s3');
 
+            // $videoGame -> image = Storage::disk('s3')->url($path);
+
+            $storeInterface = app(ImageStorage::class);
+            $value = $storeInterface->store($request);
+            $videoGame -> image = $value;
+            // dd($storeInterface->store($request));
             $videoGame->save();
 
         }
