@@ -10,11 +10,11 @@
             </a>
             <a onclick="tabs(1)" class="tab">
                 <img src="{{ asset('icons/user_icons/credit_card.png') }}" alt="">
-            </a>  
+            </a>
             <a onclick="tabs(2)" class="tab">
                 <img src="{{ asset('icons/user_icons/wish_list.png') }}" alt="">
             </a>
-            </nav>  
+            </nav>
         </div>
         <div class="rightbox">
             <div class="profile tabShow">
@@ -38,13 +38,10 @@
             </div>
             <div class="wishlist tabShow">
                 @include('user.wish_list')
-                @yield('wish_list')   
+                @yield('wish_list')
             </div>
-
-
         </div>
     </div>
-
 
 @endsection
 @section('user_settings_scripts')

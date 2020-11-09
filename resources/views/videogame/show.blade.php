@@ -14,7 +14,7 @@
         <h1>{{ $data['videogame']->getTitle() }}</h1>
         <h4>${{ $data['videogame']->getPrice() }}</h4>
         @guest
-        <div class="whiteSpace"></div>
+            <div class="whiteSpace"></div>
         @else
             <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
                 @csrf
@@ -23,7 +23,6 @@
                 <button type="button" class="btn btn-wishlist" id="create_wish" data-toggle="modal"
                     data-target="#wishListModal">
                     {{__('messages.wishlist.add')}}
-
                 </button>
             </form>
         @endguest
@@ -39,7 +38,6 @@
         @guest
             <small class="initSession">{{__('messages.comment.loginRequired')}}</small>
         @else
-
             <h4 class="add-comments">{{__('messages.comment.add')}}</h4>
             <form method="POST" action="{{ route('comment.save') }}">
                 @csrf
@@ -114,17 +112,11 @@
     </div>
 </div>
 
-
 <div class="view-videos">
-    {{-- @foreach ($data['videos'] as $videos) --}}
         @include('video.index' , ['videos' => $data['videos']])
-    {{-- @endforeach --}}
-
-
-
 </div>
+
 <script>
     details.style.display = "none";
-
 </script>
 @endsection

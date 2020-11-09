@@ -45,87 +45,69 @@
                 <!-- Right Side Of Navbar -->
 
                 <ul class="navbar-nav ml-auto">
-
-
                     @php $locale = session()->get('locale'); @endphp
                         <li class=" dropdown mega-menu">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Language <span class="caret"></span>
+                                {{__('messages.language')}} <span class="caret"></span>
                             </a>
-                            {{-- @switch($locale)
-                                @case('es')
-                                <img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish
-                                @break
-                                @default
-                                <img src="{{asset('images/us.png')}}" width="30px" height="20x"> English
-                            @endswitch --}}
                             <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('/lang/en') }}"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> English</a>
-                                <a class="dropdown-item" href="{{ url('/lang/es') }}"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> Spanish</a>
+                                <a class="dropdown-item" href="{{ url('/lang/en') }}"><img src="{{asset('images/us.png')}}" width="30px" height="20x"> {{__('messages.english')}}</a>
+                                <a class="dropdown-item" href="{{ url('/lang/es') }}"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> {{__('messages.spanish')}}</a>
                             </div>
                         </li>
-
-
                     <li class="dropdown">
-                    <li>
-                    <input type="text" id="search" class="form-control" list="browsers" name="browser">
-                    <datalist id="browsers"></datalist>
-                    </li>
-                    <li class="dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                            @auth
-                            {{ Auth::user()->name }}
-                            {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
-                            @endauth
-                            @guest
-                            <img src="{{ asset('icons/user_icons/guest2.png') }}" class="show-icon" height="40" width="40">
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right mega-menu">
-
-                            <a href="{{ route('login') }}" class="dropdown-item">
-                                {{ __('messages.login') }}
+                        <li>
+                            <input type="text" id="search" class="form-control" list="browsers" name="browser">
+                            <datalist id="browsers"></datalist>
+                        </li>
+                        <li class="dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                @auth
+                                {{ Auth::user()->name }}
+                                {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
+                                @endauth
+                                @guest
+                                <img src="{{ asset('icons/user_icons/guest2.png') }}" class="show-icon" height="40" width="40">
                             </a>
-                            <a href="{{ route('register') }}" class="dropdown-item">
-                                {{ __('messages.register') }}
-                            </a>
-                            @else
-                            <img src="{{ asset('icons/user_icons/user.png') }}" class="show-icon" height="40" width="40">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('messages.logout') }}
+                            <div class="dropdown-menu dropdown-menu-right mega-menu">
+                                <a href="{{ route('login') }}" class="dropdown-item">
+                                    {{ __('messages.login') }}
                                 </a>
-
-                                <a class="dropdown-item" href="{{ route('user.settings', [ 'username' => auth()->user()->username])  }}">
-                                    {{ __('messages.wishlist.show') }}
+                                <a href="{{ route('register') }}" class="dropdown-item">
+                                    {{ __('messages.register') }}
                                 </a>
-
-                                <a class="dropdown-item" href="{{ route('item.cart') }}">
-                                    {{ __('messages.shoppingCart') }}
+                                @else
+                                <img src="{{ asset('icons/user_icons/user.png') }}" class="show-icon" height="40" width="40">
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right mega-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        {{ __('messages.logout') }}
+                                    </a>
 
+                                    <a class="dropdown-item" href="{{ route('user.settings', [ 'username' => auth()->user()->username])  }}">
+                                        {{ __('messages.wishlist.show') }}
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                                @endguest
+                                    <a class="dropdown-item" href="{{ route('item.cart') }}">
+                                        {{ __('messages.shoppingCart') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    @endguest
+                                </div>
                             </div>
+                        </li>
                     </li>
-
                 </ul>
             </div>
-            <!-- </div> -->
         </nav>
-
-
     <div class="container" id="app">
-
-
         <div class="row" id="main">
             @yield('content')
         </div>
-
         <footer class="row">
             @include('layouts.footer')
         </footer>

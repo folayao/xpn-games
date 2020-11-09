@@ -7,10 +7,10 @@
     <!-- Call to action -->
     <ul class="list-unstyled list-inline text-center py-2">
       <li class="list-inline-item">
-        <h5 class="mb-1">Register for free</h5>
+        <a href="{{ route('register') }}" class="btn btn-outline-white btn-rounded">{{ __('messages.register') }}</a>
       </li>
       <li class="list-inline-item">
-        <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
+        <a href="{{ route('login') }}" class="btn btn-outline-white btn-rounded">{{ __('messages.login') }}</a>
       </li>
     </ul>
     <!-- Call to action -->

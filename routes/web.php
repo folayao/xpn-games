@@ -47,4 +47,6 @@ Route::post('/users/{id}/update', 'UserController@update')->name("user.update");
 Route::get('/image/index', 'ImageController@index')->name("image.index");
 Route::post('/image/save', 'ImageController@save')->name("image.save");
 
+Route::get('/fish', 'FishController@index')->name("fish.index");
+
 Auth::routes();
