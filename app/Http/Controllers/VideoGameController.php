@@ -54,6 +54,8 @@ class VideoGameController extends Controller
         $data = [];
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
+        $data['videos'] = $this->showVideos($videogame->getTitle());
+        // dd($data['videos']);
         return view('videogame.show')->with("data", $data);
     }
 
@@ -61,7 +63,7 @@ class VideoGameController extends Controller
     public function create()
     {
         $data = [];
-        
+
         $data['title'] = "Create VideoGame";
          $data['categorias']=VideoGameController::$categorias;
         return view('videogame.create');
@@ -73,19 +75,6 @@ class VideoGameController extends Controller
         VideoGame::validateVideoGame($request);
 
         $videoGame = VideoGame::create($request->only('title','category','details','price','designer','pg','keyword','comments'));
-
-        // $videoGame = new VideoGame();
-        // $videoGame -> title = $request -> title;
-        // $videoGame -> category = $request -> category;
-        // $videoGame -> details = $request -> details;
-        // $videoGame -> price = $request -> price;
-        // $videoGame -> designer = $request -> designer;
-        // $videoGame -> pg = $request -> pg;
-        // $videoGame -> keyword = $request -> keyword;
-        // $videoGame -> comments = $request -> comments;
-
-
-
 
 
         if($request->hasFile('gameImage')){
@@ -116,6 +105,27 @@ class VideoGameController extends Controller
         $videogame = VideoGame::find($id);
         $videogame->delete();
         return redirect()->route('videogame.list');
+    }
+
+
+    /**
+     *  Videos
+     */
+    public function showVideos($title)
+    {
+        $word = $title;
+        $youtube = new \Madcoda\Youtube\Youtube(array('key' => 'AIzaSyD7tst8nKTADpj0ZBdr-1VaTPx3RQQOpuo'));
+        // Parametros
+        $params = array(
+            'q' => $word,
+            'type' => 'video',
+            'part' => 'id, snippet',
+            'maxResults' => 5    //Número de resultados
+        );
+        // Hacer la busqueda con los parametros
+        $videos = $youtube->searchAdvanced($params, true);
+
+        return $videos;
     }
 
 }

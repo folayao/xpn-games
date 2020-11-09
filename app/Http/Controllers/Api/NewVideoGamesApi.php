@@ -10,7 +10,7 @@ class NewVideoGamesApi extends Controller
 {
     public function index()
     {
-        $date = Carbon::today()->subDays(1);
+        $date = Carbon::today()->subDays(60);
         return VideoGameResource::collection(VideoGame::where('created_at','>=',$date)->get());
     }
 

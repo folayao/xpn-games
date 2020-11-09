@@ -55,92 +55,6 @@
     </div>
 </div>
 
-
-
-{{--
-<div class="container">
-    <section class="card-product">
-        <div class="container">
-            @include('util.message')
-            <div class="card">
-                <div class="card-body">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col text-center">
-                                <h1 class="card-title ">{{ $data['videogame']->getTitle() }}
-                            </div>
-                            @guest
-                            @else
-                            <div class="col text-right col-sm-auto">
-                                <button type="button" class="btn btn-primary" id="create_wish" data-toggle="modal"
-                                    data-target="#wishListModal">
-                                    {{__('messages.wishlist.add')}}
-                                </button>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    </h4>
-
-                    <b class="card-label">{{__('messages.videogame.category')}}: </b>{{ $data['videogame']->getCategory() }} <br />
-                    <b class="card-label">{{__('messages.videogame.price')}}: </b> {{ $data['videogame']->getPrice() }}<br />
-                    <b class="card-label">{{__('messages.videogame.designer')}}: </b>{{ $data['videogame']->getDesigner() }} <br />
-                    <b class="card-label">{{__('messages.videogame.pg')}}: </b>{{ $data['videogame']->getPg() }} <br />
-                    <b class="card-label">{{__('messages.videogame.details')}}: </b>{{ $data['videogame']->getDetails() }} <br />
-                    @guest
-                    @else
-                        <div>
-
-                            <form action="{{ route('item.addToCart',['id'=> $data['videogame']->getId()]) }}" method="POST">
-                                @csrf
-                                <div class="form-row">
-                                    <div class="col-md-8">Qtt:
-                                        <input type="number" class="form-control" name="quantity" min="0"
-                                            style="width: 80px;">
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <button type="submit" class="btn btn-outline-success">{{__('messages.cart.add')}}</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    @endguest
-                </div>
-                <hr />
-
-
-                <div id="view-comments">
-                    <hr />
-                    <div id="view-comments">
-                        <div class="card card-body">
-                            @include('comment.show', ['comments' => $data['comments'], 'video_game_id' =>
-                            $data['videogame']->getId()])
-                            <hr />
-
-                            @guest
-                                <small class="initSession">{{__('messages.comment.loginRequired')}}</small>
-                            @else
-
-                            <h4 class="add-comments">{{__('messages.comment.add')}}</h4>
-                            <form method="POST" action="{{ route('comment.save') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <textarea class="form-control" name="description"></textarea>
-                                    <input type="hidden" name="video_game_id" id="video_game_id"
-                                        value="{{ $data['videogame']->getId() }}" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-success" value="{{__('messages.comment.create')}}" />
-                                </div>
-                            </form>
-                            @endguest
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-</div> --}}
-
 <!-- pop up modal para elegir wishlist o en caso de no tenerla, crearla -->
 <div class="modal fade" id="wishListModal" tabindex="-1" role="dialog" aria-labelledby="wishListModalLabel"
     aria-hidden="true">
@@ -198,6 +112,16 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="view-videos">
+    {{-- @foreach ($data['videos'] as $videos) --}}
+        @include('video.index' , ['videos' => $data['videos']])
+    {{-- @endforeach --}}
+
+
+
 </div>
 <script>
     details.style.display = "none";
