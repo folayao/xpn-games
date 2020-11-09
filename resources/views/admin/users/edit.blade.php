@@ -25,11 +25,11 @@
    
     <div class="form-group">
         <label for="email">{{__('messages.user.email')}}</label>
-        <input type="email"  disabled="disabled" name="email" class="form-control" id="email" placeholder="Email..." value="{{ $user->email }}">
+        <input type="email"  disabled="disabled" name="email" class="form-control" id="email" placeholder="Email..." value="{{ $user->email }}" disabled>
     </div>
     <div class="form-group">
         <label for="username">{{__('messages.user.username')}}</label>
-        <input type="text" disabled="disabled" name="username" class="form-control" id="username" placeholder="Username..." value="{{$user->username}}" >
+        <input type="text" disabled="disabled" name="username" class="form-control" id="username" placeholder="Username..." value="{{$user->username}}" disabled>
     </div>
     <div class="form-group">
         <label for="password">{{__('messages.user.password')}}</label>
@@ -37,8 +37,10 @@
     </div>
     <div class="form-group">
         <label for="password_confirmation">{{__('messages.user.confirmPasswd')}}</label>
-        <input type="password" name="password_confirmation" class="form-control" placeholder="Password..." id="password_confirmation" >
+        <input type="password" name="password_confirmation" class="form-control" placeholder="Password..." id="password_confirmation">
     </div>
+        <input type="hidden" value="{{$url}}" name = "url">
+        
 
     <div class="form-group">
         <label for="role">{{__('messages.admin.roles.selectRole')}}</label>

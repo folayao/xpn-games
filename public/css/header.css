@@ -11,14 +11,14 @@
 
 .dropdown-item{
     padding: 12px 40px 12px 20px;
+    transform : translateY(-11px), translateX();
     font-size: 15px;
     font-family: arial;
     color: white;
     font-weight: lighter;
-    background-color: black;
-    border: 1px solid aqua;
+    background-color: #232323;
+    border: 1px solid black;
     transform-origin: center;
-    animation:0.3s ease-out 0s;
 
 }
 
@@ -33,9 +33,5 @@
 
 .dropdown-item:nth-of-type(2){
     animation-delay: 0s;
-}
-.dropdown-item:hover{
-    color:black;
-    background-color: aqua;
 }
 

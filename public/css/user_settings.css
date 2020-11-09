@@ -4,11 +4,11 @@ body{
 
         ); */
         overflow-x: hidden;
-        background-color: #070707;
+        background-color: #232323;
 }
 
 .container{
-    background: black;
+    background: #232323;
     width: 800px;
     height: 490px;
     margin: auto;
@@ -24,7 +24,7 @@ body{
     position: relative;
     width: 15%;
     height: 110%;
-    background: #2ed573;
+    background: #232323;
     box-shadow: 3px 5px 20px rgba(119 ,119,119,.5);
     border: .1em solid white;
 }
@@ -86,7 +86,7 @@ body{
 .user_settings a:hover{
     background-color: white;
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .user_settings:first-child {
@@ -94,6 +94,15 @@ body{
 }
 
 .user_settings a.active{
-    background-color: black;
+    background-color:white;
 
+}
+
+.edit{
+    color: #fff;
+    border: 1px solid #fff;
+}
+.edit:hover{
+    color: black;
+    background-color: #fff;
 }

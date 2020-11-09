@@ -41,18 +41,6 @@
                             {{__('messages.videogames')}}
                         </a>
                     </li>
-                    @can('isAdmin')
-                    <li class="nav-item">
-                        <a href="{{ url('/roles') }}" class="nav-link">
-                            {{__('messages.roles')}}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/users') }}" class="nav-link">
-                            {{__('messages.users')}}
-                        </a>
-                    </li>
-                    @endcan
                 </ul>
                 <!-- Right Side Of Navbar -->
 
@@ -90,7 +78,7 @@
                             {{ Auth::user()->roles->isNotEmpty() ? Auth::user()->roles->first()->name : "" }}
                             @endauth
                             @guest
-                            <img src="{{ asset('icons/guest2.png') }}" class="show-icon" height="40" width="40">
+                            <img src="{{ asset('icons/user_icons/guest2.png') }}" class="show-icon" height="40" width="40">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right mega-menu">
 

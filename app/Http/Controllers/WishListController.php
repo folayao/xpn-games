@@ -17,9 +17,9 @@ class WishListController extends Controller
     public function index()
     {
         $data = [];
-        $data["wishList"] = WishList::all();
+        $data["wishList"] = auth()->user()->wishlists->paginate(3);
         
-        return view('videogame.list')->with("data", $data);
+        return view('user.wish_list')->with("data", $data);
     }
 
     /**
@@ -55,13 +55,7 @@ class WishListController extends Controller
      */
     public function show()
     {
-        // $data = [] ;
-        // $wishlist = WishList::all();
-        // $wishlist = $wishlist->intersect(WishList::whereIn('user_id', [auth()->user()->id])->get());
-        // $wishlistid= $wishlist->pluck('video_game_id');
-        // $videogames = VideoGame::all();
-        // $data['videogames'] = $videogames->intersect(VideoGame::whereIn('id', $wishlistid)->get());
-        // return view('user.wishList')->with("data",$data);
+
 
         $data = [];
         $wishlist = auth()->user()->wishlists;
@@ -76,13 +70,12 @@ class WishListController extends Controller
      */
     public function delete($id)
     {
-        try {
-            $videogame = VideoGame::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
-            return redirect()->route('home.index');
-        }
+
         $wishlist = WishList::find($id);
+        $wishlist-> users-> detach();
+        $wishlist-> videogames-> detach();
         $wishlist->delete();
-        return redirect()->route('videogame.list');
+
+        return redirect()->back();
     }
 }
