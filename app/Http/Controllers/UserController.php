@@ -69,7 +69,7 @@ class UserController extends Controller
             $rolePermissions = null;
         }
         $userPermissions = $user->permissions;
-
+        $url = url()->previous();
         // dd($rolePermission);
 
         return view('admin.users.edit', [
@@ -77,7 +77,8 @@ class UserController extends Controller
             'roles'=>$roles,
             'userRole'=>$userRole,
             'rolePermissions'=>$rolePermissions,
-            'userPermissions'=>$userPermissions
+            'userPermissions'=>$userPermissions,
+            'url' => $url
             ]);
     }
 
@@ -111,7 +112,7 @@ class UserController extends Controller
                 $user->save();
             }
         }
-        return back();
+        return redirect($request->url)->with('success', 'Attributes edited succesfully');
     }
 
     public function delete($id)

@@ -16,26 +16,39 @@
         <div class="row">
         <form action="{{route('videogame.list')}}" method="GET" role="search">
         <!-- @csrf -->
-            <input type="text" name="title" Placeholder="search" class ="form-control">
+            <input type="text" name="search" Placeholder="search" class ="form-control">
             <button type="submit">try it</button>
         </form>
         </div>
         <div class="col-md-12 text-center mb-3">
             <ul id="select-category">
-                <li  {{ (request()->query() == null) ? 'class=active' : '' }}><a  href="{{route('videogame.list')}}"><p>All</p> </a></li>
-                <li  {{ (request()->query("category")== 'Action') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Action'])}}"><p><i class="fas fa-bomb"></i>  {{__('messages.videogame.categories.action')}} </p> </li></a>
-                <li  {{ (request()->query("category")== 'Adventure') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Adventure'])}}"><p><i class="fas fa-globe-americas"></i>  {{__('messages.videogame.categories.adventure')}}</p> </a></li>
-                <li  {{ (request()->query("category")== 'FPS') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'FPS'])}}"><p><i class="fas fa-skull-crossbones"></i>  {{__('messages.videogame.categories.fps')}}</p> </a></li>
-                <li  {{ (request()->query("category")== 'RPG') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'RPG'])}}"><p><i class="fab fa-drupal"></i>  {{__('messages.videogame.categories.rpg')}}</p> </a></li>
-                <li  {{ (request()->query("category")== 'Sports') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Sports'])}}"><p><i class="fas fa-quidditch"></i>  {{__('messages.videogame.categories.sports')}}</p> </a></li>
-                <li  {{ (request()->query("category")== 'Simulation') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Simulation'])}}"><p><i class="fas fa-cubes"></i>  {{__('messages.videogame.categories.simulation')}}</p> </a></li>  
+                <li  {{ (request()->query() == null) ? 'class=active' : '' }}><a  href="{{route('videogame.list',['paginate' => $data['paginate']])}}"><p>All</p> </a></li>
+                <li  {{ (request()->query("category")== 'Action') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Action','paginate' => $data['paginate']])}}"><p><i class="fas fa-bomb"></i>  {{__('messages.videogame.categories.action')}} </p> </li></a>
+                <li  {{ (request()->query("category")== 'Adventure') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Adventure','paginate' => $data['paginate']])}}"><p><i class="fas fa-globe-americas"></i>  {{__('messages.videogame.categories.adventure')}}</p> </a></li>
+                <li  {{ (request()->query("category")== 'FPS') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'FPS','paginate' => $data['paginate']])}}"><p><i class="fas fa-skull-crossbones"></i>  {{__('messages.videogame.categories.fps')}}</p> </a></li>
+                <li  {{ (request()->query("category")== 'RPG') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'RPG','paginate' => $data['paginate']])}}"><p><i class="fab fa-drupal"></i>  {{__('messages.videogame.categories.rpg')}}</p> </a></li>
+                <li  {{ (request()->query("category")== 'Sports') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Sports','paginate' => $data['paginate']])}}"><p><i class="fas fa-quidditch"></i>  {{__('messages.videogame.categories.sports')}}</p> </a></li>
+                <li  {{ (request()->query("category")== 'Simulation') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Simulation','paginate' => $data['paginate']])}}"><p><i class="fas fa-cubes"></i>  {{__('messages.videogame.categories.simulation')}}</p> </a></li>  
             </ul>
         </div>
     </div>
+    <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    VideoGames per page : {{$data['paginate']}}
+  </a>
+
+  <div class="dropdown-menu mega-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{{route('videogame.list',['paginate' =>  '12','search' => $data['search'],'category' => $data['category']])}}">12</a>
+    <a class="dropdown-item" href="{{route('videogame.list',['paginate' =>  '24', 'search' => $data['search'],'category' => $data['category']])}}">24</a>
+    <a class="dropdown-item" href="{{route('videogame.list',['paginate' =>  '48', 'search' => $data['search'],'category' => $data['category']])}}">48</a>
+  </div>
+</div>
 </div>
 
 <div class="container">
+{{$data["videogames"]->appends(['search' => $data['search'],'paginate' => $data['paginate'],'category' => $data['category']])->links()}}
     <div class="row mr-5 ml-5 ">
+    
         @foreach ($data["videogames"] as $videogame)
         <div class="col-md-4 col-sm-6">
             
@@ -94,7 +107,7 @@
     </div>
 </div>
 
-{{$data["videogames"]->links()}}
+{{$data["videogames"]->appends(['category' => $data['category']])->links()}}
 @endsection
 @section('scripts')
 

@@ -25,7 +25,7 @@
                 <p>{{auth()->user()->username}}</p>
                 <h2>{{__('messages.user.email')}}</h2>
                 <p>{{auth()->user()->email}}</p>
-                <a href="{{ route('user.edit', ['id' => auth()->user()->id]) }}" class= "btn"> edit your attributes</a>
+                <a href="{{ route('user.edit', ['id' => auth()->user()->id]) }}" class= "btn edit"> edit your attributes</a>
             </div>
             <div class="payment tabShow">
             <h1>{{__('messages.user.settings.payment_info')}}</h1>
@@ -34,7 +34,7 @@
                 <h2>{{__('messages.user.settings.type_card')}}</h2>
                 <p>El tipito de la tarjeta</p>
                 <h2>{{__('messages.user.settings.balance')}}</h2>
-                <p>100000000000000000000000000000000000000000</p>
+                <p>3443</p>
             </div>
             <div class="wishlist tabShow">
                 @include('user.wish_list')

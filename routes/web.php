@@ -32,6 +32,7 @@ Route::post('/comment/save', 'CommentController@save')->name("comment.save");
 /*Wishlist Routes */
 Route::post('/wishList/save', 'WishListController@store')->name("wishList.store");
 Route::post('/wishList/add/{id}', 'WishListController@wishlistAdd')->name("wishlist.addToWish_list");
+Route::get('/wishList/delete/{id}', 'WishListController@delete')->name("wishlist.delete");
 Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
 
 // Role Routes
@@ -40,13 +41,8 @@ Route::resource('roles', 'RolesController')->middleware('can:isAdmin');
 
 //User Routes
 Route::get('/user/{username}/settings', 'UserController@userSettings')->name("user.settings");
-Route::get('/users', 'UserController@index')->name("user.index");
-// Route::get('/users/show/{id}', 'UserController@show')->name("user.show");
-Route::get('/users/create', 'UserController@create')->name("user.create");
 Route::get('/users/{id}/edit', 'UserController@edit')->name("user.edit");
 Route::post('/users/{id}/update', 'UserController@update')->name("user.update");
-Route::get('/users/delete/{id}', 'UserController@delete')->name("user.delete");
-Route::get('/dataTableUser' ,'UserController@dataTable')->name("dataTable");
 
 Route::get('/image/index', 'ImageController@index')->name("image.index");
 Route::post('/image/save', 'ImageController@save')->name("image.save");
