@@ -17,18 +17,21 @@ class VideoGameController extends Controller
     public function list(Request $request) {
         $data = [];
         $date = Carbon::today()->subDay(1);
+        
         if($request->category){
             $videogames = VideoGame::where('category',$request->category)->paginate(12);
             $latestVideogames = VideoGame::where('created_at','>=',$date)->where('category',$request->category)->get();
+            
 
         }
         else{
             
-            if($request->title){
-                $videogames = VideoGame::search($request->title)->paginate(12);
+            if($request->search){
+                $videogames = VideoGame::search($request->search)->paginate(12);
                 if($videogames != ''){
-                $videogamesid = VideoGame::search($request->title)->get()->pluck('id');
+                $videogamesid = VideoGame::search($request->search)->get()->pluck('id');
                 $latestVideogames = VideoGame::where('created_at','>=',$date)->where('id',$videogamesid)->get();
+                
                 }
             }
             else{
@@ -36,7 +39,8 @@ class VideoGameController extends Controller
             }
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
-        
+        $data['category'] = $request -> category;
+        $data['search'] = $request -> search;
         $data["videogames"] = $videogames;
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);

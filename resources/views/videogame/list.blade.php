@@ -16,7 +16,7 @@
         <div class="row">
         <form action="{{route('videogame.list')}}" method="GET" role="search">
         <!-- @csrf -->
-            <input type="text" name="title" Placeholder="search" class ="form-control">
+            <input type="text" name="search" Placeholder="search" class ="form-control">
             <button type="submit">try it</button>
         </form>
         </div>
@@ -35,7 +35,9 @@
 </div>
 
 <div class="container">
+{{$data["videogames"]->appends(['search' => $data['search']])->appends(['category' => $data['category']])->links()}}
     <div class="row mr-5 ml-5 ">
+    
         @foreach ($data["videogames"] as $videogame)
         <div class="col-md-4 col-sm-6">
             
@@ -94,7 +96,7 @@
     </div>
 </div>
 
-{{$data["videogames"]->links()}}
+{{$data["videogames"]->appends(['category' => $data['category']])->links()}}
 @endsection
 @section('scripts')
 

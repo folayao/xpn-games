@@ -125,8 +125,11 @@ class VideoGame extends Model
         return $this->belongsToMany(WishList::class,'wishlists_videogames');
     }
 
+
     public function searchableAs()
     {
         return 'videogames';
     }
+
+
 }
