@@ -20,6 +20,7 @@ return [
     'goBack'          => 'Go back',
     'new'             => 'New',
     'id'              => 'ID',
+    'search'          => 'Search by author, name, category or id',
 
     'admin'           => [
         'videogame' => [

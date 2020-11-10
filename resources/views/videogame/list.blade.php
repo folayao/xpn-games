@@ -8,18 +8,15 @@
     <div class="row addgame">
         @can('isAdmin')
         <div class="col-md-6 float-right mb-3">
-            <a href="/videogames/create"> {{__('messages.admin.videogame.add')}}
+            <a href="{{route('videogame.create')}}"> {{__('messages.admin.videogame.add')}}
             </a>
         </div>
         
         @endcan
         <div class="row">
-        <form action="{{route('videogame.list')}}" method="GET" role="search">
-        <!-- @csrf -->
-            <input type="text" name="search" Placeholder="search" class ="form-control">
-            <button type="submit">try it</button>
-        </form>
+
         </div>
+
         <div class="col-md-12 text-center mb-3">
             <ul id="select-category">
                 <li  {{ (request()->query() == null) ? 'class=active' : '' }}><a  href="{{route('videogame.list',['paginate' => $data['paginate']])}}"><p>All</p> </a></li>
@@ -31,6 +28,20 @@
                 <li  {{ (request()->query("category")== 'Simulation') ? 'class=active' : '' }}><a  href="{{route('videogame.list',['category' =>  'Simulation','paginate' => $data['paginate']])}}"><p><i class="fas fa-cubes"></i>  {{__('messages.videogame.categories.simulation')}}</p> </a></li>  
             </ul>
         </div>
+
+    </div>
+        <div class="row">
+            <div class="col-auto">
+            <div class=" search-box">
+            <form action="{{route('videogame.list')}}" method="GET" role="search">
+            <!-- @csrf -->
+                <input type="text" name="search" Placeholder="{{__('messages.search')}}" class ="search-txt">
+                <button type="submit" class="btn search-icon"><i class="fas fa-search "></i></button>
+            </form>
+        </div>
+            </div>
+
+        
     </div>
     <div class="dropdown show">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
