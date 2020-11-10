@@ -86,7 +86,7 @@
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('user.settings', [ 'username' => auth()->user()->username])  }}">
-                                        {{ __('messages.wishlist.show') }}
+                                        {{ __('messages.user.profile') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('item.cart') }}">

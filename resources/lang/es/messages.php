@@ -76,6 +76,7 @@ return [
         'mailNotReceived'   => 'Si no recibió el correo electrónico',
         'requestNewLink'    => 'haga clic aquí para solicitar otro',
         'accountRegister'   => 'Cree su cuenta',
+        'profile'           => 'Perfil',
 
         'settings'          => [
             'info'         => 'Información personal',
@@ -83,7 +84,7 @@ return [
             'edit'         => 'Edita tu información',
             'payment_info' => 'Metodo de pago',
             'card'         => 'Numero de tarjeta',
-            'type_card'    => 'Tipo de tarjeta',
+            'type_card'     => 'Tipo de tarjeta',
             'balance'      => 'Balance',
             'wishlist'     => 'Tus listas de deseos',
         ],
@@ -124,7 +125,7 @@ return [
         'next'     => 'Siguiente',
         'previous' => 'Anterior',
         'items'    => 'Sí hay elementos en la wishlist',
-        'noItems'     => 'No hay elementos en la wishlist',
+        'noItems'  => 'No hay elementos en la wishlist',
         'null'     => 'No posee ninguna wishlist, puede proceder a crearla',
     ],
     'comment'         => [

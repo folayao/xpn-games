@@ -76,6 +76,7 @@ return [
         'mailNotReceived'   => 'If you did not receive the email',
         'requestNewLink'    => 'click here to request another',
         'accountRegister'   => 'Create your account',
+        'profile'           => 'Profile',
 
         'settings'          => [
             'info'         => 'Personal Info',
@@ -83,7 +84,7 @@ return [
             'edit'         => 'Edit your info',
             'payment_info' => 'Payment Info',
             'card'         => 'Card number',
-            'type_card'    => 'Type of card',
+            'type_card'     => 'Type of card',
             'balance'      => 'Balance',
             'wishlist'     => 'Your wishlists',
         ],

@@ -30,9 +30,15 @@
             <div class="payment tabShow">
             <h1>{{__('messages.user.settings.payment_info')}}</h1>
                 <h2>{{__('messages.user.settings.card')}}</h2>
-                <p>El numerito de la tarjeta</p>
+                <p>
+                    {{-- El numerito de la tarjeta --}}
+                    <input type="text" id="card_number" name="card_number" placeholder="{{__('messages.user.settings.card')}}"/>
+                </p>
                 <h2>{{__('messages.user.settings.type_card')}}</h2>
-                <p>El tipito de la tarjeta</p>
+                <p>
+                    {{-- El tipito de la tarjeta --}}
+                    <input type="text" id="card_type" name="card_type" placeholder="{{__('messages.user.settings.type_card')}}"/>
+                </p>
                 <h2>{{__('messages.user.settings.balance')}}</h2>
                 <p>3443</p>
             </div>
