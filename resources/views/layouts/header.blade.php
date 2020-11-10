@@ -55,12 +55,6 @@
                                 <a class="dropdown-item" href="{{ url('/lang/es') }}"><img src="{{asset('images/es.png')}}" width="30px" height="20x"> {{__('messages.spanish')}}</a>
                             </div>
                         </li>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 1cdd553e43e402ab446c0d4b7c050e0c649e2ef6
                     <li class="dropdown">
                         <li>
                             <input type="text" id="search" class="form-control" list="browsers" name="browser">

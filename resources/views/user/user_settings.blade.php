@@ -25,7 +25,7 @@
                 <p>{{auth()->user()->username}}</p>
                 <h2>{{__('messages.user.email')}}</h2>
                 <p>{{auth()->user()->email}}</p>
-                <a href="{{ route('user.edit', ['id' => auth()->user()->id]) }}" class= "btn edit"> edit your attributes</a>
+                <a href="{{ route('user.edit', ['id' => auth()->user()->id]) }}" class= "btn edit">{{__('messages.user.settings.edit')}}</a>
             </div>
             <div class="payment tabShow">
             <h1>{{__('messages.user.settings.payment_info')}}</h1>

@@ -88,6 +88,7 @@ return [
             'type_card'     => 'Type of card',
             'balance'      => 'Balance',
             'wishlist'     => 'Your wishlists',
+            'edit'     => 'Edit your profile',
         ],
     ],
     'videogame'       => [
