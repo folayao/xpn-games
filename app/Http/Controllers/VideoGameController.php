@@ -32,7 +32,7 @@ class VideoGameController extends Controller
                 if($videogames->first() != null){
                 $videogamesid = VideoGame::search($request->search)->get()->pluck('id');
                 $latestVideogames = VideoGame::where('created_at','>=',$date)->where('id',$videogamesid)->get();
-                
+
                 }
             }
             else{
@@ -43,7 +43,7 @@ class VideoGameController extends Controller
         }
         $data['category'] = $request -> category;
         $data['search'] = $request -> search;
-        
+
         $data["videogames"] = $videogames;
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
@@ -112,7 +112,7 @@ class VideoGameController extends Controller
         $youtube = new \Madcoda\Youtube\Youtube(array('key' => 'AIzaSyD7tst8nKTADpj0ZBdr-1VaTPx3RQQOpuo'));
         // Parametros
         $params = array(
-            'q' => $word,
+            'q' => $word . ' gameplay',
             'type' => 'video',
             'part' => 'id, snippet',
             'maxResults' => 5    //Número de resultados
