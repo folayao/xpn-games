@@ -10,11 +10,11 @@
             </a>
             <a onclick="tabs(1)" class="tab">
                 <img src="{{ asset('icons/user_icons/credit_card.png') }}" alt="">
-            </a>  
+            </a>
             <a onclick="tabs(2)" class="tab">
                 <img src="{{ asset('icons/user_icons/wish_list.png') }}" alt="">
             </a>
-            </nav>  
+            </nav>
         </div>
         <div class="rightbox">
             <div class="profile tabShow">
@@ -30,21 +30,24 @@
             <div class="payment tabShow">
             <h1>{{__('messages.user.settings.payment_info')}}</h1>
                 <h2>{{__('messages.user.settings.card')}}</h2>
-                <p>El numerito de la tarjeta</p>
+                <p>
+                    {{-- El numerito de la tarjeta --}}
+                    <input type="text" id="card_number" name="card_number" placeholder="{{__('messages.user.settings.card')}}"/>
+                </p>
                 <h2>{{__('messages.user.settings.type_card')}}</h2>
-                <p>El tipito de la tarjeta</p>
+                <p>
+                    {{-- El tipito de la tarjeta --}}
+                    <input type="text" id="card_type" name="card_type" placeholder="{{__('messages.user.settings.type_card')}}"/>
+                </p>
                 <h2>{{__('messages.user.settings.balance')}}</h2>
                 <p>3443</p>
             </div>
             <div class="wishlist tabShow">
                 @include('user.wish_list')
-                @yield('wish_list')   
+                @yield('wish_list')
             </div>
-
-
         </div>
     </div>
-
 
 @endsection
 @section('user_settings_scripts')
