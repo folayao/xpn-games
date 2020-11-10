@@ -125,7 +125,7 @@ class VideoGameController extends Controller
             'q' => $word . ' gameplay',
             'type' => 'video',
             'part' => 'id, snippet',
-            'maxResults' => 5    //Número de resultados
+            'maxResults' => 3    //Número de resultados
         );
         // Hacer la busqueda con los parametros
         $videos = $youtube->searchAdvanced($params, true);

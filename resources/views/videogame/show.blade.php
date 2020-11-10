@@ -111,8 +111,8 @@
         </div>
     </div>
 </div>
-
-<div class="view-videos">
+<br>
+<div class="carousel-slide">
         @include('video.index' , ['videos' => $data['videos']])
 </div>
 
