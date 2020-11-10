@@ -23,7 +23,8 @@ return [
     'goBack'          => 'Regresar',
     'new'             => 'Nuevo',
     'id'              => 'ID',
-
+    'search'          => 'Busca con autor, nombre, categoria e id',
+    
     'admin'           => [
         'videogame' => [
             'create'      => 'Crear videojuego',

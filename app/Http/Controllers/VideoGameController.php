@@ -8,11 +8,11 @@ use App\Interfaces\ImageStorage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Http;
 use Storage;
 
 class VideoGameController extends Controller
 {
-    public static $categorias = ['Action','Simulation','RPG','FPS','Adventure','Sports'];
     /* List the products */
     public function list(Request $request) {
         $data = [];
@@ -25,14 +25,11 @@ class VideoGameController extends Controller
         if($request->category){
             $videogames = VideoGame::where('category',$request->category)->paginate($request -> paginate);
             $latestVideogames = VideoGame::where('created_at','>=',$date)->where('category',$request->category)->get();
-
-
         }
         else{
-
             if($request->search){
                 $videogames = VideoGame::search($request->search)->paginate($request -> paginate);
-                if($videogames != ''){
+                if($videogames->first() != null){
                 $videogamesid = VideoGame::search($request->search)->get()->pluck('id');
                 $latestVideogames = VideoGame::where('created_at','>=',$date)->where('id',$videogamesid)->get();
 
@@ -41,6 +38,7 @@ class VideoGameController extends Controller
             else{
                 $videogames = VideoGame::orderBy('created_at','desc')->paginate($request -> paginate);
             }
+
             $latestVideogames = VideoGame::where('created_at','>=',$date)->get();
         }
         $data['category'] = $request -> category;
@@ -49,7 +47,6 @@ class VideoGameController extends Controller
         $data["videogames"] = $videogames;
         $data["latestVG"] = $latestVideogames;
         $data["quantityNewVG"] = sizeof($data["latestVG"]);
-
         return view('videogame.list')->with("data", $data);
 
     }
@@ -60,7 +57,6 @@ class VideoGameController extends Controller
         $videogame = VideoGame::findOrFail($id);
         $data["videogame"] = $videogame;
         $data['videos'] = $this->showVideos($videogame->getTitle());
-        // dd($data['videos']);
         return view('videogame.show')->with("data", $data);
     }
 
@@ -70,7 +66,7 @@ class VideoGameController extends Controller
         $data = [];
 
         $data['title'] = "Create VideoGame";
-         $data['categorias']=VideoGameController::$categorias;
+        
         return view('videogame.create');
     }
 
@@ -83,15 +79,9 @@ class VideoGameController extends Controller
 
 
         if($request->hasFile('gameImage')){
-
-            // $path =$request->file('gameImage')->store('images','s3');
-
-            // $videoGame -> image = Storage::disk('s3')->url($path);
-
             $storeInterface = app(ImageStorage::class);
             $value = $storeInterface->store($request);
             $videoGame -> image = $value;
-            // dd($storeInterface->store($request));
             $videoGame->save();
 
         }
