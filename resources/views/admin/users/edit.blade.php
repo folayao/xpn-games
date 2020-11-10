@@ -36,7 +36,7 @@
         <input type="password" name="password" class="form-control" id="password" placeholder="Password..." minlength="8">
     </div>
     <div class="form-group">
-        <label for="password_confirmation">{{__('messages.user.confirmPasswd')}}</label>
+        <label for="password_confirmation">{{__('messages.user.confirmPassword')}}</label>
         <input type="password" name="password_confirmation" class="form-control" placeholder="Password..." id="password_confirmation">
     </div>
         <input type="hidden" value="{{$url}}" name = "url">

@@ -88,6 +88,7 @@ return [
             'type_card'     => 'Tipo de tarjeta',
             'balance'      => 'Balance',
             'wishlist'     => 'Tus listas de deseos',
+            'edit'         => 'Edita tu perfil',
         ],
 
     ],
