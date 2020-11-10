@@ -1,44 +1,48 @@
-Esto es un carrusel
-{{-- {{$videos}} --}}
-@if(isset($videos))
-    @foreach($videos['results'] as $video)
-        <div class="col-sm-6 col-md-6">
+<link rel="stylesheet" href="{{ asset('css/video.css') }}">
+<!--Carousel Wrapper-->
+<br>
+<div id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#video-carousel-example" data-slide-to="0" class="active"></li>
+        <li data-target="#video-carousel-example" data-slide-to="1"></li>
+        <li data-target="#video-carousel-example" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
             <div class="thumbnail">
-                {{-- <!-- Mostramamos la fotos mediana del video -->
-                                        <img class="img-resp" src="{{$video->snippet->thumbnails->medium->url}}">
-                <div class="caption">
-                    <!-- Mostramamos el titulo del video -->
-                    <h3><a href="https://www.youtube.com/watch?v={{$video->id->videoId}}">
-                            {{$video->snippet->title}}</a></h3> --}}
-
-                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/{{$video->id->videoId}}"
-                        frameborder="0" allowfullscreen></iframe>
-
-                </div>
+                <iframe width="800" height="500" src="https://www.youtube.com/embed/{{$videos['results'][0]->id->videoId}}" frameborder="0"
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
-    @endforeach
-@endif
-
-{{-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="container justify-content-md-center">
-            <div class="carousel-item active">
-                <h1>{{__('messages.wishlist.show')}}</h1>
+        <div class="carousel-item">
+            <div class="thumbnail">
+                <iframe width="800" height="500" src="https://www.youtube.com/embed/{{$videos['results'][1]->id->videoId}}" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="thumbnail">
+                <iframe width="800" height="500" src="https://www.youtube.com/embed/{{$videos['results'][2]->id->videoId}}" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#video-carousel-example" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#video-carousel-example" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
 </div>
-@foreach($data['videogames'] as $videogame)
-<div class="carousel-item">
-    <h1>{{$videogame -> getTitle()}}</h1>
-</div>
-@endforeach
-</div>
-</div>
-<a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">{{__('messages.wishlist.previous')}}</span>
-</a>
-<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">{{__('messages.wishlist.next')}}</span>
-</a>
-</div> --}}
+<!--Carousel Wrapper-->

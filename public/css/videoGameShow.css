@@ -57,6 +57,10 @@ body{
     margin-right: 5px;
 }
 
+.carousel-slide {
+    width: 1400px;
+}
+
 .col-videogame h1{
     font-size: 50px;
     line-height: 60px;
@@ -74,7 +78,7 @@ body{
 .col-videogame img{
     max-width: 400px;
     padding: 20px 0;
-    
+
 }
 
 .btn-videogame{
@@ -83,11 +87,11 @@ body{
     color: white;
     font-size: 14px;
     text-decoration: none;
-    
+
     border: 2px solid #ff0077;
     text-transform: uppercase;
     overflow: hidden;
-    
+
     transition: 1s all ease;
 }
 .btn-videogame::before{
@@ -96,7 +100,7 @@ body{
     position: absolute;
     top: 50%;
     left:50%;
-    
+
     transform: translate(-50%,-50%);
     z-index: -1;
     transition: all 0.6s ease;
@@ -107,7 +111,7 @@ body{
 }
 .btn-videogame:hover::before{
     width: 100%;
-    
+
 }
 .btn-wishlist{
     position: relative;
@@ -115,7 +119,7 @@ body{
     color: white;
     font-size: 14px;
     text-decoration: none;
-    
+
     border: 2px solid aqua;
     text-transform: uppercase;
     overflow: hidden;
