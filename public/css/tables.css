@@ -1,0 +1,52 @@
+body{
+    background: #555555;
+}
+
+.card , .card-header, input, select{
+    background: #555555;
+    border: solid 1px #fff
+}
+
+table.comicGreen {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: 2px solid #000000;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  table.comicGreen td, table.comicGreen th {
+    border: 0px solid #000000;
+    padding: 3px 2px;
+  }
+  table.comicGreen tbody td {
+    font-size: 16px;
+    font-weight: bold;
+    color: #8C8C8C;
+  }
+  table.comicGreen tr:nth-child(even) {
+    background: #464C45;
+  }
+  table.comicGreen tfoot {
+    font-size: 16px;
+    font-weight: bold;
+    color: #848484;
+    background: #888888;
+    background: -moz-linear-gradient(top, #a6a6a6 0%, #949494 66%, #888888 100%);
+    background: -webkit-linear-gradient(top, #a6a6a6 0%, #949494 66%, #888888 100%);
+    background: linear-gradient(to bottom, #a6a6a6 0%, #949494 66%, #888888 100%);
+    border-top: 1px solid #444444;
+  }
+  table.comicGreen tfoot td {
+    font-size: 16px;
+  }
+  table.comicGreen tfoot .links {
+    text-align: right;
+  }
+  table.comicGreen tfoot .links a{
+    display: inline-block;
+    background: #FFFFFF;
+    color: #646464;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }

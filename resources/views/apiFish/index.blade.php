@@ -1,41 +1,85 @@
 @extends('layouts.header')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/tables.css') }}">
 
-<table style="width:100%">
-    <tr>
-        {{-- <th>Fishes</th>
-      <th>Accessories</th> --}}
-        <th>Videogames</th>
-    </tr>
-    <tr>
-        {{-- {{$fishes['data']}} --}}
-        {{-- @foreach ($fishes['data'] as $fish)
-            <td>{!!$fish!!}</td>
-        @endforeach --}}
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-</table>
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        {{__('messages.fishes.table')}}
 
-{{--
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive steelBlueCols">
+            <table class="table table-striped table-bordered comicGreen" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>{{__('messages.fishes.id')}}</th>
+                        <th>{{__('messages.fishes.name')}}</th>
+                        <th>{{__('messages.fishes.species')}}</th>
+                        <th>{{__('messages.fishes.family')}}</th>
+                        <th>{{__('messages.fishes.color')}}</th>
+                        <th>{{__('messages.fishes.price')}}</th>
+                        <th>{{__('messages.fishes.size')}}</th>
+                        <th>{{__('messages.fishes.temperament')}}</th>
+                        <th>{{__('messages.fishes.in_stock')}}</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>{{__('messages.fishes.id')}}</th>
+                        <th>{{__('messages.fishes.name')}}</th>
+                        <th>{{__('messages.fishes.species')}}</th>
+                        <th>{{__('messages.fishes.family')}}</th>
+                        <th>{{__('messages.fishes.color')}}</th>
+                        <th>{{__('messages.fishes.price')}}</th>
+                        <th>{{__('messages.fishes.size')}}</th>
+                        <th>{{__('messages.fishes.temperament')}}</th>
+                        <th>{{__('messages.fishes.in_stock')}}</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach ($data as $data)
+                    <tr>
+                        <td> {{$data['id']}}</td>
+                        <td> {{$data['name']}}</td>
+                        <td> {{$data['species']}}</td>
+                        <td> {{$data['family']}}</td>
+                        <td> {{$data['color']}}</td>
+                        <td> {{$data['price']}}</td>
+                        <td> {{$data['size']}}</td>
+                        <td> {{$data['temperament']}}</td>
+                        <td> {{$data['in_stock']}}</td>
+                       
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section('js_user_page')
 
+<script src="/vendor/chart.js/Chart.min.js"></script>
+<script src="/js/admin/demo/chart-area-demo.js"></script>
 
-    <script type="text/javascript">
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: 'http://127.0.0.1:8000/api/videogames/',
-            // success: function (data) {
-            //     console.log(data);
-            // }
-            success: function (data) {
-                $(".display").html(data);
-            }
-        });
-    </script>
- --}}
+<script>
+    $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var user_id = button.data('userid')
 
+            var modal = $(this)
+            // modal.find('.modal-footer #user_id').val(user_id)
+            modal.find('form').attr('action','/users/' + user_id);
+        })
+</script>
+
+@endsection
+@endsection
+@section('scripts')
+<script>
+    $(document).ready( function () {
+    $('#dataTable').DataTable();
+} );
+</script>
 @endsection
