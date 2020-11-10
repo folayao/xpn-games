@@ -9,10 +9,10 @@ class FishController extends Controller
 {
     public function index()
     {
-        $response = Http::get('http://ec2-3-86-109-59.compute-1.amazonaws.com/public/api/videogames');
-        // $response = Http::get('http://aqualife.tk/public/api/fish');
+        $response = Http::get('http://aqualife.tk/public/api/fish');
         $fishes = $response->json();
-        dd($fishes['data']);
-        return view('apiFish.index', compact('fishes'));
+        
+
+        return view('apiFish.index')->with("data", $fishes['data']);
     }
 }

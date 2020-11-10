@@ -40,11 +40,7 @@ class OrderController extends Controller
         $data = [];
         $order = Order::findOrFail($id);
         $data["order"] = $order;
-        // if(auth()->user() == null){
-        //     $data['user_id'] = 0;
-        // }else{
-        //     $data['user_id'] = auth()->user()->id;
-        // }
+
         return view('order.show')->with("data", $data);
     }
 }

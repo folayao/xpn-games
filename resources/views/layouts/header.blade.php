@@ -37,8 +37,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="{{ url('/videogames') }}" class="nav-link">
+                        <a href="{{ route('videogame.list') }}" class="nav-link">
                             {{__('messages.videogames')}}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('fish.index') }}" class="nav-link">
+                            {{__('messages.fishes.message')}}
                         </a>
                     </li>
                 </ul>
@@ -108,9 +113,7 @@
         <div class="row" id="main">
             @yield('content')
         </div>
-        <footer class="row">
-            @include('layouts.footer')
-        </footer>
+
     </div>
     <!-- Footer -->
 
