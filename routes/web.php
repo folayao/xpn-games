@@ -35,17 +35,10 @@ Route::post('/wishList/add/{id}', 'WishListController@wishlistAdd')->name("wishl
 Route::get('/wishList/delete/{id}', 'WishListController@delete')->name("wishlist.delete");
 Route::get('/wishList/show', 'WishListController@show')->name("user.wishList");
 
-// Role Routes
-Route::get('/role/destroy/{id}', 'RolesController@delete')->name("role.delete");
-Route::resource('roles', 'RolesController')->middleware('can:isAdmin');
-
 //User Routes
 Route::get('/user/{username}/settings', 'UserController@userSettings')->name("user.settings");
 Route::get('/users/{id}/edit', 'UserController@edit')->name("user.edit");
 Route::post('/users/{id}/update', 'UserController@update')->name("user.update");
-
-Route::get('/image/index', 'ImageController@index')->name("image.index");
-Route::post('/image/save', 'ImageController@save')->name("image.save");
 
 Route::get('/fish', 'FishController@index')->name("fish.index");
 
