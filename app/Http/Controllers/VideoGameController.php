@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\VideoGame;
+use App\Models\Item;
 use App\Interfaces\ImageStorage;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -98,6 +99,8 @@ class VideoGameController extends Controller
             return redirect()->route('home.index');
         }
         $videogame = VideoGame::find($id);
+        $item = Item::where('video_game_id',$id);
+        $item->delete();
         $videogame->delete();
         return redirect()->route('videogame.list');
     }

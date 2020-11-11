@@ -72,8 +72,7 @@ class WishListController extends Controller
     {
 
         $wishlist = WishList::find($id);
-        $wishlist-> users-> detach();
-        $wishlist-> videogames-> detach();
+
         $wishlist->delete();
 
         return redirect()->back();

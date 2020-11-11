@@ -95,9 +95,6 @@
                                 data-tip="Show me more" data-toggle="tooltip" data-placement="right"
                                 title="{{__('messages.videogame.info')}}"><i class="fas fa-info"></i></a>
                         </li>
-                        <li><a href="" data-tip="Wishlist" data-toggle="tooltip" data-placement="right"
-                                title="{{__('messages.wishlist.add')}}"><i class="fas fa-heart"></i></a>
-                        </li>
                         
                         @can('isAdmin')
                         <li><a href="{{route('videogame.delete', ['id'=>$videogame->getId()])}}" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fas fa-trash-alt"></i></a></li>

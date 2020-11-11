@@ -21,8 +21,17 @@
                             value="{{ old('title') }}" /><br>
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.price')}}" name="price"
                             value="{{ old('price') }}" /><br>
-                        <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.category')}}" name="category"
-                            value="{{ old('category') }}" /><br>
+                        <div class="row ml-2 mt-1">
+                        <select name="category">
+                            <option value="RPG">RPG</option>
+                            <option value="Action">Action</option>
+                            <option value="FPS">FPS</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Sports">Sports</option>
+                        </select>
+                        </div>
+
+
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.designer')}}" name="designer"
                             value="{{ old('designer') }}" /><br>
                         <input class="mt-2" type="text" placeholder="{{__('messages.admin.videogame.pg')}}" name="pg"
