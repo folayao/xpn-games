@@ -112,7 +112,7 @@ class UserController extends Controller
                 $user->save();
             }
         }
-        return redirect($request->url)->with('success', 'Attributes edited succesfully');
+        return  view('user.user_settings')->with('success', 'Attributes edited succesfully');
     }
 
     public function delete($id)
