@@ -11,8 +11,8 @@ class FishController extends Controller
     {
         $response = Http::get('http://aqualife.tk/public/api/fish');
         $fishes = $response->json();
-        
 
-        return view('apiFish.index')->with("data", $fishes['data']);
+
+        return view('fish.index')->with("data", $fishes['data']);
     }
 }
