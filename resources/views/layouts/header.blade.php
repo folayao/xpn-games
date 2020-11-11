@@ -61,10 +61,6 @@
                             </div>
                         </li>
                     <li class="dropdown">
-                        <li>
-                            <input type="text" id="search" class="form-control" list="browsers" name="browser">
-                            <datalist id="browsers"></datalist>
-                        </li>
                         <li class="dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                 @auth
