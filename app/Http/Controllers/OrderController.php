@@ -35,12 +35,4 @@ class OrderController extends Controller
 
         return redirect()->route('videogame.list');
     }
-
-    public function showOrder(Request $id){
-        $data = [];
-        $order = Order::findOrFail($id);
-        $data["order"] = $order;
-
-        return view('order.show')->with("data", $data);
-    }
 }
